@@ -9,7 +9,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // create Cars schema
-var CarsSchema = new Schema({
+var CarSchema = new Schema({
 	vin:{
 		type:String,
 		required:true,
@@ -39,7 +39,7 @@ var CarsSchema = new Schema({
 });
 
 // create the Car model with the CarSchema
-var Cars = mongoose.model("Cars", CarsSchema);
+var Car = mongoose.model("Car", CarSchema);
 
 // export the Car model
-module.exports = Cars;
+module.exports = Car;

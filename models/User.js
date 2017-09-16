@@ -27,7 +27,7 @@ var UserSchema = new Schema({
 		// this will save an array of cars via ObjectId
 		type:Schema.Types.ObjectId,
 		// refers to the Cars model
-		ref:"Cars"
+		ref:"Car"
 	}]
 });
 
