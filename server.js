@@ -6,6 +6,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var path = require("path");
 
 // required models
 var User = require("./models/User.js");
@@ -82,137 +83,160 @@ app.get("/get-car/:vin", function(req,res){
 });
 
 // POST - add new car to database
-app.post("/add-new-car", function(req,res){
+// app.post("/add-new-car", function(req,res){
 
-	// the new car that will be added into the database
-	var carDoc = {};
+// 	// the new car that will be added into the database
+// 	var carDoc = {};
 
-	// get car doc fields through axios
-	carDoc.vin = req.body.vin;
-	carDoc.make = req.body.make;
-	carDoc.model = req.body.model;
-	carDoc.year = req.body.year;
-	carDoc.color = req.body.color;
-	carDoc.mileage = req.body.mileage;
-	carDoc.maintenance = req.body.maintenance;
+// 	// get car doc fields through axios
+// 	carDoc.vin = req.body.vin;
+// 	carDoc.make = req.body.make;
+// 	carDoc.model = req.body.model;
+// 	carDoc.year = req.body.year;
+// 	carDoc.color = req.body.color;
+// 	carDoc.mileage = req.body.mileage;
+// 	carDoc.maintenance = req.body.maintenance;
 
-	// create new Car
-	var newCar = new Car(carDoc);
+// 	// create new Car
+// 	var newCar = new Car(carDoc);
 
-	// save new Car to database
-	newCar.save(function(err,doc){
+// 	// save new Car to database
+// 	newCar.save(function(err,doc){
 
-		if (err) {
-			console.log(err);
-			// handle articles that have already been saved
-			// cars that are saved in database must be unique
-			res.json({alreadySaved: true});
-		}
-		else {
-			res.json(doc);
-		}
-	});
-});
+// 		if (err) {
+// 			console.log(err);
+// 			// handle articles that have already been saved
+// 			// cars that are saved in database must be unique
+// 			// res.json({alreadySaved: true});
+// 		}
+// 		else {
+// 			res.json(doc);
+// 		}
+// 	});
+// });
 
-// UPDATE - car information, maintenance, or tasks
-app.update("/edit-car/:vin", function(req,res){
+// // UPDATE - car information, maintenance, or tasks
+// app.put("/edit-car/:vin", function(req,res){
 
-	// use the updateKey passed through from axios
-	var updateKey = req.body.updateKey;
+// 	// use the updateKey passed through from axios
+// 	var updateKey = req.body.updateKey;
 
-	// use the updateValue passed through from axios
-	var updateValue = req.body.updateValue;
+// 	// use the updateValue passed through from axios
+// 	var updateValue = req.body.updateValue;
 
-	// add edits to car document via vin number
-	Car.findOneAndUpdate(
-		{
-			"vin":req.params.id
-		},
-		{
-			updateKey: updateValue
-		}, function(err,doc){
+// 	// add edits to car document via vin number
+// 	Car.findOneAndUpdate(
+// 		{
+// 			"vin":req.params.id
+// 		},
+// 		{
+// 			updateKey: updateValue
+// 		}, function(err,doc){
 
-		if (err){
-			console.log(err);
+// 		if (err){
+// 			console.log(err);
 
-			// possible errors
+// 			// possible errors
 
-			// wrong data type
-		}
-		else {
-			res.json(doc);
-		}
-	});
+// 			// wrong data type
+// 		}
+// 		else {
+// 			res.json(doc);
+// 		}
+// 	});
 
-});
+// });
 
-// DELETE - delete car from database by VIN#
-app.delete("/delete-car/:vin", function(req,res){
+// // DELETE - delete car from database by VIN#
+// app.delete("/delete-car/:vin", function(req,res){
 
-	Car.findOneAndRemove({
-		"vin":req.params.vin
-		}).exec(function(err,doc){
-		if (err){
-			console.log(err);
-		}
-		else {
-			res.send("CAR REMOVED");
-		}
-	});
-});
+// 	Car.findOneAndRemove({
+// 		"vin":req.params.vin
+// 		}).exec(function(err,doc){
+// 		if (err){
+// 			console.log(err);
+// 		}
+// 		else {
+// 			res.send("CAR REMOVED");
+// 		}
+// 	});
+// });
 
-// DELETE - delete car maintenance category (deletes tasks associated with it)
-app.delete("/delete-car-stuff/:vin", function(req,res){
+// // DELETE - delete car maintenance category (deletes tasks associated with it)
+// app.delete("/delete-car-stuff/:vin", function(req,res){
 
-	// use the deleteKey passed through from axios
-	var deleteKey = req.body.deleteKey;
+// 	// use the deleteKey passed through from axios
+// 	var deleteKey = req.body.deleteKey;
 
-	// use the deleteValue passed through from axios
-	var deleteValue = req.body.deleteValue;
+// 	// use the deleteValue passed through from axios
+// 	var deleteValue = req.body.deleteValue;
 
-	// add edits to car document via vin number
-	Car.findOneAndRemove(
-		{
-			"vin":req.params.id
-		},
-		{
-			deleteKey: deleteValue
-		}, function(err,doc){
+// 	// add edits to car document via vin number
+// 	Car.findOneAndRemove(
+// 		{
+// 			"vin":req.params.id
+// 		},
+// 		{
+// 			deleteKey: deleteValue
+// 		}, function(err,doc){
 
-		if (err){
-			console.log(err);
-		}
-		else {
-			res.json(doc);
-		}
-	});
+// 		if (err){
+// 			console.log(err);
+// 		}
+// 		else {
+// 			res.json(doc);
+// 		}
+// 	});
 
-});
+// });
 
 // ===== USER =====
 // GET - login information
-app.get("/login", function(req,res){
+// app.get("/login", function(req,res){
 
-	User.findOne({
-		username:req.body.username,
-		password:req.body.password
-	}, function(err, doc){
-		if (err) {
-			console.log(err);
-			res.json({authenticated: false});
-		}
-		else if (username === null || password === null || username === "" || password === "") {
-			console.log("Invalid Credentials");
-			res.json({authenticated: false});
-		}
-		else {
-			// how we handle logged in user here
-		}
-	});
-});
+// 	User.findOne({
+// 		username:req.body.username,
+// 		password:req.body.password
+// 	}, function(err, doc){
+// 		if (err) {
+// 			console.log(err);
+// 			res.json({authenticated: false});
+// 		}
+// 		else if (req.body.username === null || req.body.password === null || req.body.username === "" || req.body.password === "") {
+// 			console.log("Invalid Credentials");
+// 			res.json({authenticated: false});
+// 		}
+// 		else {
+// 			// how we handle logged in user here
+// 		}
+// 	});
+// });
+
+// // GET - user information and cars
+// app.get("/user-projects/:username", function(req,res){
+
+// 	User.findOne({
+// 		username:req.params.username
+// 	})
+// 	.populate("usercars")
+// 	.exec(function(err,doc){
+// 		if (err) {
+// 			console.log(err);
+// 		}
+// 		else {
+// 			res.json(doc);
+// 		}
+// 	});
+// });	
 
 // ===== HTML =====
 // GET - index html page
 app.get("/", function(req,res){
 	res.sendFile(path.resolve(__dirname, "./public/index.html"));
+});
+
+// START LISTENER
+// =============================================================
+app.listen(PORT, function(){
+	console.log("App listening on PORT " + PORT);
 });

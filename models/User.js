@@ -25,7 +25,7 @@ var UserSchema = new Schema({
 	},
 	usercars:[{
 		// this will save an array of cars via VIN#
-		type:Schema.Types.vin,
+		type:Schema.Types.ObjectId,
 		// refers to the Cars model
 		ref:"Car"
 	}]
