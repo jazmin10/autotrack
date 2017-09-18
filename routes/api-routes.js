@@ -218,7 +218,7 @@ module.exports = function(app) {
 
 	// ===== HTML =====
 	// GET - index html page
-	app.get("/", function(req,res){
-		res.sendFile(path.resolve(__dirname, "./public/index.html"));
-	});
+	// app.get("/", function(req,res){
+	// 	res.sendFile(path.resolve(__dirname, "./public/index.html"));
+	// });
 }

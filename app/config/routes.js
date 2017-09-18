@@ -2,14 +2,15 @@
 import React from 'react';
 
 // Include the react-router module
-import router from 'react-router';
+// import router from 'react-router';
 
 // Include the Route component for displaying individual routes
 // Include the Router component to contain all our Routes
 // Include the hashHistory prop to handle routing client side without a server
 // Include browserHistory - https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#hashhistory
 // Include IndexRoute (catch-all route)
-import router, {Route, Router, hashHistory, browserHistory, IndexRoute} from "react-router";
+import router, {Route, Router, browserHistory, IndexRoute} from "react-router";
+
 // Reference the high-level components
 import Main from '../components/Main.js';
 import Splash from '../components/Splash.js';
@@ -25,9 +26,9 @@ export default (
   // The high level component is the Router component
   <Router history={browserHistory}>
 
-    <Route path="/" component={Main}>
+   <Route path="/" component={Main}>
 
-      <Route path="dashboard-manager" component={Dashboard}>
+      {/* <Route path="dashboard-manager" component={Dashboard}>
 
         <Route path="masterlist" component={Masterlist} />
         <Route path="my-projects" component={Projects} />
@@ -35,11 +36,11 @@ export default (
 
         <Route path="profile/:vin" component={Profile} />
 
-        <IndexRoute component={Projects} />
+        <IndexRoute component={Projects} /> 
 
-      </Route>
+      </Route> */}
   
-      <IndexRoute component={Splash} />  
+      {/* <IndexRoute component={Splash} /> */}
 
     </Route>
   </Router>
