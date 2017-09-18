@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-// set up static directory 'public'
-app.use(express.static("public"));
-// app.use("/public", express.static("./public"));
+// // set up static directory 'public'
+// app.use(express.static("public"));
+app.use("/public", express.static("./public"));
 
 // MONGODB CONFIGURATION
 // =============================================================

@@ -41,10 +41,10 @@ export default class Dashboard extends React.Component {
 					</ul>
 					
 					{/* Tab Content */}
-					<div className="container">
-						<div className="tab-content">
+					<div>
+						
 							{this.props.children}
-						</div>
+						
 					</div>
 				</div>
 			</div>
