@@ -23,7 +23,7 @@ import Add from '../components/Add';
 export default (
 
   // The high level component is the Router component
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
 
     <Route path="/" component={Main}>
 
@@ -38,8 +38,6 @@ export default (
         <IndexRoute component={Projects} />
 
       </Route>
-
-      <Route path="login" component={Login} />   
   
       <IndexRoute component={Splash} />  
 
