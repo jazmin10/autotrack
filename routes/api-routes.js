@@ -1,3 +1,8 @@
+/* ========== API ROUTES ========== */
+
+// dependencies
+var path = require("path");
+
 // required models
 var User = require("../models/User.js");
 var Car = require("../models/Cars.js");
@@ -218,7 +223,7 @@ module.exports = function(app) {
 
 	// ===== HTML =====
 	// GET - index html page
-	// app.get("/", function(req,res){
-	// 	res.sendFile(path.resolve(__dirname, "./public/index.html"));
-	// });
+	app.get("*", function(req,res){
+		res.sendFile(path.resolve(__dirname, "../public/index.html"));
+	});
 }

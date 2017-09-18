@@ -13,12 +13,12 @@ import router, {Route, Router, browserHistory, IndexRoute} from "react-router";
 
 // Reference the high-level components
 import Main from '../components/Main.js';
-import Splash from '../components/Splash.js';
+// import Splash from '../components/Splash.js';
 import Dashboard from '../components/Dashboard.js';
-import Profile from '../components/Profile.js';
-import Projects from '../components/Projects.js';
-import Masterlist from '../components/Masterlist.js';
-import Add from '../components/Add.js';
+// import Profile from '../components/Profile.js';
+// import Projects from '../components/Projects.js';
+// import Masterlist from '../components/Masterlist.js';
+// import Add from '../components/Add.js';
 
 // Export the Routes
 export default (
@@ -28,20 +28,20 @@ export default (
 
    <Route path="/" component={Main}>
 
-      {/* <Route path="dashboard-manager" component={Dashboard}>
+       <Route path="/dashboard-manager" component={Dashboard}>
+        {/*
+          <Route path="masterlist" component={Masterlist} />
+          <Route path="my-projects" component={Projects} />
+          <Route path="add-car" component={Add} />
 
-        <Route path="masterlist" component={Masterlist} />
-        <Route path="my-projects" component={Projects} />
-        <Route path="add-car" component={Add} />
+          <Route path="profile/:vin" component={Profile} />
 
-        <Route path="profile/:vin" component={Profile} />
+          <IndexRoute component={Projects} /> 
+        */}
+       </Route>
 
-        <IndexRoute component={Projects} /> 
-
-      </Route> */}
-  
       {/* <IndexRoute component={Splash} /> */}
-
     </Route>
   </Router>
 );
+
