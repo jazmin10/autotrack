@@ -12,14 +12,10 @@ import helpers from "./utils/helpers.js";
 
 // include children
 // import Information from "./Information.js";
-<<<<<<< HEAD
-// import MainTasks from "./Maintasks.js";
+import MainTasks from "./Maintasks.js";
 import Tasks from "./Taskbreakdown.js";
 // import Progress from "./Progressbar.js";
-=======
-import MainTasks from "./Maintasks.js";
 // import Tasks from "./Taskbreakdown.js";
->>>>>>> 8bf605899c834a06cb3e9c8f158a788d596c89c2
 
 // PROFILE -----------------------------
 
@@ -83,11 +79,8 @@ export default class Profile extends React.Component {
 		return (
 			<div className="profile-container">
 				<div>
-<<<<<<< HEAD
-					<Tasks />
-=======
 					<MainTasks />
->>>>>>> 8bf605899c834a06cb3e9c8f158a788d596c89c2
+					<Tasks />
 				</div>
 
 			</div>
