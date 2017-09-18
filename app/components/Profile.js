@@ -13,7 +13,8 @@ import helpers from "./utils/helpers.js";
 // include children
 // import Information from "./Information.js";
 // import MainTasks from "./Maintasks.js";
-// import Tasks from "./Taskbreakdown.js";
+import Tasks from "./Taskbreakdown.js";
+// import Progress from "./Progressbar.js";
 
 // PROFILE -----------------------------
 
@@ -77,8 +78,7 @@ export default class Profile extends React.Component {
 		return (
 			<div className="profile-container">
 				<div>
-					test!!!
-					
+					<Tasks />
 				</div>
 
 			</div>
