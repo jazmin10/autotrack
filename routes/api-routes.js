@@ -125,9 +125,8 @@ module.exports = function(app) {
 	});
 
 	// DELETE - delete car from database by VIN#
-	// send car's id in the body. EX: {id: "59bf300901ea49cfccc5e4d7"}
 	app.delete("/delete-car/:vin", function(req,res){
-
+		// Find the car in the cars collection and remove it
 		Car.findOneAndRemove({
 			"vin":req.params.vin
 			}).exec(function(err,doc){
@@ -135,8 +134,9 @@ module.exports = function(app) {
 				console.log(err);
 			}
 			else {
-				User.findOneAndUpdate({usercars: {$in: [req.body.id]}},
-					{$pull: {usercars: {$in: [req.body.id]}}}, {new: true}).exec(function(err, doc){
+				// Find the car in the usercars array from the user collection and remove it
+				User.findOneAndUpdate({usercars: {$in: [doc._id]}},
+					{$pull: {usercars: {$in: [doc._id]}}}, {new: true}).exec(function(err, doc){
 						res.send("CAR REMOVED");
 					});
 			}
