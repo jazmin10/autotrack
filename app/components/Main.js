@@ -17,7 +17,6 @@ export default class Main extends React.Component {
 
     return (
       <div className="container">
-        This is a test
         <div>
           {/* Display children components */}
           {this.props.children}
