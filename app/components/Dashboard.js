@@ -1,3 +1,6 @@
+/* Dashboard Component -  contains user's dashboard with nav links to the user's
+projects, masterlist, add/edit form */
+
 // Include the React library
 import React from 'react';
 

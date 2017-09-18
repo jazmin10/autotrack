@@ -1,0 +1,1 @@
+/* Splash Component -  landing page */

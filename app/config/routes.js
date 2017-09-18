@@ -11,13 +11,13 @@ import router from 'react-router';
 // Include IndexRoute (catch-all route)
 import router, {Route, Router, hashHistory, browserHistory, IndexRoute} from "react-router";
 // Reference the high-level components
-import Main from '../components/Main';
-import Splash from '../components/Splash';
-import Dashboard from '../components/Dashboard';
-import Profile from '../components/Profile';
-import Projects from '../components/Projects';
-import Masterlist from '../components/Masterlist';
-import Add from '../components/Add';
+import Main from '../components/Main.js';
+import Splash from '../components/Splash.js';
+import Dashboard from '../components/Dashboard.js';
+import Profile from '../components/Profile.js';
+import Projects from '../components/Projects.js';
+import Masterlist from '../components/Masterlist.js';
+import Add from '../components/Add.js';
 
 // Export the Routes
 export default (
