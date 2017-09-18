@@ -239,22 +239,22 @@ app.get("/login", function(req,res){
 	});
 });
 
-// // GET - user information and cars
-// app.get("/user-projects/:username", function(req,res){
+// GET - user information and cars
+app.get("/user-projects/:username", function(req,res){
 
-// 	User.findOne({
-// 		username:req.params.username
-// 	})
-// 	.populate("usercars")
-// 	.exec(function(err,doc){
-// 		if (err) {
-// 			console.log(err);
-// 		}
-// 		else {
-// 			res.json(doc);
-// 		}
-// 	});
-// });	
+	User.findOne({
+		username:req.params.username
+	})
+	.populate("usercars")
+	.exec(function(err,doc){
+		if (err) {
+			console.log(err);
+		}
+		else {
+			res.json(doc);
+		}
+	});
+});	
 
 // ===== HTML =====
 // GET - index html page
