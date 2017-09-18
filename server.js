@@ -218,25 +218,26 @@ app.delete("/delete-car-stuff/:vin", function(req,res){
 
 // ===== USER =====
 // GET - login information
-// app.get("/login", function(req,res){
+app.get("/login", function(req,res){
 
-// 	User.findOne({
-// 		username:req.body.username,
-// 		password:req.body.password
-// 	}, function(err, doc){
-// 		if (err) {
-// 			console.log(err);
-// 			res.json({authenticated: false});
-// 		}
-// 		else if (req.body.username === null || req.body.password === null || req.body.username === "" || req.body.password === "") {
-// 			console.log("Invalid Credentials");
-// 			res.json({authenticated: false});
-// 		}
-// 		else {
-// 			// how we handle logged in user here
-// 		}
-// 	});
-// });
+	User.findOne({
+		username:req.body.username,
+		password:req.body.password
+	}, function(err, doc){
+		if (err) {
+			console.log(err);
+			res.json({authenticated: false});
+		}
+		else if (req.body.username === null || req.body.password === null || req.body.username === "" || req.body.password === "") {
+			console.log("Invalid Credentials");
+			res.json({authenticated: false});
+		}
+		else {
+			// how we handle logged in user here
+			res.send("LOGGED IN!");
+		}
+	});
+});
 
 // // GET - user information and cars
 // app.get("/user-projects/:username", function(req,res){
