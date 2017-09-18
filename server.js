@@ -83,37 +83,55 @@ app.get("/get-car/:vin", function(req,res){
 });
 
 // POST - add new car to database
-// app.post("/add-new-car", function(req,res){
+app.post("/add-new-car/:username", function(req,res){
 
-// 	// the new car that will be added into the database
-// 	var carDoc = {};
+	// the new car that will be added into the database
+	var carDoc = {};
 
-// 	// get car doc fields through axios
-// 	carDoc.vin = req.body.vin;
-// 	carDoc.make = req.body.make;
-// 	carDoc.model = req.body.model;
-// 	carDoc.year = req.body.year;
-// 	carDoc.color = req.body.color;
-// 	carDoc.mileage = req.body.mileage;
-// 	carDoc.maintenance = req.body.maintenance;
+	// get car doc fields through axios
+	carDoc.vin = req.body.vin;
+	carDoc.make = req.body.make;
+	carDoc.model = req.body.model;
+	carDoc.year = req.body.year;
+	carDoc.color = req.body.color;
+	carDoc.mileage = req.body.mileage;
+	carDoc.maintenance = req.body.maintenance;
 
-// 	// create new Car
-// 	var newCar = new Car(carDoc);
+	// create new Car
+	var newCar = new Car(carDoc);
 
-// 	// save new Car to database
-// 	newCar.save(function(err,doc){
+	// save new Car to database
+	newCar.save(function(err,doc){
 
-// 		if (err) {
-// 			console.log(err);
-// 			// handle articles that have already been saved
-// 			// cars that are saved in database must be unique
-// 			// res.json({alreadySaved: true});
-// 		}
-// 		else {
-// 			res.json(doc);
-// 		}
-// 	});
-// });
+		if (err) {
+			console.log(err);
+			// handle articles that have already been saved
+			// cars that are saved in database must be unique
+			// res.json({alreadySaved: true});
+		}
+		else {
+
+			// find the user associated with this car
+			User.findOneAndUpdate({
+				"username":req.params.username
+				},
+				{
+					$push:{
+						"usercars":doc._id
+					}
+			}).exec(function(err,newdoc){
+					if(err){
+						res.send(err);
+					}
+					else {
+						res.json(newdoc);
+					}
+				});
+
+			res.json(doc);
+		}
+	});
+});
 
 // // UPDATE - car information, maintenance, or tasks
 // app.put("/edit-car/:vin", function(req,res){
