@@ -190,7 +190,7 @@ app.delete("/delete-car-stuff/:vin", function(req,res){
 	var deleteKey = req.body.deleteKey;
 
 	// use the deleteValue passed through from axios
-	var deleteValue = undefined;
+	var deleteValue = req.body.deleteValue;
 
 	// create set object so that you can dynamically
 	// set changes using variables
@@ -198,19 +198,19 @@ app.delete("/delete-car-stuff/:vin", function(req,res){
 	remove[deleteKey] = deleteValue;
 
 	// add edits to car document via vin number
-	Car.findOneAndRemove(
+	Car.findOneAndUpdate(
 		{
-			"vin":req.params.id
+			"vin":req.params.vin
 		},
 		{
-			
+			$unset:remove
 		}, function(err,doc){
 
 		if (err){
 			console.log(err);
 		}
 		else {
-			res.json(doc);
+			res.send(doc);
 		}
 	});
 
