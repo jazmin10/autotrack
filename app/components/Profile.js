@@ -71,7 +71,7 @@ export default class Profile extends React.Component {
 	// 	// equation: sum of each category's progress / # of categories
 	// }
 
-	// Render the component: displays navbar and jumbotron
+	// render the component
 	render() {
 
 		return (
