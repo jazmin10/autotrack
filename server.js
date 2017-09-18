@@ -105,7 +105,7 @@ app.post("/add-new-car/:username", function(req,res){
 
 		if (err) {
 			console.log(err);
-			// handle articles that have already been saved
+			// handle cars that have already been saved
 			// cars that are saved in database must be unique
 			// res.json({alreadySaved: true});
 		}
@@ -126,9 +126,7 @@ app.post("/add-new-car/:username", function(req,res){
 					else {
 						res.json(newdoc);
 					}
-				});
-
-			res.json(doc);
+			});
 		}
 	});
 });
