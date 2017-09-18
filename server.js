@@ -131,37 +131,42 @@ app.post("/add-new-car/:username", function(req,res){
 	});
 });
 
-// // UPDATE - car information, maintenance, or tasks
-// app.put("/edit-car/:vin", function(req,res){
+// UPDATE - car information, maintenance, or tasks
+app.put("/edit-car/:vin", function(req,res){
 
-// 	// use the updateKey passed through from axios
-// 	var updateKey = req.body.updateKey;
+	// use the updateKey passed through from axios
+	var updateKey = req.body.updateKey;
 
-// 	// use the updateValue passed through from axios
-// 	var updateValue = req.body.updateValue;
+	// use the updateValue passed through from axios
+	var updateValue = req.body.updateValue;
 
-// 	// add edits to car document via vin number
-// 	Car.findOneAndUpdate(
-// 		{
-// 			"vin":req.params.id
-// 		},
-// 		{
-// 			updateKey: updateValue
-// 		}, function(err,doc){
+	// create set object so that you can dynamically
+	// set changes using variables
+	var set = {};
+	set[updateKey] = updateValue;
 
-// 		if (err){
-// 			console.log(err);
+	// add edits to car document via vin number
+	Car.findOneAndUpdate(
+		{
+			"vin":req.params.vin
+		},
+		{
+			$set:set
+		}).exec(function(err,doc){
 
-// 			// possible errors
+		if (err){
+			console.log(err);
 
-// 			// wrong data type
-// 		}
-// 		else {
-// 			res.json(doc);
-// 		}
-// 	});
+			// possible errors
 
-// });
+			// wrong data type
+		}
+		else {
+			res.json(doc);
+		}
+	});
+
+});
 
 // // DELETE - delete car from database by VIN#
 // app.delete("/delete-car/:vin", function(req,res){
