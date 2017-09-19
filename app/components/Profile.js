@@ -9,6 +9,7 @@
 // include the React library
 import React from 'react';
 import helpers from "./utils/helpers.js";
+// import {QRCode} from "react-qr-svg";
 
 // include children
 // import Information from "./Information.js";

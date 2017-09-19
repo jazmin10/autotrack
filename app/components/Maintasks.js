@@ -37,7 +37,7 @@ export default class Maintasks extends React.Component {
 			}
 		];
 
-		var passedProgessProps = .3;
+		var passedProgessProps = .8;
 
 		var categoryNames = [];
 
@@ -62,9 +62,10 @@ export default class Maintasks extends React.Component {
 	}
 
 	handleDelete(event){
-		event.preventDefault();
-		console.log("it worked");
-		console.log(event.target.value);
+		// event.preventDefault();
+		// console.log("it worked");
+		var deleteName = event.target.value;
+		console.log(deleteName);
 	}
 
 	render() {
@@ -92,8 +93,19 @@ export default class Maintasks extends React.Component {
 			height:'150px'
 		};
 
+		var divStyle = {width: ((this.state.overallProgress) * 100) + "%"};
+
 		return (
 			<div className="well well-lg">
+
+				{/*<SemiCircle
+					progress = {this.state.overallProgress}
+					text={(this.state.overallProgress * 100) + "%"}
+					options={options}
+					initialAnimate={true}
+					containerStyle={containerStyle}
+					containerClassName={'.progressbar'}
+				 />*/}
 
 				{/* Display the overall progress of the car using semi-circle progress bar */}
 				<div>
@@ -107,27 +119,43 @@ export default class Maintasks extends React.Component {
 						containerClassName={'.progressbar'}
 					/> */}
 
+					<div className="progress">
+					  <div 
+					  	className="progress-bar progress-bar-success progress-bar-striped active"
+					  	role="progressbar" 
+					  	aria-valuenow={this.state.overallProgress} 
+					  	aria-valuemin="0" 
+					  	aria-valuemax="100" 
+					  	style={divStyle}>
+					    <span className="sr-only">40% Complete (success)</span>
+					  </div>
+					</div>
+
 					{/* Display a list of names of the main tasks */}
 					<div>
 						<h2>Main Tasks</h2>
-						<ul>
-							{this.state.categoryNames.map((category, i) => {
-								return (
-									<li key={i}>
-										{category}
-										
-										{/* Span tag is here in case we need to add it for styling <span>*/}
-										<button 
-											value={i}
-											className="btn btn-xs btn-danger"
-											onClick={this.handleDelete}>
-											<span className="glyphicon glyphicon-remove-circle"/> 
-										</button>
-										{/*</span>*/}
-									</li>
-								);
-							})}
-						</ul>
+						
+					
+						{this.state.categoryNames.map((category, i) => {
+							return (
+								<div key={i} className="well">
+									{category}
+									
+									{/* Span tag is here in case we need to add it for styling <span>*/}
+								
+									<button 
+										value={category}
+										className="btn btn-xs btn-danger"
+										onClick={this.handleDelete}>
+										Delete {/* Group notes: do not use bootstrap */}
+									</button>
+							
+									{/*</span>*/}
+								</div>
+							);
+						})}
+						
+						
 					</div>
 
 					{/* Add a new main task form */}
