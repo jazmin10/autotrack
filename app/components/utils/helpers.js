@@ -18,9 +18,18 @@ var axios = require("axios");
 
 var helper = {
 
-getAuth: function() {
-	return axios.get("/login");
-},
+	getAuth: function() {
+		return axios.get("/login");
+	},
+
+	getProjectCars: () => {
+		return axios.get("/user-projects/:username")
+			.then(response => {
+
+				return response.data;
+
+			});
+	}
 
 }
 
