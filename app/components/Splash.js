@@ -97,5 +97,4 @@ export default class Splash extends React.Component {
 
 	}
 };
-
-		
+>>>>>>> Finfischley
