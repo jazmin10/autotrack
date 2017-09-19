@@ -67,12 +67,6 @@ export default class Tasks extends React.Component {
 		// capture the task's current completed value
 		var completedStatus = this.state.taskInfo[event.target.id].completed;
 		console.log("completed status: " + completedStatus);
-
-		// store new values here
-		var newValues = {name:checkedTask, completed:!completedStatus};
-		console.log(newValues);
-
-		console.log(this.state.taskInfo[event.target.id]);
 		
 	}
 
