@@ -98,7 +98,7 @@ export default class Taskbreakdown extends React.Component {
 
 		var containerStyle = {
 			width:'100%',
-			height:'50px'
+			height:'60px'
 		};
 
 		return(

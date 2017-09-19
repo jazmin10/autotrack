@@ -27,22 +27,42 @@ export default class Profile extends React.Component {
 		super(props);
 
 		this.state = {
-			overallProgress:0,
-			vin:"5YFBURHE9EP015823",
-			maintenance:[{
-            "category" : "Cosmetics",
-            "tasks" : [ 
-                {
-                    "name" : "Paint",
-                    "completed" : 1
-                }, 
-                {
-                    "name" : "Dents",
-                    "completed" : 0
-                }
-            ],
-            categoryProgress: .5
-        }]
+			overallProgress: .3,
+			vin: "",
+			maintenance: [
+				{
+					category: "Cosmetics",
+					tasks: [
+						{
+							name: "Paint",
+							completed: 1
+						},
+						{
+							name: "Dent",
+							completed: 0
+						},
+					],
+					categoryProgress: 0.5
+				},
+				{
+					category: "Service",
+					tasks: [
+						{
+							name: "Oil Change",
+							completed: 0
+						},
+						{
+							name: "Tire Rotation",
+							completed: 1
+						},
+						{
+							name: "Coolant Flush",
+							completed: 0
+						}
+					],
+					categoryProgress: 0
+				}
+			]
 		}
 	}
 
@@ -92,7 +112,10 @@ export default class Profile extends React.Component {
 		return (
 			<div className="profile-container">
 				<div>
-					<MainTasks />
+					<MainTasks
+						maintenance={this.state.maintenance}
+						overallProgress={this.state.overallProgress}
+					/>
 					<Taskbreakdown 
 						passedMaintenance = {this.state.maintenance}
 					/>
