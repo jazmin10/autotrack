@@ -14,7 +14,7 @@ import helpers from "./utils/helpers.js";
 // include children
 // import Information from "./Information.js";
 import MainTasks from "./Maintasks.js";
-import Tasks from "./Taskbreakdown.js";
+import Taskbreakdown from "./Taskbreakdown.js";
 // import Progress from "./Progressbar.js";
 
 // PROFILE -----------------------------
@@ -22,16 +22,29 @@ import Tasks from "./Taskbreakdown.js";
 // create and export the profile component
 export default class Profile extends React.Component {
 	
-	// // Initial state setup
-	// constructor(props){
-	// 	super(props);
+	// Initial state setup
+	constructor(props){
+		super(props);
 
-	// 	this.state = {
-	// 		overallProgress:0,
-	// 		vin:"",
-	// 		maintenance:[]
-	// 	}
-	// }
+		this.state = {
+			overallProgress:0,
+			vin:"5YFBURHE9EP015823",
+			maintenance:[{
+            "category" : "Cosmetics",
+            "tasks" : [ 
+                {
+                    "name" : "Paint",
+                    "completed" : 1
+                }, 
+                {
+                    "name" : "Dents",
+                    "completed" : 0
+                }
+            ],
+            categoryProgress: .5
+        }]
+		}
+	}
 
 	// captureProgressCategory(progress){
 	// 	// this method doesn't calculate the progress
@@ -80,17 +93,12 @@ export default class Profile extends React.Component {
 			<div className="profile-container">
 				<div>
 					<MainTasks />
-					<Tasks />
+					<Taskbreakdown 
+						passedMaintenance = {this.state.maintenance}
+					/>
 				</div>
 
 			</div>
 		);
 	}
 }
-
-/* Display children components 
-
-					<Information />
-					<MainTasks />
-					<Tasks />
-					*/
