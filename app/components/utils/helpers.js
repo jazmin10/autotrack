@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
 	================== HELPERS FILE ==================
 */
@@ -12,13 +11,9 @@ var axios = require("axios");
 // HELPERS
 // ======================================================
 
-var helper = {
-
-};
-
 // export helper
 export default helper;
-=======
+
 var axios = require("axios");
 
 var helper = {
@@ -28,4 +23,4 @@ getAuth: function() {
 },
 
 }
->>>>>>> Finfischley
+
