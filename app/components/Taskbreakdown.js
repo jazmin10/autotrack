@@ -13,29 +13,34 @@ import helpers from "./utils/helpers.js";
 
 // TASKS -----------------------------
 
-// create and export the Tasks component
-export default class Tasks extends React.Component {
+// create and export the Taskbreakdown component
+export default class Taskbreakdown extends React.Component {
 
 	// Initial state setup
 	constructor(props){
 		super(props);
 
 		this.state={
-			taskInfo:[{
-				name: "Paint",
-				completed:true
-			},{
-				name: "Dents",
-				completed: false
-			}],
-			categoryName:"Cosmetics",
-			categoryProgress:.5,
+			taskInfo:[],
+			categoryName:"",
+			categoryProgress:0,
 			newTask:""
 		}
 
 		this.handleAddTask = this.handleAddTask.bind(this);
 		this.handleCheck = this.handleCheck.bind(this);
 		this.handleDeleteTask = this.handleDeleteTask.bind(this);
+	}
+
+	componentDidMount(){
+		// during the initial load
+
+		// set the values of Tasks state
+		this.setState({
+			taskInfo: this.props.passedMaintenance[0].tasks,
+			categoryName: this.props.passedMaintenance[0].category,
+			categoryProgress: this.props.passedMaintenance[0].categoryProgress
+		});
 	}
 
 	handleAddTask(event){

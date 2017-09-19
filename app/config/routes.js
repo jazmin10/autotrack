@@ -15,6 +15,7 @@ import router, {Route, Router, browserHistory, IndexRoute} from "react-router";
 import Main from '../components/Main.js';
 // import Splash from '../components/Splash.js';
 import Dashboard from '../components/Dashboard.js';
+// import Profile from '../components/Profile.js';
 import Profile from '../components/Profile.js';
 // import Projects from '../components/Projects.js';
 // import Masterlist from '../components/Masterlist.js';
