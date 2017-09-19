@@ -102,7 +102,7 @@ export default class Tasks extends React.Component {
 							})
 						}
 
-						<div classNam="add-task-container">
+						<div className="add-task-container">
 						</div>
 
 					</div>
