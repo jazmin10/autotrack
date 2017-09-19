@@ -37,16 +37,15 @@ export default class Splash extends React.Component {
 				console.log("Username and Password not found");
 				return "Invalid Username or Password";
 			}else{
-				handleRedirect() {
-					browserHistory.push("/Dashboard");
-				}
+				handleRedirect()
+				browserHistory.push("/Dashboard");
 			}
-		}
+		})
 	}
 	
 	render() {
 
-		return(
+		return (
 				<div className="splash-container">
 					<nav className="navbar navbar-default">
 					  <div className="container-fluid">
@@ -93,8 +92,9 @@ export default class Splash extends React.Component {
 							</div>
 						</div>
 					</div>
+				</div>
 				)
 
 	}
-};
->>>>>>> Finfischley
+}
+
