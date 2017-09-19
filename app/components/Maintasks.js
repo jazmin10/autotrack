@@ -26,32 +26,32 @@ export default class Maintasks extends React.Component {
 	componentDidMount(){
 
 		// This is dummy data, this will actually be passed through the props
-		var passedMaintenanceProps = [
-			{
-				name: "Cosmetics",
-				tasks: []
-			},
-			{
-				name: "Service",
-				tasks: []
-			}
-		];
+		// var passedMaintenanceProps = [
+		// 	{
+		// 		name: "Cosmetics",
+		// 		tasks: []
+		// 	},
+		// 	{
+		// 		name: "Service",
+		// 		tasks: []
+		// 	}
+		// ];
 
-		var passedProgessProps = .8;
+		// var passedProgessProps = .8;
 
 		// Set a blank array that will hold the names of the main tasks
 		var categoryNames = [];
 
 		// Loop through the maintenance array and push main tasks names into
 		// the categoryNames array
-		passedMaintenanceProps.map((search, i) => {
-			categoryNames.push(search.name);
+		this.props.maintenance.map((search, i) => {
+			categoryNames.push(search.category);
 		});
 
 		// Initialize categoryNames and overallProgress 
 		this.setState({
 			categoryNames: categoryNames, 
-			overallProgress: passedProgessProps
+			overallProgress: this.props.overallProgress
 		});
 	}
 
