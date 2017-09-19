@@ -3,9 +3,7 @@ categories for a car */
 
 import React from 'react';
 import helpers from "./utils/helpers.js";
-// import Progressbar, {SemiCircle} from "react-progressbar.js";
-// // var Progressbar = require("react-progressbar.js");
-// // var SemiCircle = Progressbar.SemiCircle;
+import { SemiCircle } from "./react-progress.js";
 
 
 export default class Maintasks extends React.Component {
@@ -26,6 +24,8 @@ export default class Maintasks extends React.Component {
 
 	// When the component mounts...
 	componentDidMount(){
+
+		// This is dummy data, this will actually be passed through the props
 		var passedMaintenanceProps = [
 			{
 				name: "Cosmetics",
@@ -39,13 +39,16 @@ export default class Maintasks extends React.Component {
 
 		var passedProgessProps = .8;
 
+		// Set a blank array that will hold the names of the main tasks
 		var categoryNames = [];
 
+		// Loop through the maintenance array and push main tasks names into
+		// the categoryNames array
 		passedMaintenanceProps.map((search, i) => {
 			categoryNames.push(search.name);
 		});
 
-		// Reinitialize categoryNames and overallProgress 
+		// Initialize categoryNames and overallProgress 
 		this.setState({
 			categoryNames: categoryNames, 
 			overallProgress: passedProgessProps
@@ -61,9 +64,9 @@ export default class Maintasks extends React.Component {
 		this.setState(newState);
 	}
 
+	// Captures the main task that was chosen for removal
+	// This will be removed once delete method is created in profile
 	handleDelete(event){
-		// event.preventDefault();
-		// console.log("it worked");
 		var deleteName = event.target.value;
 		console.log(deleteName);
 	}
@@ -93,69 +96,40 @@ export default class Maintasks extends React.Component {
 			height:'150px'
 		};
 
-		var divStyle = {width: ((this.state.overallProgress) * 100) + "%"};
-
 		return (
 			<div className="well well-lg">
 
-				{/*<SemiCircle
-					progress = {this.state.overallProgress}
-					text={(this.state.overallProgress * 100) + "%"}
-					options={options}
-					initialAnimate={true}
-					containerStyle={containerStyle}
-					containerClassName={'.progressbar'}
-				 />*/}
-
-				{/* Display the overall progress of the car using semi-circle progress bar */}
-				<div>
-					Progress: {(this.state.overallProgress *100) + "%"}
-					{/* <SemiCircle 
-						progress = {this.state.overallProgress}
-						text={(this.state.overallProgress * 100) + "%"}
-						options={options}
-						initialAnimate={true}
-						containerStyle={containerStyle}
-						containerClassName={'.progressbar'}
-					/> */}
-
-					<div className="progress">
-					  <div 
-					  	className="progress-bar progress-bar-success progress-bar-striped active"
-					  	role="progressbar" 
-					  	aria-valuenow={this.state.overallProgress} 
-					  	aria-valuemin="0" 
-					  	aria-valuemax="100" 
-					  	style={divStyle}>
-					    <span className="sr-only">40% Complete (success)</span>
-					  </div>
+					{/* Display the overall progress of the car using semi-circle progress bar */}
+					<div>
+						<SemiCircle
+							progress = {this.state.overallProgress}
+							text={(this.state.overallProgress * 100) + "%"}
+							options={options}
+							initialAnimate={true}
+							containerStyle={containerStyle}
+							containerClassName={'.progressbar'}
+						/>
 					</div>
 
 					{/* Display a list of names of the main tasks */}
 					<div>
 						<h2>Main Tasks</h2>
 						
-					
 						{this.state.categoryNames.map((category, i) => {
 							return (
 								<div key={i} className="well">
 									{category}
-									
-									{/* Span tag is here in case we need to add it for styling <span>*/}
 								
 									<button 
 										value={category}
 										className="btn btn-xs btn-danger"
 										onClick={this.handleDelete}>
-										Delete {/* Group notes: do not use bootstrap */}
+										Delete {/* Group notes: do not use bootstrap glyphicons */}
 									</button>
-							
-									{/*</span>*/}
+						
 								</div>
 							);
-						})}
-						
-						
+						})}	
 					</div>
 
 					{/* Add a new main task form */}
@@ -163,22 +137,23 @@ export default class Maintasks extends React.Component {
 						{/* Need to add onSubmit=method to the form tag */}
 						<form>
 							<div className="form-group">
-									<h4>Add Main Task:</h4>
-		            	<input
-		               	value={this.state.newCategory}
-		                type="text"
-		                className="form-control"
-		                id="newCategory"
-		                onChange={this.handleChange}
-		                required
-		              />
-		              <br/>
-		              <button className="btn btn-primary" type="submit">Submit</button>
+								<h4>Add Main Task:</h4>
+
+	            	<input
+	               	value={this.state.newCategory}
+	                type="text"
+	                className="form-control"
+	                id="newCategory"
+	                onChange={this.handleChange}
+	                required
+	              />
+	              <br/>
+
+	              <button className="btn btn-primary" type="submit">Submit</button>
 							</div>
 						</form>
 					</div>
 
-				</div>
 			</div>
 		);
 	}
