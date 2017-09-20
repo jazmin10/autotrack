@@ -2,7 +2,7 @@
 mileage) for a car */
 
 import React from 'react';
-import helper from "./utils/helpers.js";
+import helpers from "./utils/helpers.js";
 
 export default class Projects extends React.Component {
 	constructor(props) {
@@ -19,7 +19,7 @@ export default class Projects extends React.Component {
 	}
 
 	componentDidMount() {
-		helper.getCarInfo("5YFBURHE9EP015823").then((data) => {
+		helpers.getCarInfo("5YFBURHE9EP015823").then((data) => {
 			console.log(data);
 			this.setState({
 				vin: data.vin,

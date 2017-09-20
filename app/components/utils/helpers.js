@@ -13,7 +13,7 @@ var axios = require("axios");
 
 var axios = require("axios");
 
-var helper = {
+var helpers = {
 
 	getAuth: function() {
 		return axios.get("/login");
@@ -58,5 +58,5 @@ var helper = {
 }
 
 // export helper
-export default helper;
+export default helpers;
 

@@ -9,6 +9,7 @@
 // include the React library
 import React from 'react';
 import helpers from "./utils/helpers.js";
+import isEqual from 'lodash/isequal';
 // import {QRCode} from "react-qr-svg";
 
 // include children
@@ -29,103 +30,87 @@ export default class Profile extends React.Component {
 		this.state = {
 			overallProgress: 0,
 			vin: "",
-			maintenance: []
+			maintenance: [],
+			categoryProgress: []
 		}
+
+		this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
 	}
 
-	componentDidMount() {
-		var databaseInformation = {
-			overallProgress: .3,
-			vin: "5YFBURHE9EP015823",
-			maintenance: [
-				{
-					category: "Cosmetics",
-					tasks: [
-						{
-							name: "Paint",
-							completed: 1
-						},
-						{
-							name: "Dent",
-							completed: 0
-						},
-					],
-					categoryProgress: 0.5
-				},
-				{
-					category: "Service",
-					tasks: [
-						{
-							name: "Oil Change",
-							completed: 0
-						},
-						{
-							name: "Tire Rotation",
-							completed: 1
-						},
-						{
-							name: "Coolant Flush",
-							completed: 0
-						}
-					],
-					categoryProgress: .33
-				}
-			]
-		}
+	componentDidMount(){
 
-		this.setState({
-			overallProgress: databaseInformation.overallProgress,
-			vin: databaseInformation.vin,
-			maintenance: databaseInformation.maintenance
+		helpers.getCarInformation("5YFBURHE9EP015823").then((data) => {
+
+			data.map((maintask) => {
+				maintask.categoryProgress = 0;
+			});
+
+			this.setState({
+				vin: "5YFBURHE9EP015823", 
+				overallProgress: .3, 
+				maintenance: data});
+
 		});
 	}
 
-	// captureProgressCategory(progress){
-	// 	// this method doesn't calculate the progress
-	// 	// progress calculation will be done in Tasks component
+	calculateCategoryProgress(){
 
-	// 	// this method captures the progress of the category
+			var newArray = [];
 
-	// 	// this.setState to the new progress of the category
-	// }
+			this.state.maintenance.map((maintask, i) => {
+				var taskProgress = 0;
+				var numberOfTasks = 0;
 
-	// addNewCategory(){
-	// 	// this method adds a new category
-	// 	// pass this method down to MainTasks component
-	// 	// this.setState push new category to maintenance
-	// }
+				for (let j=0; j < maintask.tasks.length; j++) {
+					taskProgress += maintask.tasks[j].completed;
+					numberOfTasks++;
+				}
 
-	// addNewTask(){
-	// 	// this method adds a new task
-	// 	// pass this method down to Tasks component
-	// 	// this.setState push new task to maintenance -> category
-	// }
-	
-	// deleteCategory(){
-	// 	// this method deletes a category
-	// 	// pass this method down to MainTasks component
-	// 	// this.setState removes the category from maintenance
-	// }
+				var categoryProgress = Number((taskProgress / numberOfTasks).toFixed(2));
+				
+				var newObject = {
+					category: maintask.category,
+					tasks: maintask.tasks,
+					categoryProgress: categoryProgress
+				}
 
-	// deleteTask(){
-	// 	// this method deletes a task
-	// 	// pass this method down to Tasks component
-	// 	// this.setState removes the task from maintenance -> category
-	// }
+				newArray.push(newObject);
 
-	// componentDidUpdate(prevProps, prevState){
-	// 	// check prevState for all states
+			});
 
-	// 	// update overall progress bar
-	// 	// equation: sum of each category's progress / # of categories
-	// }
+			// console.log(newArray);
+			this.setState({maintenance: newArray});
+			
+			// THE FOLLOWING PIECE OF CODE IS NOT WORKING. IT'S NOT RESETTING MAINTENANCE TO THE NEWARRAY
+			// this.setState({maintenance: newArray});
+	}
+
+ 	componentDidUpdate(prevProps, prevState){
+		// check prevState for all states
+		console.log("we are in the update react method");
+
+		// update overall progress bar
+		// equation: sum of each category's progress / # of categories
+		console.log(prevState.maintenance);
+		console.log(this.state.maintenance);
+
+		if (prevState.overallProgress !== this.state.overallProgress || 
+			prevState.vin !== this.state.vin){
+
+			if(!isEqual(prevState.maintenance, this.state.maintenance)){
+				this.calculateCategoryProgress();
+			}
+			
+		}
+
+	}
 
 	// render the component
 	render() {
 		return (
 			<div className="profile-container">
 				<div>
-					<Information />
+					{/*<Information />*/}
 					<MainTasks
 						maintenance={this.state.maintenance}
 						overallProgress={this.state.overallProgress}
@@ -137,6 +122,9 @@ export default class Profile extends React.Component {
 								<div className="col-md-6" key={i}>
 									<Taskbreakdown
 										passedMaintenance = {taskbreakdown}
+										
+										categoryIndex = {i}
+										captureCategoryProgress = {this.captureCategoryProgress}
 									/>
 									</div>
 							);
