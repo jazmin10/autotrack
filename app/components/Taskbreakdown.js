@@ -37,7 +37,7 @@ export default class Taskbreakdown extends React.Component {
 				taskInfo: this.props.passedMaintenance.tasks,
 				categoryName: this.props.passedMaintenance.category,
 				categoryProgress: this.props.passedMaintenance.categoryProgress
-			});
+		});
 	}
 
 	// componentWillReceiveProps(nextProps) {
@@ -190,7 +190,11 @@ export default class Taskbreakdown extends React.Component {
 				</div>
 			);
 		}
-		return(<div>No tasks yet</div>)
+		return(
+			<div>
+				<h2>No tasks have been added yet.</h2>
+			</div>
+		);
 
 	}
 }
