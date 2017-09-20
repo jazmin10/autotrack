@@ -3,6 +3,8 @@
 // Include the React library
 import React from 'react';
 import helper from "./utils/helpers.js";
+import { Link } from 'react-router';
+
 
 export default class Masterlist extends React.Component {
 
@@ -42,7 +44,7 @@ export default class Masterlist extends React.Component {
                 return (
 
                   <div className="well" key={i}>
-					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><button type="button" class="btn btn-secondary float-right">View Profile</button>
+					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin} className="btn btn-primary"> View Profile</Link>
                   </div>
                 );
               })}

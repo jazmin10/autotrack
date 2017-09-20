@@ -18,7 +18,7 @@ export default class Projects extends React.Component {
 	componentDidMount() {
 
 		// Call helper function to get all of a particular user's cars.
-		helper.getProjectCars("steve").then(response => {
+		helper.getProjectCars("Steve").then(response => {
       		this.setState({carList: response.usercars});
 		});
 
@@ -44,7 +44,7 @@ export default class Projects extends React.Component {
                 return (
 
                   <div className="well" key={i}>
-					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><button type="button" class="btn btn-secondary float-right">View Profile</button>
+					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin} className="btn btn-primary"> View Profile</Link>
                   </div>
                 );
               })}
