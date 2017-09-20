@@ -32,22 +32,23 @@ export default class Taskbreakdown extends React.Component {
 		this.handleDeleteTask = this.handleDeleteTask.bind(this);
 	}
 
-	componentDidMount(){
-		this.setState({
-				taskInfo: this.props.passedMaintenance.tasks,
-				categoryName: this.props.passedMaintenance.category,
-				categoryProgress: this.props.passedMaintenance.categoryProgress
-		});
-	}
-
-	// componentWillReceiveProps(nextProps) {
-	// 	console.log(nextProps);
+	// We might not need this, keeping just in case
+	// componentDidMount(){
 	// 	this.setState({
-	// 			taskInfo: nextProps.passedMaintenance.tasks,
-	// 			categoryName: nextProps.passedMaintenance.category,
-	// 			categoryProgress: nextProps.passedMaintenance.categoryProgress
-	// 		});
+	// 			taskInfo: this.props.passedMaintenance.tasks,
+	// 			categoryName: this.props.passedMaintenance.category,
+	// 			categoryProgress: this.props.passedMaintenance.categoryProgress
+	// 	});
 	// }
+
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps);
+		this.setState({
+				taskInfo: nextProps.passedMaintenance.tasks,
+				categoryName: nextProps.passedMaintenance.category,
+				categoryProgress: nextProps.passedMaintenance.categoryProgress
+			});
+	}
 
 	// componentDidUpdate(prevProps, prevState){
 	// 	console.log("update");
