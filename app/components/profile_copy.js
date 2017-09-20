@@ -15,7 +15,6 @@ import helper from "./utils/helpers.js";
 import Information from "./Information.js";
 import MainTasks from "./Maintasks.js";
 import Taskbreakdown from "./Taskbreakdown.js";
-// import Progress from "./Progressbar.js";
 
 // PROFILE -----------------------------
 
