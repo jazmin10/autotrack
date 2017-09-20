@@ -39,6 +39,22 @@ var helper = {
 				return response.data;
 
 			});
+	},
+
+	// Using in Profile.js. Grab a car's information by vin
+	getCarInformation: (vin) => {
+		return axios.get("/get-car/" + vin).then(response => {
+			// console.log(response.data.maintenance);
+			return response.data.maintenance;
+		});
+	},
+
+	// Using in Information.js. Grab a car's information by vin
+	getCarInfo: (vin) => {
+		return axios.get("/get-car/" + vin).then(response => {
+			// console.log(response.data.maintenance);
+			return response.data;
+		});
 	}
 
 }

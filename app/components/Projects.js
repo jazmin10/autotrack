@@ -3,6 +3,7 @@
 // Include the React library
 import React from 'react';
 import helper from "./utils/helpers.js";
+import { Link } from "react-router";
 
 export default class Projects extends React.Component {
 
@@ -18,7 +19,7 @@ export default class Projects extends React.Component {
 	componentDidMount() {
 
 		// Call helper function to get all of a particular user's cars.
-		helper.getProjectCars("Steve").then(response => {
+		helper.getProjectCars("steve").then(response => {
       		this.setState({carList: response.usercars});
 		});
 

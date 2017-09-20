@@ -25,20 +25,6 @@ export default class Maintasks extends React.Component {
 	// When the component mounts...
 	componentWillReceiveProps(nextProps){
 
-		// This is dummy data, this will actually be passed through the props
-		// var passedMaintenanceProps = [
-		// 	{
-		// 		name: "Cosmetics",
-		// 		tasks: []
-		// 	},
-		// 	{
-		// 		name: "Service",
-		// 		tasks: []
-		// 	}
-		// ];
-
-		// var passedProgessProps = .8;
-
 		// Set a blank array that will hold the names of the main tasks
 		var categoryNames = [];
 
