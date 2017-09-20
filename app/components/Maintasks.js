@@ -23,7 +23,7 @@ export default class Maintasks extends React.Component {
 	}
 
 	// When the component mounts...
-	componentDidMount(){
+	componentWillReceiveProps(nextProps){
 
 		// This is dummy data, this will actually be passed through the props
 		// var passedMaintenanceProps = [
@@ -44,14 +44,14 @@ export default class Maintasks extends React.Component {
 
 		// Loop through the maintenance array and push main tasks names into
 		// the categoryNames array
-		this.props.maintenance.map((search, i) => {
-			categoryNames.push(search.category);
+		nextProps.maintenance.map((maintasks, i) => {
+			categoryNames.push(maintasks.category);
 		});
 
 		// Initialize categoryNames and overallProgress 
 		this.setState({
 			categoryNames: categoryNames, 
-			overallProgress: this.props.overallProgress
+			overallProgress: nextProps.overallProgress
 		});
 	}
 

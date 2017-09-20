@@ -9,7 +9,7 @@
 // include the React library
 import React from 'react';
 import helpers from "./utils/helpers.js";
- import { Line } from "./react-progress.js";
+import { Line } from "./react-progress.js";
 
 // TASKS -----------------------------
 
@@ -33,15 +33,40 @@ export default class Taskbreakdown extends React.Component {
 	}
 
 	componentDidMount(){
-		// during the initial load
-
-		// set the values of Tasks state
 		this.setState({
-			taskInfo: this.props.passedMaintenance[0].tasks,
-			categoryName: this.props.passedMaintenance[0].category,
-			categoryProgress: this.props.passedMaintenance[0].categoryProgress
-		});
+				taskInfo: this.props.passedMaintenance.tasks,
+				categoryName: this.props.passedMaintenance.category,
+				categoryProgress: this.props.passedMaintenance.categoryProgress
+			});
 	}
+
+	// componentWillReceiveProps(nextProps) {
+	// 	console.log(nextProps);
+	// 	this.setState({
+	// 			taskInfo: nextProps.passedMaintenance.tasks,
+	// 			categoryName: nextProps.passedMaintenance.category,
+	// 			categoryProgress: nextProps.passedMaintenance.categoryProgress
+	// 		});
+	// }
+
+	// componentDidUpdate(prevProps, prevState){
+	// 	console.log("update");
+	// 	if (prevState.taskInfo !== this.state.taskInfo || 
+	// 		prevState.categoryName !== this.state.categoryName ||
+	// 		prevState.categoryProgress !== this.state.categoryProgress ||
+	// 		prevState.newTask !== this.state.newTask) {
+
+	// 		// during the initial load
+	// 		// if (this.props.passedMaintenance.length !== 0) {
+	// 			// set the values of Tasks state
+	// 			this.setState({
+	// 				taskInfo: this.props.passedMaintenance[0].tasks,
+	// 				categoryName: this.props.passedMaintenance[0].category,
+	// 				categoryProgress: this.props.passedMaintenance[0].categoryProgress
+	// 			});
+	// 		// }
+	// 	}
+	// }
 
 	handleAddTask(event){
 		// method that handles new task being added
@@ -101,67 +126,71 @@ export default class Taskbreakdown extends React.Component {
 			height:'60px'
 		};
 
-		return(
-			<div className="tasks-container">
+		if (this.state.taskInfo.length !== 0){
+			return(
+				<div className="tasks-container">
 
-				<div>
-					{/* category name, list of tasks, progress bar line */}
+					<div>
+						{/* category name, list of tasks, progress bar line */}
 
-					<div className="well">
-						<h1>{this.state.categoryName}</h1>
+						<div className="well">
+							<h1>{this.state.categoryName}</h1>
 
-						<hr/>
+							<hr/>
 
-						<h3>Task Breakdown</h3>
+							<h3>Task Breakdown</h3>
 
-						<div>
-							<Line
-								progress = {this.state.categoryProgress}
-								text={(this.state.categoryProgress * 100) + "%"}
-								options={options}
-								initialAnimate={true}
-								containerStyle={containerStyle}
-								containerClassName={'.progressbar'}
-							/>
-						</div>
+							<div>
+								<Line
+									progress = {this.state.categoryProgress}
+									text={(this.state.categoryProgress * 100) + "%"}
+									options={options}
+									initialAnimate={true}
+									containerStyle={containerStyle}
+									containerClassName={'.progressbar'}
+								/>
+							</div>
 
-						{
+							{
 
-							this.state.taskInfo.map((tasks,i)=>{
-								return(
-									<div key={i} className="well">
-										<h3><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name}/> {tasks.name}</h3> 
-										<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+								this.state.taskInfo.map((tasks,i)=>{
+									return(
+										<div key={i} className="well">
+											<h3><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name}/> {tasks.name}</h3> 
+											<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+										</div>
+									);
+								})
+							}
+
+							<div className="add-task-container">
+
+								<form>
+									<div className="form-group">
+										<h4>Add {this.state.categoryName} Task:</h4>
+
+										<input
+											value={this.state.newTask}
+											type="text"
+											className="form-control"
+											id="newTask"
+											onChange={this.handleAddTask}
+											required
+										/>
+										<br/>
+
+										<button className="btn btn-primary" type="submit">Submit</button>
 									</div>
-								);
-							})
-						}
+								</form>
+							</div>
 
-						<div className="add-task-container">
-
-							<form>
-								<div className="form-group">
-									<h4>Add {this.state.categoryName} Task:</h4>
-
-									<input
-										value={this.state.newTask}
-										type="text"
-										className="form-control"
-										id="newTask"
-										onChange={this.handleAddTask}
-										required
-									/>
-									<br/>
-
-									<button className="btn btn-primary" type="submit">Submit</button>
-								</div>
-							</form>
 						</div>
-
 					</div>
-				</div>
 
-			</div>
-		);
+				</div>
+			);
+		}
+		return(<div>No tasks yet</div>)
+
 	}
 }
