@@ -2,7 +2,7 @@
 
 // Include the React library
 import React from 'react';
-import helpers from "./utils/helpers.js";
+import helper from "./utils/helpers.js";
 
 export default class Projects extends React.Component {
 
@@ -11,15 +11,15 @@ export default class Projects extends React.Component {
 		super(props);
 
 		this.state = {
-			cars: []
+			carList: []
 		}
 	}
 
 	componentDidMount() {
 
-		helper.getProjectCars().then(response => {
-			this.setState({ cars: response });
-		})
+		helper.getProjectCars("steve").then(response => {
+      this.setState({carList: response.usercars});
+		});
 
 	}
 
@@ -37,20 +37,23 @@ export default class Projects extends React.Component {
 
             <div className="panel-body">
 
-              {this.state.cars.map(search => {
+              {this.state.cars.map((car, i) => {
 
                 return (
 
                   <div className="well" key={i}>
-                  	<p><strong>{search.cars.vin}<br/>
-                  	{search.cars.year} {search.cars.make} {search.cars.model}</strong></p>
+                  	<p><strong>{car.vin}<br/>
+                  	{car.year} {car.make} {car.model}</strong></p>
                   </div>
                 );
               })}
             </div>
 
           </div>
-        </div>
+        </div> 
       );
     }
+
+    return(<div>No cars</div>);
+  }
 }

@@ -17,7 +17,7 @@ import Main from '../components/Main.js';
 import Dashboard from '../components/Dashboard.js';
 // import Profile from '../components/Profile.js';
 import Profile from '../components/Profile.js';
-// import Projects from '../components/Projects.js';
+import Projects from '../components/Projects.js';
 // import Masterlist from '../components/Masterlist.js';
 // import Add from '../components/Add.js';
 
@@ -31,9 +31,9 @@ export default (
 
        <Route path="dashboard-manager" component={Dashboard}>
         {/*
-          <Route path="masterlist" component={Masterlist} />
+          <Route path="masterlist" component={Masterlist} /> */}
           <Route path="my-projects" component={Projects} />
-          <Route path="add-car" component={Add} /> 
+           {/*<Route path="add-car" component={Add} /> 
 
           <Route path="profile/:vin" component={Profile} /> */}
           <Route path="profile/5YFBURHE9EP015823" component={Profile} />

@@ -11,9 +11,6 @@ var axios = require("axios");
 // HELPERS
 // ======================================================
 
-// export helper
-export default helper;
-
 var axios = require("axios");
 
 var helper = {
@@ -22,8 +19,9 @@ var helper = {
 		return axios.get("/login");
 	},
 
-	getProjectCars: () => {
-		return axios.get("/user-projects/:username")
+	getProjectCars: (username) => {
+		console.log(username);
+		return axios.get("/user-projects/" + username)
 			.then(response => {
 
 				return response.data;
@@ -32,4 +30,7 @@ var helper = {
 	}
 
 }
+
+// export helper
+export default helper;
 
