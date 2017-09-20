@@ -25,7 +25,7 @@ export default class Projects extends React.Component {
 
 	render() {
 
-    if (this.state.cars.length !== 0) {
+    if (this.state.carList.length !== 0) {
 
       return (
         <div className="container">
@@ -37,7 +37,7 @@ export default class Projects extends React.Component {
 
             <div className="panel-body">
 
-              {this.state.cars.map((car, i) => {
+              {this.state.carList.map((car, i) => {
 
                 return (
 

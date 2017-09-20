@@ -20,7 +20,6 @@ var helper = {
 	},
 
 	getProjectCars: (username) => {
-		console.log(username);
 		return axios.get("/user-projects/" + username)
 			.then(response => {
 
