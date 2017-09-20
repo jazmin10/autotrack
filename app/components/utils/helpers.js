@@ -19,8 +19,19 @@ var helper = {
 		return axios.get("/login");
 	},
 
+	// Using in Projects.js. Get all the cars assigned to a particular user and return.
 	getProjectCars: (username) => {
 		return axios.get("/user-projects/" + username)
+			.then(response => {
+
+				return response.data;
+
+			});
+	},
+
+	// Using in Masterlist.js. Get a list of all the cars in the database and return.
+	getMasterlist: () => {
+		return axios.get("/get-cars/")
 			.then(response => {
 
 				return response.data;

@@ -18,14 +18,14 @@ export default class Masterlist extends React.Component {
 	componentDidMount() {
 
 		helper.getMasterlist().then(response => {
-      this.setState({masterlist: response.usercars});
+      this.setState({masterlist: response});
 		});
 
 	}
 
 	render() {
 
-    if (this.state.cars.length !== 0) {
+    if (this.state.masterlist.length !== 0) {
 
       return (
         <div className="container">
@@ -37,13 +37,12 @@ export default class Masterlist extends React.Component {
 
             <div className="panel-body">
 
-              {this.state.cars.map((car, i) => {
+              {this.state.masterlist.map((car, i) => {
 
                 return (
 
                   <div className="well" key={i}>
-                  	<p><strong>{car.vin}<br/>
-                  	{car.year} {car.make} {car.model}</strong></p>
+					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><button type="button" class="btn btn-secondary float-right">View Profile</button>
                   </div>
                 );
               })}
