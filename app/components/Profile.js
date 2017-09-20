@@ -38,6 +38,8 @@ export default class Profile extends React.Component {
 	}
 
 	componentDidMount(){
+		console.log(this.props);
+		console.log(this.props.params.vin);
 
 		helpers.getCarInformation("5YFBURHE9EP015823").then((data) => {
 
