@@ -21,10 +21,8 @@ var helper = {
 
 	// Using in Projects.js. Get all the cars assigned to a particular user and return.
 	getProjectCars: (username) => {
-		console.log(username);
 		return axios.get("/user-projects/" + username)
 			.then(response => {
-				console.log(response);
 
 				return response.data;
 
