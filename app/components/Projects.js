@@ -21,7 +21,7 @@ export default class Projects extends React.Component {
 
 		// Call helper function to get all of a particular user's cars.
 		helpers.getProjectCars("Steve").then(response => {
-      		this.setState({carList: response.usercars});
+      this.setState({carList: response.usercars});
 		});
 
 	}
@@ -58,6 +58,10 @@ export default class Projects extends React.Component {
     }
 
     // If carList is empty, render message saying there are no cars to list.
-    return(<div>No cars</div>);
+    return(
+      <div>
+        <h2>You have no cars in your project list.</h2>
+      </div>
+      );
   }
 }

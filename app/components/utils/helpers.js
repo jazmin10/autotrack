@@ -23,9 +23,9 @@ var helpers = {
 	getProjectCars: (username) => {
 		return axios.get("/user-projects/" + username)
 			.then(response => {
-
+				console.log("getProjectCars");
+				console.log(response.data);
 				return response.data;
-
 			});
 	},
 
@@ -33,16 +33,13 @@ var helpers = {
 	getMasterlist: () => {
 		return axios.get("/get-cars/")
 			.then(response => {
-
 				return response.data;
-
 			});
 	},
 
-	// Using in Profile.js. Grab a car's information by vin
-	getCarInformation: (vin) => {
+	// Using in Profile.js. Grab a car's maintenance information by vin
+	getCarMaintenanceInfo: (vin) => {
 		return axios.get("/get-car/" + vin).then(response => {
-			// console.log(response.data.maintenance);
 			return response.data.maintenance;
 		});
 	},

@@ -16,7 +16,6 @@ import isEqual from 'lodash/isequal';
 import Information from "./Information.js";
 import MainTasks from "./Maintasks.js";
 import Taskbreakdown from "./Taskbreakdown.js";
-// import Progress from "./Progressbar.js";
 
 // PROFILE -----------------------------
 
@@ -38,10 +37,11 @@ export default class Profile extends React.Component {
 	}
 
 	componentDidMount(){
-		console.log(this.props);
-		console.log(this.props.params.vin);
+		// method invoked immediately after component is mounted
 
-		helpers.getCarInformation("5YFBURHE9EP015823").then((data) => {
+		// run helpers function to get car info from database
+		helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+			// use vin number from url via react router link
 
 			data.map((maintask) => {
 				maintask.categoryProgress = 0;
@@ -56,50 +56,52 @@ export default class Profile extends React.Component {
 	}
 
 	calculateCategoryProgress(){
+		// method to calculate the progress of each category
 
-			var newArray = [];
+		var newArray = [];
 
-			this.state.maintenance.map((maintask, i) => {
-				var taskProgress = 0;
-				var numberOfTasks = 0;
+		this.state.maintenance.map((maintask, i) => {
+			var taskProgress = 0;
+			var numberOfTasks = 0;
 
-				for (let j=0; j < maintask.tasks.length; j++) {
-					taskProgress += maintask.tasks[j].completed;
-					numberOfTasks++;
-				}
+			for (let j=0; j < maintask.tasks.length; j++) {
+				// get the sum of each task's completion
+				taskProgress += maintask.tasks[j].completed;
 
-				var categoryProgress = Number((taskProgress / numberOfTasks).toFixed(2));
-				
-				var newObject = {
-					category: maintask.category,
-					tasks: maintask.tasks,
-					categoryProgress: categoryProgress
-				}
+				// get the number of tasks in a category
+				numberOfTasks++;
+			}
 
-				newArray.push(newObject);
-
-			});
-
-			// console.log(newArray);
-			this.setState({maintenance: newArray});
+			// calculate categoryProgress by dividing taskProgress by numberofTasks
+			var categoryProgress = Number((taskProgress / numberOfTasks).toFixed(2));
 			
-			// THE FOLLOWING PIECE OF CODE IS NOT WORKING. IT'S NOT RESETTING MAINTENANCE TO THE NEWARRAY
-			// this.setState({maintenance: newArray});
+			// store updated category progress in newObject
+			var newObject = {
+				category: maintask.category,
+				tasks: maintask.tasks,
+				categoryProgress: categoryProgress
+			}
+
+			newArray.push(newObject);
+
+		});
+
+		// set the state of the whole current maintenance array to the newArray
+		this.setState({maintenance: newArray});
+	
 	}
 
  	componentDidUpdate(prevProps, prevState){
-		// check prevState for all states
-		console.log("we are in the update react method");
+ 		// method invoked every time the state updates
 
-		// update overall progress bar
-		// equation: sum of each category's progress / # of categories
-		console.log(prevState.maintenance);
-		console.log(this.state.maintenance);
-
+		// update category progress bar if there's been a change in state
 		if (prevState.overallProgress !== this.state.overallProgress || 
 			prevState.vin !== this.state.vin){
 
 			if(!isEqual(prevState.maintenance, this.state.maintenance)){
+				// use lodash for deep comparisons
+				// in this case, an array of objects within an array of objects
+
 				this.calculateCategoryProgress();
 			}
 			
@@ -118,7 +120,8 @@ export default class Profile extends React.Component {
 						overallProgress={this.state.overallProgress}
 					/>
 
-					{this.state.maintenance.map((taskbreakdown, i) => {
+					{
+						this.state.maintenance.map((taskbreakdown, i) => {
 						
 							return(
 								<div className="col-md-6" key={i}>
