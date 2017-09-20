@@ -12,7 +12,7 @@ import helpers from "./utils/helpers.js";
 // import {QRCode} from "react-qr-svg";
 
 // include children
-// import Information from "./Information.js";
+import Information from "./Information.js";
 import MainTasks from "./Maintasks.js";
 import Taskbreakdown from "./Taskbreakdown.js";
 // import Progress from "./Progressbar.js";
@@ -28,7 +28,7 @@ export default class Profile extends React.Component {
 
 		this.state = {
 			overallProgress: .3,
-			vin: "",
+			vin: "5YFBURHE9EP015823",
 			maintenance: [
 				{
 					category: "Cosmetics",
@@ -112,6 +112,7 @@ export default class Profile extends React.Component {
 		return (
 			<div className="profile-container">
 				<div>
+					<Information />
 					<MainTasks
 						maintenance={this.state.maintenance}
 						overallProgress={this.state.overallProgress}
