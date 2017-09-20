@@ -27,6 +27,14 @@ export default class Profile extends React.Component {
 		super(props);
 
 		this.state = {
+			overallProgress: 0,
+			vin: "",
+			maintenance: []
+		}
+	}
+
+	componentDidMount() {
+		var databaseInformation = {
 			overallProgress: .3,
 			vin: "5YFBURHE9EP015823",
 			maintenance: [
@@ -60,10 +68,16 @@ export default class Profile extends React.Component {
 							completed: 0
 						}
 					],
-					categoryProgress: 0
+					categoryProgress: .33
 				}
 			]
 		}
+
+		this.setState({
+			overallProgress: databaseInformation.overallProgress,
+			vin: databaseInformation.vin,
+			maintenance: databaseInformation.maintenance
+		});
 	}
 
 	// captureProgressCategory(progress){
@@ -108,7 +122,6 @@ export default class Profile extends React.Component {
 
 	// render the component
 	render() {
-
 		return (
 			<div className="profile-container">
 				<div>
@@ -117,10 +130,20 @@ export default class Profile extends React.Component {
 						maintenance={this.state.maintenance}
 						overallProgress={this.state.overallProgress}
 					/>
-					<Taskbreakdown 
-						passedMaintenance = {this.state.maintenance}
-					/>
+
+					{this.state.maintenance.map((taskbreakdown, i) => {
+						
+							return(
+								<div className="col-md-6" key={i}>
+									<Taskbreakdown
+										passedMaintenance = {taskbreakdown}
+									/>
+									</div>
+							);
+						})
+					}
 				</div>
+
 
 			</div>
 		);
