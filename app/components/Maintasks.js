@@ -58,6 +58,7 @@ export default class Maintasks extends React.Component {
 	}
 
 	render() {
+
 		if (this.state.overallProgress == 1) {
 			var options = {
 				strokeWidth:2,
@@ -82,66 +83,112 @@ export default class Maintasks extends React.Component {
 			height:'150px'
 		};
 
-		return (
-			<div className="well well-lg">
+		if (this.state.categoryNames.length !== 0) {
 
-					{/* Display the overall progress of the car using semi-circle progress bar */}
-					<div>
-						<SemiCircle
-							progress = {this.state.overallProgress}
-							text={((this.state.overallProgress * 100).toFixed(0)) + "%"}
-							options={options}
-							initialAnimate={true}
-							containerStyle={containerStyle}
-							containerClassName={'.progressbar'}
-						/>
-					</div>
+			return (
+				<div className="well well-lg">
 
-					{/* Display a list of names of the main tasks */}
-					<div>
-						<h2>Main Tasks</h2>
-						
-						{this.state.categoryNames.map((category, i) => {
-							return (
-								<div key={i} className="well">
-									{category}
-								
-									<button 
-										value={category}
-										className="btn btn-xs btn-danger"
-										onClick={this.handleDelete}>
-										Delete {/* Group notes: do not use bootstrap glyphicons */}
-									</button>
-						
-								</div>
-							);
-						})}	
-					</div>
+						{/* Display a list of names of the main tasks */}
+						<div>
+							<h2>Main Tasks</h2>
+							<hr/>
 
-					{/* Add a new main task form */}
-					<div>
-						{/* Need to add onSubmit=method to the form tag */}
-						<form>
-							<div className="form-group">
-								<h4>Add Main Task:</h4>
-
-	            	<input
-	               	value={this.state.newCategory}
-	                type="text"
-	                className="form-control"
-	                id="newCategory"
-	                onChange={this.handleChange}
-	                required
-	              />
-	              <br/>
-
-	              <button className="btn btn-primary" type="submit">Submit</button>
+							{/* Display the overall progress of the car using semi-circle progress bar */}
+							<div>
+								<SemiCircle
+									progress = {this.state.overallProgress}
+									text={((this.state.overallProgress * 100).toFixed(0)) + "%"}
+									options={options}
+									initialAnimate={true}
+									containerStyle={containerStyle}
+									containerClassName={'.progressbar'}
+								/>
 							</div>
-						</form>
-					</div>
+							<br/>
+							
+							{this.state.categoryNames.map((category, i) => {
+								return (
+									<div key={i} className="well">
+										{category}
+									
+										<button 
+											value={category}
+											className="btn btn-xs btn-danger"
+											onClick={this.handleDelete}>
+											Delete {/* Group notes: do not use bootstrap glyphicons */}
+										</button>
+							
+									</div>
+								);
+							})}	
+						</div>
 
-			</div>
-		);
+						{/* Add a new main task form */}
+						<div>
+							{/* Need to add onSubmit=method to the form tag */}
+							<form>
+								<div className="form-group">
+									<h4>Add Main Task:</h4>
+
+		            	<input
+		               	value={this.state.newCategory}
+		                type="text"
+		                className="form-control"
+		                id="newCategory"
+		                onChange={this.handleChange}
+		                required
+		              />
+		              <br/>
+
+		              <button className="btn btn-primary" type="submit">Submit</button>
+								</div>
+							</form>
+						</div>
+
+				</div>
+			);
+		}
+
+		return (
+				<div className="well well-lg">
+
+						{/* Display a list of names of the main tasks */}
+						<div>
+							<h2>Main Tasks</h2>
+							<hr/>
+						</div>
+
+						{/* Add a new main task form */}
+						<div>
+							{/* Need to add onSubmit=method to the form tag */}
+							<form>
+								<div className="form-group">
+									<h4>Add Main Task:</h4>
+
+		            	<input
+		               	value={this.state.newCategory}
+		                type="text"
+		                className="form-control"
+		                id="newCategory"
+		                onChange={this.handleChange}
+		                required
+		              />
+		              <br/>
+
+		              <button className="btn btn-primary" type="submit">Submit</button>
+								</div>
+							</form>
+						</div>
+
+				</div>
+			);
+
+
+
+
+
+
+
 	}
 }
 
