@@ -99,7 +99,9 @@ export default class Profile extends React.Component {
 		var calculatedProgress = 0;
 
 		this.state.maintenance.map((category) => {
-			sumProgress += category.categoryProgress;
+			if (!isNaN(category.categoryProgress)) {
+				sumProgress += category.categoryProgress;
+			}
 		});
 
 	
