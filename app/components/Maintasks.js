@@ -19,10 +19,11 @@ export default class Maintasks extends React.Component {
 		}
 
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 	}
 
-	// When the component mounts...
+	// When props change...
 	componentWillReceiveProps(nextProps){
 
 		// Set a blank array that will hold the names of the main tasks
@@ -41,7 +42,7 @@ export default class Maintasks extends React.Component {
 		});
 	}
 
-	// When input is entered, capture the change
+	// When input is entered in the "Add Main Task" form, capture the change
 	handleChange(event){
 		var newState = {};
 
@@ -55,6 +56,14 @@ export default class Maintasks extends React.Component {
 	handleDelete(event){
 		var deleteName = event.target.value;
 		console.log(deleteName);
+	}
+
+	// When the submit button for the "Add Main Task" form is clicked...
+	handleSubmit(event){
+		event.preventDefault();
+
+		// call the addNewCategory method in the Profile component with the input entered
+		this.props.addNewCategory(this.state.newCategory);
 	}
 
 	render() {
@@ -126,7 +135,7 @@ export default class Maintasks extends React.Component {
 						{/* Add a new main task form */}
 						<div>
 							{/* Need to add onSubmit=method to the form tag */}
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<div className="form-group">
 									<h4>Add Main Task:</h4>
 
@@ -161,7 +170,7 @@ export default class Maintasks extends React.Component {
 						{/* Add a new main task form */}
 						<div>
 							{/* Need to add onSubmit=method to the form tag */}
-							<form>
+							<form onSubmit={this.handleSubmit}>
 								<div className="form-group">
 									<h4>Add Main Task:</h4>
 
