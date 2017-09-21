@@ -13,7 +13,7 @@ import router, {Route, Router, browserHistory, IndexRoute} from "react-router";
 
 // Reference the high-level components
 import Main from '../components/Main.js';
-// import Splash from '../components/Splash.js';
+import Splash from '../components/Splash.js';
 import Dashboard from '../components/Dashboard.js';
 import Profile from '../components/Profile.js';
 import Projects from '../components/Projects.js';
@@ -40,7 +40,7 @@ export default (
         */}
        </Route>
 
-      {/* <IndexRoute component={Splash} /> */}
+      { <IndexRoute component={Splash} /> }
     </Route>
   </Router>
 );
