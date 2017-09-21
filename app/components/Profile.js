@@ -34,6 +34,7 @@ export default class Profile extends React.Component {
 		}
 
 		this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
+		this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
 	}
 
 	componentDidMount(){
@@ -86,9 +87,28 @@ export default class Profile extends React.Component {
 
 		});
 
-		// set the state of the whole current maintenance array to the newArray
-		this.setState({maintenance: newArray});
+		// set the state of the whole current maintenance array, once that's run calculateOverallProgress()
+		this.setState({maintenance: newArray}, function(){
+				this.calculateOverallProgress();
+			});
 	
+	}
+
+	// calculate the overall progress of the car and reset this.state.overallProgress
+	calculateOverallProgress(){
+		var sumProgress = 0;
+		var calculatedProgress = 0;
+
+		this.state.maintenance.map((category) => {
+			sumProgress += category.categoryProgress;
+		});
+
+	
+		calculatedProgress = (sumProgress/this.state.maintenance.length);
+	
+		var newNumber = Number(calculatedProgress);
+		
+		this.setState({overallProgress: calculatedProgress});
 	}
 
  	componentDidUpdate(prevProps, prevState){
