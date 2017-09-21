@@ -17,8 +17,16 @@ var helpers = {
 
 	/* ---------- GET ROUTES ----------- */
 
-	getAuth: function() {
-		return axios.get("/login");
+	getAuth: function(username, password) {
+		console.log(username, password);
+		return axios.get("/login", {
+			params: {
+				username: username,
+				password: password
+			}
+		}).then(response => {
+			return (response.data);
+		});
 	},
 
 	// Using in Projects.js. Get all the cars assigned to a particular user and return.

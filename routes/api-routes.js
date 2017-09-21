@@ -186,10 +186,11 @@ module.exports = function(app) {
 	// ===== USER =====
 	// GET - login information
 	app.get("/login", function(req,res){
+		console.log(req.query.username, req.query.password);
 
 		User.findOne({
-			username:req.body.username,
-			password:req.body.password
+			username:req.query.username,
+			password:req.query.password
 		}, function(err, doc){
 			if (err) {
 				console.log(err);
@@ -201,8 +202,7 @@ module.exports = function(app) {
 			}
 			else {
 				// how we handle logged in user here
-				console.log(doc);
-				return(doc);
+				res.json(doc);
 			}
 		});
 	});
