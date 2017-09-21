@@ -25,8 +25,6 @@ var helpers = {
 	getProjectCars: (username) => {
 		return axios.get("/user-projects/" + username)
 			.then(response => {
-				console.log("getProjectCars");
-				console.log(response.data);
 				return response.data;
 			});
 	},
@@ -48,12 +46,8 @@ var helpers = {
 
 	// Using in Information.js. Grab a car's information by vin
 	getCarInfo: (vin, key, val) => {
-
-		var updateK = {
-
-		}
 		
-		return axios.get("/get-car/" + vin, {updateK: updateKey, updateVal: updateValue}).then(response => {
+		return axios.get("/get-car/" + vin).then(response => {
 			// console.log(response.data.maintenance);
 			return response.data;
 		});
@@ -62,9 +56,8 @@ var helpers = {
 	/* ---------- UPDATE ROUTES ----------- */
 
 	// Using in Profile.js. Update a car profile's info/category/tasks.
-	updateCarProfile: (vin) => {
-		return axios.put("/edit-car/" + vin).then(response => {
-			// console.log(response.data);
+	updateCarProfile: (vin, updateK, updateVal) => {
+		return axios.put("/edit-car/" + vin, {updateKey:updateK, updateValue:updateVal}).then(response => {
 			return response.data;
 		});
 	}

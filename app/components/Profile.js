@@ -137,6 +137,14 @@ export default class Profile extends React.Component {
 
 		// run helpers function to update the database
 		// with the new maintenance array
+		var updateK = "maintenance";
+		var updateVal = newMaintenanceArr;
+
+		helpers.updateCarProfile(this.props.params.vin, updateK, updateVal).then((data) => {
+
+			// what do we want to do with the data here?
+
+		});
 	}
 
 
@@ -155,8 +163,17 @@ export default class Profile extends React.Component {
 			category: newCategory,
 			tasks: []
 		});
-		
-		console.log(newCategoryArr);
+
+		// run helpers function to update the database
+		// with the new maintenance array
+		var updateK = "maintenance";
+		var updateVal = newCategoryArr;
+
+		helpers.updateCarProfile(this.props.params.vin, updateK, updateVal).then((data) => {
+
+			// what do we want to do with the data here?
+			
+		});
 	}
 
  	componentDidUpdate(prevProps, prevState){
