@@ -95,18 +95,18 @@ module.exports = function(app) {
 	});
 
 	// UPDATE - car information, maintenance, or tasks
-	app.put("/edit-car/:vin", function(req,res){
+	app.put("/manage-car-maintenance/:vin", function(req,res){
 
 		// use the updateKey passed through from axios
-		var updateKey = req.body.updateKey;
+		var changeKey = req.body.changeKey;
 
 		// use the updateValue passed through from axios
-		var updateValue = req.body.updateValue;
+		var changeValue = req.body.changeValue;
 
 		// create set object so that you can dynamically
 		// set changes using variables
 		var set = {};
-		set[updateKey] = updateValue;
+		set[changeKey] = changeValue;
 
 		// add edits to car document via vin number
 		Car.findOneAndUpdate(
@@ -150,8 +150,8 @@ module.exports = function(app) {
 		});
 	});
 
-	// DELETE - delete car maintenance category (deletes tasks associated with it)
-	app.delete("/delete-car-stuff/:vin", function(req,res){
+	// DELETE - delete car info
+	app.delete("/delete-car-info/:vin", function(req,res){
 
 		// use the deleteKey passed through from axios
 		var deleteKey = req.body.deleteKey;
