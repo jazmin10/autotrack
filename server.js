@@ -27,7 +27,8 @@ app.use("/public", express.static("./public"));
 // =============================================================
 
 // mongodb local connection
-mongoose.connect("mongodb://localhost/autotrackdb");
+mongoose.connect("mongodb://localhost/autotrackdb", {
+	useMongoClient: true});
 
 // heroku mongolab connection
 // mongoose.connect("");

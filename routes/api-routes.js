@@ -8,6 +8,8 @@ var User = require("../models/User.js");
 var Car = require("../models/Cars.js");
 
 // set mongoose to leverage built in JS ES6 Promises
+
+var mongoose = require("mongoose");
 // mongoose.Promise = Promise;
 
 // ===== CAR & TASKS =====
@@ -199,7 +201,8 @@ module.exports = function(app) {
 			}
 			else {
 				// how we handle logged in user here
-				res.send("LOGGED IN!");
+				console.log(doc);
+				return(doc);
 			}
 		});
 	});

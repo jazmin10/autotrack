@@ -1,9 +1,19 @@
 var axios = require("axios");
 
-var helper = {
+var helpers = {
 
-getAuth: function() {
-	return axios.get("/login");
-},
-
+getAuth: function(username, password) {
+	// console.log(username);
+	// console.log(password);
+	return axios.get('/login',{
+		params: {username: username,
+				password: password}
+	}).then(function(res){
+		// return(doc);
+		console.log(doc);
+	});
 }
+
+};
+
+module.exports = helpers;
