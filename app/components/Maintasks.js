@@ -64,6 +64,9 @@ export default class Maintasks extends React.Component {
 
 		// call the addNewCategory method in the Profile component with the input entered
 		this.props.addNewCategory(this.state.newCategory);
+
+		// empty newTask field
+		this.setState({newCategory:""});
 	}
 
 	render() {

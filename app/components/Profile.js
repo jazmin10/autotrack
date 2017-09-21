@@ -164,6 +164,9 @@ export default class Profile extends React.Component {
 			tasks: []
 		});
 
+		// set new state of maintenance array
+		this.setState({maintenance:newCategoryArr});
+
 		// run helpers function to update the database
 		// with the new maintenance array
 		var updateK = "maintenance";
