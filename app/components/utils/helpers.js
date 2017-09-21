@@ -15,6 +15,8 @@ var axios = require("axios");
 
 var helpers = {
 
+	/* ---------- GET ROUTES ----------- */
+
 	getAuth: function() {
 		return axios.get("/login");
 	},
@@ -45,13 +47,27 @@ var helpers = {
 	},
 
 	// Using in Information.js. Grab a car's information by vin
-	getCarInfo: (vin) => {
-		return axios.get("/get-car/" + vin).then(response => {
+	getCarInfo: (vin, key, val) => {
+
+		var updateK = {
+
+		}
+		
+		return axios.get("/get-car/" + vin, {updateK: updateKey, updateVal: updateValue}).then(response => {
 			// console.log(response.data.maintenance);
 			return response.data;
 		});
-	}
+	},
 
+	/* ---------- UPDATE ROUTES ----------- */
+
+	// Using in Profile.js. Update a car profile's info/category/tasks.
+	updateCarProfile: (vin) => {
+		return axios.put("/edit-car/" + vin).then(response => {
+			// console.log(response.data);
+			return response.data;
+		});
+	}
 }
 
 // export helper

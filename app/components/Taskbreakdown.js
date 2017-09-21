@@ -97,6 +97,9 @@ export default class Taskbreakdown extends React.Component {
 		// and taskCategory to Profile component
 		this.props.addNewTask(newTaskObj, taskCategory);
 
+		// empty newTask field
+		this.setState({newTask:""});
+
 	}
 
 	handleDeleteTask(event){
