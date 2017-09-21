@@ -98,15 +98,15 @@ module.exports = function(app) {
 	app.put("/manage-car-maintenance/:vin", function(req,res){
 
 		// use the updateKey passed through from axios
-		var changeKey = req.body.changeKey;
+		var updateKey = req.body.updateKey;
 
 		// use the updateValue passed through from axios
-		var changeValue = req.body.changeValue;
+		var updateValue = req.body.updateValue;
 
 		// create set object so that you can dynamically
 		// set changes using variables
 		var set = {};
-		set[changeKey] = changeValue;
+		set[updateKey] = updateValue;
 
 		// add edits to car document via vin number
 		Car.findOneAndUpdate(
