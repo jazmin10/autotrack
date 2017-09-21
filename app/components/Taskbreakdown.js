@@ -108,12 +108,28 @@ export default class Taskbreakdown extends React.Component {
 
 	handleDeleteTask(event){
 		// method that removes tasks
+		event.preventDefault();
 
 		// capture the task to be removed
 		var deleteTask = event.target.value;
 		console.log(deleteTask);
 
+		// capture the category the task belongs to
+		var taskCategory = this.state.categoryName;
+
 		// remove that task from maintenance -> category
+		for (var i = 0; i < this.state.taskInfo.length; i++) {
+			if (this.state.taskInfo[i].name === deleteTask) {
+
+				// splice that task from the whole array of taskInfo
+				var deleteTaskInfo = this.state.taskInfo.splice(i, 1);
+			}
+		}
+
+		// call deleteTaskInfo and pass deleteTaskInfo
+		// and taskCategory
+		this.props.deleteTaskInfo(deleteTaskInfo, taskCategory);
+
 	}
 
 	handleCheck(event){

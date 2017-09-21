@@ -63,9 +63,9 @@ var helpers = {
 
 	/* ---------- UPDATE ROUTES ----------- */
 
-	// Using in Profile.js. Update a car profile's info/category/tasks.
-	updateCarProfile: (vin, updateK, updateVal) => {
-		return axios.put("/edit-car/" + vin, {updateKey:updateK, updateValue:updateVal}).then(response => {
+	// Using in Profile.js. Update/"delete" a car profile's info/category/tasks.
+	updateCarMaintenanceArray: (vin, manageK, manageVal) => {
+		return axios.put("/manage-car-maintenance/" + vin, {changeKey:manageK, changeValue:manageVal}).then(response => {
 			return response.data;
 		});
 	}
