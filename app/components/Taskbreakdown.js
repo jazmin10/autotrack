@@ -42,12 +42,13 @@ export default class Taskbreakdown extends React.Component {
 	// }
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps);
+		// method to receive the next props the parent profile will pass
+		
 		this.setState({
 				taskInfo: nextProps.passedMaintenance.tasks,
 				categoryName: nextProps.passedMaintenance.category,
 				categoryProgress: nextProps.passedMaintenance.categoryProgress
-			});
+		});
 	}
 
 	// componentDidUpdate(prevProps, prevState){
