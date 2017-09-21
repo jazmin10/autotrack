@@ -42,12 +42,13 @@ export default class Taskbreakdown extends React.Component {
 	// }
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps);
+		// method to receive the next props the parent profile will pass
+		
 		this.setState({
 				taskInfo: nextProps.passedMaintenance.tasks,
 				categoryName: nextProps.passedMaintenance.category,
 				categoryProgress: nextProps.passedMaintenance.categoryProgress
-			});
+		});
 	}
 
 	// componentDidUpdate(prevProps, prevState){
@@ -127,6 +128,9 @@ export default class Taskbreakdown extends React.Component {
 			height:'60px'
 		};
 
+		var progressNum = (this.state.categoryProgress * 100).toFixed(0);
+		var percentNum = progressNum + "%";
+
 		if (this.state.taskInfo.length !== 0){
 			return(
 				<div className="tasks-container">
@@ -144,7 +148,7 @@ export default class Taskbreakdown extends React.Component {
 							<div>
 								<Line
 									progress = {this.state.categoryProgress}
-									text={(this.state.categoryProgress * 100) + "%"}
+									text={percentNum}
 									options={options}
 									initialAnimate={true}
 									containerStyle={containerStyle}
