@@ -35,6 +35,7 @@ export default class Profile extends React.Component {
 
 		this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
 		this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
+		this.addNewCategory = this.addNewCategory.bind(this);
 	}
 
 	componentDidMount(){
@@ -112,6 +113,25 @@ export default class Profile extends React.Component {
 		this.setState({overallProgress: calculatedProgress});
 	}
 
+	// When the "Add Main Task" form button is clicked in the Maintasks component...
+	addNewCategory(newCategory){
+		var newCategoryArr = [];
+
+		this.state.maintenance.map((categories) => {
+			newCategoryArr.push({
+				category: categories.category,
+				tasks: categories.tasks 
+			})
+		})
+
+		newCategoryArr.push({
+			category: newCategory,
+			tasks: []
+		});
+		
+		console.log(newCategoryArr);
+	}
+
  	componentDidUpdate(prevProps, prevState){
  		// method invoked every time the state updates
 
@@ -140,6 +160,7 @@ export default class Profile extends React.Component {
 					<MainTasks
 						maintenance={this.state.maintenance}
 						overallProgress={this.state.overallProgress}
+						addNewCategory={this.addNewCategory}
 					/>
 
 					{
