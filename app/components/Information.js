@@ -35,10 +35,11 @@ export default class Projects extends React.Component {
 	render() {
 		return(
 			<div className="container" className="well">
-				<h3>Basic Specs</h3>
-				<h5>
-					{this.state.make} | {this.state.model} | {this.state.year} | {this.state.color} | Mileage: {this.state.mileage}
-				</h5>
+				<h2>Basic Specs</h2>
+				<h4>
+					{this.state.year} {this.state.color} {this.state.make} {this.state.model}
+				</h4>
+				<h5>Mileage: {this.state.mileage}</h5>
 				<h5>VIN: {this.state.vin}</h5>
 			</div>
 		);
