@@ -73,7 +73,7 @@ export default class Profile extends React.Component {
 			}
 
 			// calculate categoryProgress by dividing taskProgress by numberofTasks
-			var categoryProgress = Number((taskProgress / numberOfTasks).toFixed(2));
+			var categoryProgress = Number((taskProgress / numberOfTasks));
 			
 			// store updated category progress in newObject
 			var newObject = {
