@@ -123,6 +123,10 @@ export default class Taskbreakdown extends React.Component {
 			}
 		}
 
+		this.setState({
+			taskInfo:deleteTaskInfo
+		});
+
 		// call deleteTaskInfo and pass deleteTaskInfo
 		this.props.deleteTaskInfo(deleteTaskInfo);
 

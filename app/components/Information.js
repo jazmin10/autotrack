@@ -20,7 +20,6 @@ export default class Projects extends React.Component {
 
 	componentDidMount() {
 		helpers.getCarInfo("5YFBURHE9EP015823").then((data) => {
-			console.log(data);
 			this.setState({
 				vin: data.vin,
 				make: data.make,

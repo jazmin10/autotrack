@@ -193,10 +193,19 @@ export default class Profile extends React.Component {
 		var deleteK = "maintenance";
 		var deleteVal = this.state.maintenance;
 
+		for (var i = 0 ; i < this.state.maintenance.length; i++) {
+
+			for (var j = 0; j < deleteVal[i].tasks.length; j++){
+				if (deleteTask[0].name === deleteVal[i].tasks[j].name) {
+					deleteVal[i].tasks.splice(j,1);
+				}
+			}
+		}
+
 		helpers.updateCarMaintenanceArray(this.props.params.vin, deleteK, deleteVal).then((data) => {
 
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
-
+				
 				this.setState({maintenance:data});
 				
 			});
