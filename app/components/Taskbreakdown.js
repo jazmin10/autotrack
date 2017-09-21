@@ -37,21 +37,41 @@ export default class Taskbreakdown extends React.Component {
 	// We might not need this, keeping just in case
 	componentDidMount(){
 
-		this.setState({
+		if (this.props.passedMaintenance.categoryProgress == null || this.props.passedMaintenance.categoryProgress == undefined
+			){
+			this.setState({
+				taskInfo: this.props.passedMaintenance.tasks,
+				categoryName: this.props.passedMaintenance.category,
+				categoryProgress: 0
+			});
+		}
+		else {
+			this.setState({
 				taskInfo: this.props.passedMaintenance.tasks,
 				categoryName: this.props.passedMaintenance.category,
 				categoryProgress: this.props.passedMaintenance.categoryProgress
-		});
+			});
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		// method to receive the next props the parent profile will pass
 
-		this.setState({
-				taskInfo: nextProps.passedMaintenance.tasks,
-				categoryName: nextProps.passedMaintenance.category,
-				categoryProgress: nextProps.passedMaintenance.categoryProgress
-		});
+		if (this.props.passedMaintenance.categoryProgress == null || this.props.passedMaintenance.categoryProgress == undefined
+			){
+			this.setState({
+				taskInfo: this.props.passedMaintenance.tasks,
+				categoryName: this.props.passedMaintenance.category,
+				categoryProgress: 0
+			});
+		}
+		else {
+			this.setState({
+				taskInfo: this.props.passedMaintenance.tasks,
+				categoryName: this.props.passedMaintenance.category,
+				categoryProgress: this.props.passedMaintenance.categoryProgress
+			});
+		}
 
 	}
 
@@ -135,14 +155,14 @@ export default class Taskbreakdown extends React.Component {
 			height:'60px'
 		};
 
-		if (!isNaN(this.state.categoryProgress) || this.state.categoryProgress == undefined || this.state.categoryProgress == "" || this.state.categoryProgress < .1) {
-			var progressNum = 0;
-			var percentNum = progressNum + "%";
-		} 
-		else{
+		// if (!isNaN(this.state.categoryProgress) || this.state.categoryProgress == undefined || this.state.categoryProgress == "") {
+		// 	var progressNum = 0;
+		// 	var percentNum = progressNum + "%";
+		// } 
+		// else{
 			var progressNum = (this.state.categoryProgress * 100).toFixed(0);
 			var percentNum = progressNum + "%";			
-		}
+		// }
 
 
 		if (this.state.taskInfo.length !== 0){
