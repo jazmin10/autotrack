@@ -36,6 +36,7 @@ export default class Taskbreakdown extends React.Component {
 
 	// We might not need this, keeping just in case
 	componentDidMount(){
+
 		this.setState({
 				taskInfo: this.props.passedMaintenance.tasks,
 				categoryName: this.props.passedMaintenance.category,
@@ -134,7 +135,7 @@ export default class Taskbreakdown extends React.Component {
 			height:'60px'
 		};
 
-		if (!isNaN(this.state.categoryProgress) || this.state.categoryProgress < .1) {
+		if (!isNaN(this.state.categoryProgress) || this.state.categoryProgress == undefined || this.state.categoryProgress == "" || this.state.categoryProgress < .1) {
 			var progressNum = 0;
 			var percentNum = progressNum + "%";
 		} 
