@@ -50,7 +50,6 @@ export default class Profile extends React.Component {
 
 			this.setState({
 				vin: "5YFBURHE9EP015823", 
-				overallProgress: .3, 
 				maintenance: data});
 
 		});

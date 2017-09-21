@@ -195,11 +195,42 @@ export default class Taskbreakdown extends React.Component {
 				</div>
 			);
 		}
-		return(
-			<div>
-				<h2>No tasks have been added yet.</h2>
-			</div>
-		);
+
+		else {
+
+			if (this.state.categoryName !== "" || this.state.categoryName !== null) {
+				return(
+					<div className="well">
+							
+							<h1>{this.state.categoryName}</h1>
+
+							<hr/>
+
+						<div className="add-task-container">
+
+								<form>
+									<div className="form-group">
+										<h4>Add {this.state.categoryName} Task:</h4>
+
+										<input
+											value={this.state.newTask}
+											type="text"
+											className="form-control"
+											id="newTask"
+											onChange={this.handleAddTask}
+											required
+										/>
+										<br/>
+
+										<button className="btn btn-primary" type="submit">Submit</button>
+									</div>
+								</form>
+							</div>
+					</div>
+				);
+			}
+			
+		}
 
 	}
 }
