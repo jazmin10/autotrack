@@ -151,7 +151,7 @@ export default class Taskbreakdown extends React.Component {
 			height:'60px'
 		};
 
-		if (this.state.categoryProgress == NaN) {
+		if (this.state.categoryProgress === NaN || this.state.categoryProgress < .1) {
 			var progressNum = 0;
 			var percentNum = progressNum + "%";
 		} 
