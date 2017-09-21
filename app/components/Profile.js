@@ -229,7 +229,7 @@ export default class Profile extends React.Component {
 		return (
 			<div className="profile-container">
 				<div>
-					{/*<Information />*/}
+					<Information />
 					<MainTasks
 						maintenance={this.state.maintenance}
 						overallProgress={this.state.overallProgress}
