@@ -130,6 +130,7 @@ export default class Profile extends React.Component {
 
 	// render the component
 	render() {
+		console.log(this.state.overallProgress);
 		return (
 			<div className="profile-container">
 				<div>
