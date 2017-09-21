@@ -35,6 +35,7 @@ export default class Profile extends React.Component {
 
 		this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
 		this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
+		this.addNewTask = this.addNewTask.bind(this);
 	}
 
 	componentDidMount(){
@@ -53,6 +54,7 @@ export default class Profile extends React.Component {
 				maintenance: data});
 
 		});
+
 	}
 
 	calculateCategoryProgress(){
@@ -112,6 +114,30 @@ export default class Profile extends React.Component {
 		this.setState({overallProgress: calculatedProgress});
 	}
 
+	addNewTask(newTask, taskCategory){
+		// method to add new task
+
+		for (var i = 0; i < this.state.maintenance.length; i++) {
+			// loop through the maintenance array for
+			// this specific car
+
+			if (this.state.maintenance[i].category === taskCategory) {
+				// if the category name matches taskCategory
+
+				// push newTaskObj into that taskCategory's task array
+				this.state.maintenance[i].tasks.push(newTask);
+			}
+
+		}
+
+		// save the new maintenance array
+		var newMaintenanceArr = this.state.maintenance;
+
+		// run helpers function to update the database
+		// with the new maintenance array
+
+	}
+
  	componentDidUpdate(prevProps, prevState){
  		// method invoked every time the state updates
 
@@ -132,7 +158,6 @@ export default class Profile extends React.Component {
 
 	// render the component
 	render() {
-		console.log(this.state.overallProgress);
 		return (
 			<div className="profile-container">
 				<div>
@@ -152,6 +177,8 @@ export default class Profile extends React.Component {
 										
 										categoryIndex = {i}
 										captureCategoryProgress = {this.captureCategoryProgress}
+
+										addNewTask = {this.addNewTask}
 									/>
 									</div>
 							);

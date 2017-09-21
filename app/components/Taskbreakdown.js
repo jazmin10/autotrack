@@ -27,6 +27,7 @@ export default class Taskbreakdown extends React.Component {
 			newTask:""
 		}
 
+		this.handleFormChange = this.handleFormChange.bind(this);
 		this.handleAddTask = this.handleAddTask.bind(this);
 		this.handleCheck = this.handleCheck.bind(this);
 		this.handleDeleteTask = this.handleDeleteTask.bind(this);
@@ -70,13 +71,32 @@ export default class Taskbreakdown extends React.Component {
 	// 	}
 	// }
 
-	handleAddTask(event){
+	handleFormChange(event){
 		// method that handles new task being added
 		
 		var newState={};
 
 		newState[event.target.id] = event.target.value;
 		this.setState(newState);
+
+	}
+
+	handleAddTask(event){
+		event.preventDefault();
+
+		// create the new task object
+		var newTaskObj = {
+			name:this.state.newTask,
+			completed:0
+		};
+
+		// capture the category the task belongs to
+		var taskCategory = this.state.categoryName;
+
+		// call addNewTask method and pass newTaskObj
+		// and taskCategory to Profile component
+		this.props.addNewTask(newTaskObj, taskCategory);
+
 	}
 
 	handleDeleteTask(event){
@@ -179,12 +199,12 @@ export default class Taskbreakdown extends React.Component {
 											type="text"
 											className="form-control"
 											id="newTask"
-											onChange={this.handleAddTask}
+											onChange={this.handleFormChange}
 											required
 										/>
 										<br/>
 
-										<button className="btn btn-primary" type="submit">Submit</button>
+										<button className="btn btn-primary" type="submit" onClick={this.handleAddTask}>Submit</button>
 									</div>
 								</form>
 							</div>
@@ -217,12 +237,12 @@ export default class Taskbreakdown extends React.Component {
 											type="text"
 											className="form-control"
 											id="newTask"
-											onChange={this.handleAddTask}
+											onChange={this.handleFormChange}
 											required
 										/>
 										<br/>
 
-										<button className="btn btn-primary" type="submit">Submit</button>
+										<button className="btn btn-primary" type="submit" onClick={this.handleAddTask}>Submit</button>
 									</div>
 								</form>
 							</div>
