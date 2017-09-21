@@ -142,7 +142,10 @@ export default class Profile extends React.Component {
 
 		helpers.updateCarProfile(this.props.params.vin, updateK, updateVal).then((data) => {
 
-			// what do we want to do with the data here?
+			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+				
+				this.setState({maintenance:data});
+			});
 
 		});
 	}
@@ -164,9 +167,6 @@ export default class Profile extends React.Component {
 			tasks: []
 		});
 
-		// set new state of maintenance array
-		this.setState({maintenance:newCategoryArr});
-
 		// run helpers function to update the database
 		// with the new maintenance array
 		var updateK = "maintenance";
@@ -174,7 +174,12 @@ export default class Profile extends React.Component {
 
 		helpers.updateCarProfile(this.props.params.vin, updateK, updateVal).then((data) => {
 
-			// what do we want to do with the data here?
+			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+		
+				// set new state of maintenance array
+				this.setState({maintenance:data});
+
+			});
 			
 		});
 	}
@@ -199,6 +204,7 @@ export default class Profile extends React.Component {
 
 	// render the component
 	render() {
+
 		return (
 			<div className="profile-container">
 				<div>

@@ -126,6 +126,7 @@ export default class Taskbreakdown extends React.Component {
 	}
 
 	render(){
+		console.log(this.state.taskInfo);
 
 		if (this.state.categoryProgress == 1) {
 			var options = {
