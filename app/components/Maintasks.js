@@ -89,7 +89,7 @@ export default class Maintasks extends React.Component {
 					<div>
 						<SemiCircle
 							progress = {this.state.overallProgress}
-							text={(this.state.overallProgress * 100) + "%"}
+							text={((this.state.overallProgress * 100).toFixed(0)) + "%"}
 							options={options}
 							initialAnimate={true}
 							containerStyle={containerStyle}

@@ -35,11 +35,12 @@ export default class Profile extends React.Component {
 		}
 
 		this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
+		this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
 	}
 
 	componentDidMount(){
-		console.log(this.props);
-		console.log(this.props.params.vin);
+		// console.log(this.props);
+		// console.log(this.props.params.vin);
 
 		helpers.getCarInformation("5YFBURHE9EP015823").then((data) => {
 
@@ -47,9 +48,10 @@ export default class Profile extends React.Component {
 				maintask.categoryProgress = 0;
 			});
 
+			// this.calculateOverallProgress();
 			this.setState({
 				vin: "5YFBURHE9EP015823", 
-				overallProgress: .3, 
+				// overallProgress: .3, 
 				maintenance: data});
 
 		});
@@ -80,21 +82,28 @@ export default class Profile extends React.Component {
 
 			});
 
-			// console.log(newArray);
-			this.setState({maintenance: newArray});
-			
-			// THE FOLLOWING PIECE OF CODE IS NOT WORKING. IT'S NOT RESETTING MAINTENANCE TO THE NEWARRAY
-			// this.setState({maintenance: newArray});
+			this.setState({maintenance: newArray}, function(){
+				this.calculateOverallProgress()
+			});
+	}
+
+	calculateOverallProgress(before, after){
+		
+		var sumProgress = 0;
+		var calculatedProgress = 0;
+
+		this.state.maintenance.map((category) => {
+			sumProgress += category.categoryProgress;
+		});
+
+	
+		calculatedProgress = (sumProgress/this.state.maintenance.length);
+		
+		this.setState({overallProgress: calculatedProgress});
 	}
 
  	componentDidUpdate(prevProps, prevState){
 		// check prevState for all states
-		console.log("we are in the update react method");
-
-		// update overall progress bar
-		// equation: sum of each category's progress / # of categories
-		console.log(prevState.maintenance);
-		console.log(this.state.maintenance);
 
 		if (prevState.overallProgress !== this.state.overallProgress || 
 			prevState.vin !== this.state.vin){
