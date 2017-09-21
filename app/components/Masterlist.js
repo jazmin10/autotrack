@@ -30,12 +30,6 @@ export default class Masterlist extends React.Component {
     if (this.state.masterlist.length !== 0) {
 
       return (
-        <div className="container">
-          <div className="panel panel-default">
-
-            <div className="panel-heading">
-              <h3 className="panel-title"><strong>My Projects</strong></h3>
-            </div>
 
             <div className="panel-body">
 
@@ -50,8 +44,6 @@ export default class Masterlist extends React.Component {
               })}
             </div>
 
-          </div>
-        </div> 
       );
     }
 

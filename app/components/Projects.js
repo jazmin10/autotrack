@@ -32,12 +32,6 @@ export default class Projects extends React.Component {
     if (this.state.carList.length !== 0) {
 
       return (
-        <div className="container">
-          <div className="panel panel-default">
-
-            <div className="panel-heading">
-              <h3 className="panel-title"><strong>My Projects</strong></h3>
-            </div>
 
             <div className="panel-body">
 
@@ -52,8 +46,6 @@ export default class Projects extends React.Component {
               })}
             </div>
 
-          </div>
-        </div> 
       );
     }
 

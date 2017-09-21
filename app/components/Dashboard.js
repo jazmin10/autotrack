@@ -53,7 +53,7 @@ export default class Dashboard extends React.Component {
 					</ul>
 					
 					{/* Tab Content */}
-					<div>
+					<div className="panel panel-default">
 						
 							{this.props.children}
 						
