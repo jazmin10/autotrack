@@ -10,6 +10,7 @@
 import React from 'react';
 import helpers from "./utils/helpers.js";
 import { Line } from "./react-progress.js";
+import isEqual from 'lodash/isequal';
 
 // TASKS -----------------------------
 
@@ -34,42 +35,24 @@ export default class Taskbreakdown extends React.Component {
 	}
 
 	// We might not need this, keeping just in case
-	// componentDidMount(){
-	// 	this.setState({
-	// 			taskInfo: this.props.passedMaintenance.tasks,
-	// 			categoryName: this.props.passedMaintenance.category,
-	// 			categoryProgress: this.props.passedMaintenance.categoryProgress
-	// 	});
-	// }
+	componentDidMount(){
+		this.setState({
+				taskInfo: this.props.passedMaintenance.tasks,
+				categoryName: this.props.passedMaintenance.category,
+				categoryProgress: this.props.passedMaintenance.categoryProgress
+		});
+	}
 
 	componentWillReceiveProps(nextProps) {
 		// method to receive the next props the parent profile will pass
-		
+
 		this.setState({
 				taskInfo: nextProps.passedMaintenance.tasks,
 				categoryName: nextProps.passedMaintenance.category,
 				categoryProgress: nextProps.passedMaintenance.categoryProgress
 		});
+
 	}
-
-	// componentDidUpdate(prevProps, prevState){
-	// 	console.log("update");
-	// 	if (prevState.taskInfo !== this.state.taskInfo || 
-	// 		prevState.categoryName !== this.state.categoryName ||
-	// 		prevState.categoryProgress !== this.state.categoryProgress ||
-	// 		prevState.newTask !== this.state.newTask) {
-
-	// 		// during the initial load
-	// 		// if (this.props.passedMaintenance.length !== 0) {
-	// 			// set the values of Tasks state
-	// 			this.setState({
-	// 				taskInfo: this.props.passedMaintenance[0].tasks,
-	// 				categoryName: this.props.passedMaintenance[0].category,
-	// 				categoryProgress: this.props.passedMaintenance[0].categoryProgress
-	// 			});
-	// 		// }
-	// 	}
-	// }
 
 	handleFormChange(event){
 		// method that handles new task being added
@@ -126,7 +109,6 @@ export default class Taskbreakdown extends React.Component {
 	}
 
 	render(){
-		console.log(this.state.taskInfo);
 
 		if (this.state.categoryProgress == 1) {
 			var options = {
