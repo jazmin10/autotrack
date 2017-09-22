@@ -25,7 +25,8 @@ export default class Taskbreakdown extends React.Component {
 			taskInfo:[],
 			categoryName:"",
 			categoryProgress:0,
-			newTask:""
+			newTask:"",
+			checked:false
 		}
 
 		this.handleFormChange = this.handleFormChange.bind(this);
@@ -137,12 +138,36 @@ export default class Taskbreakdown extends React.Component {
 
 		// capture the task that has been checked
 		var checkedTask = event.target.value;
-		console.log("task: " + checkedTask);
 
 		// capture the task's current completed value
 		var completedStatus = this.state.taskInfo[event.target.id].completed;
-		console.log("completed status: " + completedStatus);
-		
+
+		// capture the category name
+		var taskCategory = this.state.categoryName;
+
+		this.setState({checked:true});
+
+		// if the completed value is 0, 
+		// go through this whole process to change it to 1
+		// if it's already 1, leave it be
+		if (completedStatus == 0) {			
+			// loop through the taskInfo array to find the matching task
+			for (var i = 0; i < this.state.taskInfo.length; i++){
+
+				if (this.state.taskInfo[i].name == checkedTask){
+					// look for the matching task name
+					
+					// create new task obj with the completed value 1
+					var completedTaskObj = {
+						name: checkedTask,
+						completed:1
+					};
+
+					this.props.updateCheck(completedTaskObj, taskCategory);
+					this.setState({checked:false});
+				}
+			}	
+		}	
 	}
 
 	render(){
@@ -212,19 +237,19 @@ export default class Taskbreakdown extends React.Component {
 									if (tasks.completed == 0) {
 										return(
 											<div key={i} className="well">
-												<h3><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name}/> {tasks.name}</h3> 
+												<h3><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name} checked={this.state.checked}/> {tasks.name}</h3> 
 												<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
 											</div>
 										);
 									}
-									else if (tasks.completed == 1){
-										return(
-											<div key={i} className="well">
-												<h3><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> {tasks.name}</h3>
-												<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
-											</div>
-										);
-									}
+
+									return(
+										<div key={i} className="well">
+											<h3><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> {tasks.name}</h3>
+											<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+										</div>
+									);
+									
 								})
 							}
 

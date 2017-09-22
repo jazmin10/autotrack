@@ -39,6 +39,7 @@ export default class Profile extends React.Component {
 		this.addNewCategory = this.addNewCategory.bind(this);
 		this.deleteTaskInfo = this.deleteTaskInfo.bind(this);
 		this.deleteCategory = this.deleteCategory.bind(this);
+		this.updateCheck = this.updateCheck.bind(this);
 	}
 
 	componentDidMount(){
@@ -62,23 +63,20 @@ export default class Profile extends React.Component {
 
 	calculateCategoryProgress(){
 		// method to calculate the progress of each category
-
 		var newArray = [];
 
 		this.state.maintenance.map((maintask, i) => {
 			var taskProgress = 0;
-			var numberOfTasks = 0;
+			var numberOfTasks = maintask.tasks.length;
 
 			for (let j=0; j < maintask.tasks.length; j++) {
 				// get the sum of each task's completion
 				taskProgress += maintask.tasks[j].completed;
-
-				// get the number of tasks in a category
-				numberOfTasks++;
 			}
 
 			// calculate categoryProgress by dividing taskProgress by numberofTasks
 			var categoryProgress = Number((taskProgress / numberOfTasks));
+			console.log("number of tasks: " + numberOfTasks);
 			
 			// store updated category progress in newObject
 			var newObject = {
@@ -93,7 +91,12 @@ export default class Profile extends React.Component {
 
 		// set the state of the whole current maintenance array, once that's run calculateOverallProgress()
 		this.setState({maintenance: newArray}, function(){
+
 				this.calculateOverallProgress();
+				newArray=[];
+				taskProgress = 0;
+				numberOfTasks = 0;
+				categoryProgress = 0;
 			});
 	
 	}
@@ -146,7 +149,9 @@ export default class Profile extends React.Component {
 
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
-				this.setState({maintenance:data});
+				this.setState({maintenance:data}, function(){
+					this.calculateCategoryProgress();
+				});
 			});
 
 		});
@@ -207,7 +212,9 @@ export default class Profile extends React.Component {
 
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
-				this.setState({maintenance:data});
+				this.setState({maintenance:data}, function(){
+					this.calculateCategoryProgress();
+				});
 				
 			});
 
@@ -216,8 +223,6 @@ export default class Profile extends React.Component {
 	}
 
 	deleteCategory(categoryName){
-		console.log(this.state.vin);
-		console.log(categoryName);
 
 		var index = 0;
 
@@ -245,11 +250,56 @@ export default class Profile extends React.Component {
 		.then(() => {
 			
 			helpers.getCarMaintenanceInfo(this.state.vin).then((newMaintenance) => {
-				this.setState({maintenance: currentMaintenanceArr});
+				this.setState({maintenance: currentMaintenanceArr}, function(){
+					this.calculateCategoryProgress();
+				});
 			})
 		})
 
 		// this.setState({maintenance: currentMaintenanceArr});
+	}
+
+	updateCheck(checkedTaskObj, taskCategory){
+		// method to update a task's completed status from 0 to 1
+
+		for (var i = 0; i < this.state.maintenance.length; i++) {
+			// loop through the maintenance array
+
+			if (this.state.maintenance[i].category === taskCategory){
+				// find the matching category
+				
+				for (var j = 0; j < this.state.maintenance[i].tasks.length;j++){
+					// loop through that category's task array 
+					// find the matching task
+
+					if (this.state.maintenance[i].tasks[j].name == checkedTaskObj.name){
+
+						// splice the old taskObj off
+						this.state.maintenance[i].tasks.splice(j,1);
+
+						// then add the new checkedTaskObj
+						this.state.maintenance[i].tasks.push(checkedTaskObj);
+
+					}			
+
+				}
+			}
+		}
+
+		// save the key and value to be updated
+		var newMaintenanceTaskArr = this.state.maintenance;
+		var taskUpdateKey = "maintenance";
+
+		helpers.updateCarMaintenanceArray(this.state.vin, taskUpdateKey, newMaintenanceTaskArr)
+		.then((data) => {
+			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+				
+				this.setState({maintenance:data}, function(){
+					this.calculateCategoryProgress();
+				});
+				
+			});
+		})
 	}
 
  	componentDidUpdate(prevProps, prevState){
@@ -262,8 +312,15 @@ export default class Profile extends React.Component {
 			if(!isEqual(prevState.maintenance, this.state.maintenance)){
 				// use lodash for deep comparisons
 				// in this case, an array of objects within an array of objects
+				
+				helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 
-				this.calculateCategoryProgress();
+					// get the most recent data from db
+					this.setState({maintenance:data}, function(){
+						this.calculateCategoryProgress();
+					});
+
+				});
 			}
 			
 		}
@@ -287,7 +344,6 @@ export default class Profile extends React.Component {
 
 					{
 						this.state.maintenance.map((taskbreakdown, i) => {
-						
 							return(
 								<div className="col-md-6" key={i}>
 									<Taskbreakdown
@@ -298,6 +354,7 @@ export default class Profile extends React.Component {
 
 										addNewTask = {this.addNewTask}
 										deleteTaskInfo = {this.deleteTaskInfo}
+										updateCheck = {this.updateCheck}
 									/>
 									</div>
 							);
