@@ -55,7 +55,7 @@ export default class Maintasks extends React.Component {
 	// This will be removed once delete method is created in profile
 	handleDelete(event){
 		var deleteName = event.target.value;
-		console.log(deleteName);
+		this.props.deleteCategory(deleteName);
 	}
 
 	// When the submit button for the "Add Main Task" form is clicked...

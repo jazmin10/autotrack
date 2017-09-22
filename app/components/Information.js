@@ -18,8 +18,27 @@ export default class Projects extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		helpers.getCarInfo("5YFBURHE9EP015823").then((data) => {
+	// componentDidMount() {
+
+	// 	console.log(this.props.params.vin)
+	// 	helpers.getCarInfo(this.props.params.vin).then((data) => {
+
+	// 		this.setState({
+	// 			vin: data.vin,
+	// 			make: data.make,
+	// 			model: data.model,
+	// 			year: data.year,
+	// 			color: data.color,
+	// 			mileage: data.mileage
+	// 		});
+	// 	});
+	// }
+
+	componentWillReceiveProps(nextProps){
+		console.log(nextProps);
+
+		helpers.getCarInfo(this.props.vin).then((data) => {
+
 			console.log(data);
 			this.setState({
 				vin: data.vin,
