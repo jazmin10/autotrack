@@ -186,29 +186,32 @@ export default class Profile extends React.Component {
 		});
 	}
 
-	deleteTaskInfo(deleteTask, taskCategory){
+	deleteTaskInfo(deleteTask){
 		// method to delete task
 
-		for (var i = 0; i < this.state.maintenance.length; i++){
-			// loop through the maintenance array for
-			// this specific car
+		// run helpers function to update the database
+		// with the new maintenance array
+		var deleteK = "maintenance";
+		var deleteVal = this.state.maintenance;
 
-			if (this.state.maintenance[i].category === taskCategory) {
-				// if the category name matches taskCategory
+		for (var i = 0 ; i < this.state.maintenance.length; i++) {
 
-				for (var j = 0; j < this.state.maintenance[i].tasks.length;j++){
-
-				console.log(this.state.maintenance[i].tasks[j]);
-
-					if (deleteTask[0].name === this.state.maintenance[i].tasks[j].name) {
-						// if the deleteTask name matches the task name
-						// delete it
-						console.log(this.state.maintenance[i][j]);
-					}
+			for (var j = 0; j < deleteVal[i].tasks.length; j++){
+				if (deleteTask[0].name === deleteVal[i].tasks[j].name) {
+					deleteVal[i].tasks.splice(j,1);
 				}
-			}			
+			}
 		}
 
+		helpers.updateCarMaintenanceArray(this.props.params.vin, deleteK, deleteVal).then((data) => {
+
+			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+				
+				this.setState({maintenance:data});
+				
+			});
+
+		});
 
 	}
 

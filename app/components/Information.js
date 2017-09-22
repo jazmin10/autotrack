@@ -18,6 +18,7 @@ export default class Projects extends React.Component {
 		}
 	}
 
+
 	// componentDidMount() {
 
 	// 	console.log(this.props.params.vin)
@@ -40,6 +41,7 @@ export default class Projects extends React.Component {
 		helpers.getCarInfo(this.props.vin).then((data) => {
 
 			console.log(data);
+
 			this.setState({
 				vin: data.vin,
 				make: data.make,
