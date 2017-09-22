@@ -63,7 +63,6 @@ export default class Profile extends React.Component {
 
 	calculateCategoryProgress(){
 		// method to calculate the progress of each category
-
 		var newArray = [];
 
 		this.state.maintenance.map((maintask, i) => {
@@ -80,6 +79,7 @@ export default class Profile extends React.Component {
 
 			// calculate categoryProgress by dividing taskProgress by numberofTasks
 			var categoryProgress = Number((taskProgress / numberOfTasks));
+			console.log("number of tasks: " + numberOfTasks);
 			
 			// store updated category progress in newObject
 			var newObject = {
@@ -217,8 +217,6 @@ export default class Profile extends React.Component {
 	}
 
 	deleteCategory(categoryName){
-		console.log(this.state.vin);
-		console.log(categoryName);
 
 		var index = 0;
 
@@ -284,14 +282,13 @@ export default class Profile extends React.Component {
 		var newMaintenanceTaskArr = this.state.maintenance;
 		var taskUpdateKey = "maintenance";
 
-		console.log(this.state.maintenance);
-
 		helpers.updateCarMaintenanceArray(this.state.vin, taskUpdateKey, newMaintenanceTaskArr)
 		.then((data) => {
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
 				this.setState({maintenance:data});
-				console.log(this.state.maintenance);
+
+				this.calculateCategoryProgress();
 				
 			});
 		})
@@ -307,7 +304,6 @@ export default class Profile extends React.Component {
 			if(!isEqual(prevState.maintenance, this.state.maintenance)){
 				// use lodash for deep comparisons
 				// in this case, an array of objects within an array of objects
-
 				this.calculateCategoryProgress();
 			}
 			
@@ -317,7 +313,6 @@ export default class Profile extends React.Component {
 
 	// render the component
 	render() {
-		console.log(this.state.maintenance);
 
 		return (
 			<div className="profile-container">
@@ -333,7 +328,6 @@ export default class Profile extends React.Component {
 
 					{
 						this.state.maintenance.map((taskbreakdown, i) => {
-							
 							return(
 								<div className="col-md-6" key={i}>
 									<Taskbreakdown
