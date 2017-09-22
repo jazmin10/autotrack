@@ -171,14 +171,13 @@ export default class Taskbreakdown extends React.Component {
 			height:'60px'
 		};
 
-		// if (!isNaN(this.state.categoryProgress) || this.state.categoryProgress == undefined || this.state.categoryProgress == "") {
-		// 	var progressNum = 0;
-		// 	var percentNum = progressNum + "%";
-		// } 
-		// else{
+		if (isNaN(this.state.categoryProgress) || this.state.categoryProgress == undefined || this.state.categoryProgress == null) {
+			var percentNum = "0%";
+		} 
+		else{
 			var progressNum = (this.state.categoryProgress * 100).toFixed(0);
 			var percentNum = progressNum + "%";			
-		// }
+		}
 
 
 		if (this.state.taskInfo.length !== 0){
