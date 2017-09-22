@@ -208,12 +208,23 @@ export default class Taskbreakdown extends React.Component {
 							{
 
 								this.state.taskInfo.map((tasks,i)=>{
-									return(
-										<div key={i} className="well">
-											<h3><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name}/> {tasks.name}</h3> 
-											<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
-										</div>
-									);
+
+									if (tasks.completed == 0) {
+										return(
+											<div key={i} className="well">
+												<h3><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name}/> {tasks.name}</h3> 
+												<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+											</div>
+										);
+									}
+									else if (tasks.completed == 1){
+										return(
+											<div key={i} className="well">
+												<h3><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> {tasks.name}</h3>
+												<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+											</div>
+										);
+									}
 								})
 							}
 
