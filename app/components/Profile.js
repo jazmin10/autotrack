@@ -67,14 +67,11 @@ export default class Profile extends React.Component {
 
 		this.state.maintenance.map((maintask, i) => {
 			var taskProgress = 0;
-			var numberOfTasks = 0;
+			var numberOfTasks = maintask.tasks.length;
 
 			for (let j=0; j < maintask.tasks.length; j++) {
 				// get the sum of each task's completion
 				taskProgress += maintask.tasks[j].completed;
-
-				// get the number of tasks in a category
-				numberOfTasks++;
 			}
 
 			// calculate categoryProgress by dividing taskProgress by numberofTasks
@@ -94,7 +91,12 @@ export default class Profile extends React.Component {
 
 		// set the state of the whole current maintenance array, once that's run calculateOverallProgress()
 		this.setState({maintenance: newArray}, function(){
+
 				this.calculateOverallProgress();
+				newArray=[];
+				taskProgress = 0;
+				numberOfTasks = 0;
+				categoryProgress = 0;
 			});
 	
 	}
@@ -147,7 +149,9 @@ export default class Profile extends React.Component {
 
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
-				this.setState({maintenance:data});
+				this.setState({maintenance:data}, function(){
+					this.calculateCategoryProgress();
+				});
 			});
 
 		});
@@ -208,7 +212,9 @@ export default class Profile extends React.Component {
 
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
-				this.setState({maintenance:data});
+				this.setState({maintenance:data}, function(){
+					this.calculateCategoryProgress();
+				});
 				
 			});
 
@@ -244,7 +250,9 @@ export default class Profile extends React.Component {
 		.then(() => {
 			
 			helpers.getCarMaintenanceInfo(this.state.vin).then((newMaintenance) => {
-				this.setState({maintenance: currentMaintenanceArr});
+				this.setState({maintenance: currentMaintenanceArr}, function(){
+					this.calculateCategoryProgress();
+				});
 			})
 		})
 
@@ -286,9 +294,9 @@ export default class Profile extends React.Component {
 		.then((data) => {
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
-				this.setState({maintenance:data});
-
-				this.calculateCategoryProgress();
+				this.setState({maintenance:data}, function(){
+					this.calculateCategoryProgress();
+				});
 				
 			});
 		})
@@ -304,7 +312,15 @@ export default class Profile extends React.Component {
 			if(!isEqual(prevState.maintenance, this.state.maintenance)){
 				// use lodash for deep comparisons
 				// in this case, an array of objects within an array of objects
-				this.calculateCategoryProgress();
+				
+				helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+
+					// get the most recent data from db
+					this.setState({maintenance:data}, function(){
+						this.calculateCategoryProgress();
+					});
+
+				});
 			}
 			
 		}
