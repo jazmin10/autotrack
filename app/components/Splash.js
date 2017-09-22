@@ -6,6 +6,7 @@ import helpers from "./utils/helpers.js";
 
 import router, {browserHistory} from "react-router";
 
+var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MDYwNTA0NTd9.sH38VNiJEDcPEI97ty2rY6djHLv-9JCO-v_rbzTmy10";
 
 // creating the splash component
 export default class Splash extends React.Component {
@@ -27,6 +28,17 @@ export default class Splash extends React.Component {
 		this.handleRedirect = this.handleRedirect.bind(this);
 	}
 
+	componentDidMount() {
+
+		// If user's token saved in local storage matches jwt-token, redirect to dashboard
+		if (localStorage.getItem("autotrackToken") !== undefined) {
+			if (localStorage.getItem("autotrackToken") === token) {
+				// console.log("in here");
+				this.handleRedirect();
+			}
+		}
+	}
+
 	handleChange(event) {
 
 		var newState = {};
@@ -35,24 +47,27 @@ export default class Splash extends React.Component {
 		this.setState(newState);
 	}
 
-	// 
 	handleSubmit(event) {
 
 		event.preventDefault();
 
 		helpers.getAuth(this.state.username, this.state.password)
 		.then(response => {
-
-			console.log(response);
 			
-			if (response === null) {
+			if (response.username !== undefined) {
 
-				console.log("Username and Password not found");
-				return "Invalid Username or Password";
+				// If log in was successful, set token and username to the local storage
+				localStorage.setItem("autotrackToken", response.token);
+				localStorage.setItem("username", response.username);
+
+				// Redirect user to the dashboard page
+				this.handleRedirect();
 
 			} else {
 
-				this.handleRedirect();
+				// If user credentials were incorrect, 
+				console.log("Username and Password not found");
+				return "Invalid Username or Password";
 
 			}
 		})
@@ -61,7 +76,7 @@ export default class Splash extends React.Component {
 
 	handleRedirect() {
 
-		browserHistory.push("/dashboard-manager");
+		browserHistory.push("/dashboard-manager?token=" + localStorage.getItem("autotrackToken"));
 	}
 
 	render() {

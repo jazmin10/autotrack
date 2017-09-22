@@ -18,7 +18,7 @@ var helpers = {
 	/* ---------- GET ROUTES ----------- */
 
 	getAuth: function(username, password) {
-		console.log(username, password);
+		// console.log(username, password);
 		return axios.get("/login", {
 			params: {
 				username: username,

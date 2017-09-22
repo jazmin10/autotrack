@@ -23,6 +23,35 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // app.use(express.static("public"));
 app.use("/public", express.static("./public"));
 
+// EXPRESS JWT AUTHENTICATION
+// =============================================================
+
+// JSON Web Token
+var expressJWT = require("express-jwt");
+var jwt = require("jsonwebtoken");
+var secret = "this is a our token";
+
+// Unprotected routes
+app.use(expressJWT({
+	secret: secret,
+	getToken: function fromHeaderOrQuerystring (req) {
+    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        return req.headers.authorization.split(' ')[1];
+    } else if (req.query && req.query.token) {
+     	return req.query.token;
+    }
+    	return null;
+  	}
+}).unless({ 
+	path: ['/', '/login']
+}));
+
+app.use(function(err, req, res, next){
+	if (err.name === "UnauthorizedError") {
+		res.sendFile(path.join(__dirname, "./public/noAuthorization.html"));
+	}
+});
+
 // MONGODB CONFIGURATION
 // =============================================================
 
@@ -46,7 +75,7 @@ db.once("open", function(){
 // EXPRESS APP ROUTES
 // =============================================================
 
-require("./routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app, jwt, secret);
 
 // START LISTENER
 // =============================================================
