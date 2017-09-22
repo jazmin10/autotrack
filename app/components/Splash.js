@@ -46,9 +46,6 @@ export default class Splash extends React.Component {
 			console.log(response);
 			
 			if (response === null) {
-
-		.then(function(response) {
-			if (doc !== req.body.username && req.body.password) {
 				console.log("Username and Password not found");
 				return "Invalid Username or Password";
 

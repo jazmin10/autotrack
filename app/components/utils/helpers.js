@@ -52,7 +52,7 @@ var helpers = {
 		});
 	},
 
-	// Using in Information.js. Grab a car's information by vin
+	// Using in Information.js and Add.js. Grab a car's information by vin
 	getCarInfo: (vin) => {
 		
 		return axios.get("/get-car/" + vin).then(response => {
@@ -60,6 +60,14 @@ var helpers = {
 			return response.data;
 		});
 	},
+
+	scrape: (vin) => {
+
+		return axios.get("/scrape", { params: { vin: vin }}).then(response => {
+			return response.data;
+		});
+	},
+
 
 	/* ---------- UPDATE ROUTES ----------- */
 
