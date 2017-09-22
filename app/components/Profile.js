@@ -345,7 +345,7 @@ export default class Profile extends React.Component {
 					{
 						this.state.maintenance.map((taskbreakdown, i) => {
 							return(
-								<div className="col-md-6" key={i}>
+								<div key={i}>
 									<Taskbreakdown
 										passedMaintenance = {taskbreakdown}
 										
