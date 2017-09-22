@@ -37,7 +37,7 @@ export default class Splash extends React.Component {
 		event.preventDefault();
 
 		helpers.getAuth(this.state.username, this.state.password)
-		.then(function(doc) {
+		.then(function(response) {
 			if (doc !== req.body.username && req.body.password) {
 				console.log("Username and Password not found");
 				return "Invalid Username or Password";
