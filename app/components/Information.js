@@ -36,11 +36,8 @@ export default class Projects extends React.Component {
 	// }
 
 	componentWillReceiveProps(nextProps){
-		console.log(nextProps);
 
 		helpers.getCarInfo(this.props.vin).then((data) => {
-
-			console.log(data);
 
 			this.setState({
 				vin: data.vin,
