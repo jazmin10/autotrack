@@ -1,4 +1,4 @@
-/* Information Component -  contains the car information (vin, make, model, year, color,
+/* Information Component -  contains the car's basic information (vin, make, model, year, color,
 mileage) for a car */
 
 import React from 'react';
@@ -18,27 +18,15 @@ export default class Projects extends React.Component {
 		}
 	}
 
-
-	// componentDidMount() {
-
-	// 	console.log(this.props.params.vin)
-	// 	helpers.getCarInfo(this.props.params.vin).then((data) => {
-
-	// 		this.setState({
-	// 			vin: data.vin,
-	// 			make: data.make,
-	// 			model: data.model,
-	// 			year: data.year,
-	// 			color: data.color,
-	// 			mileage: data.mileage
-	// 		});
-	// 	});
-	// }
-
+	// When props change...
 	componentWillReceiveProps(nextProps){
 
 		helpers.getCarInfo(this.props.vin).then((data) => {
 
+		// Make a call to the db to obtain the basic information of the car
+		helpers.getCarInfo(nextProps.vin).then((data) => {
+
+			// Initialize the state's vin, make, model, year, color, mileage
 			this.setState({
 				vin: data.vin,
 				make: data.make,
@@ -50,6 +38,7 @@ export default class Projects extends React.Component {
 		});
 	}
 
+	// Render the car's information in a well
 	render() {
 		return(
 			<div className="container" className="well">
