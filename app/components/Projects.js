@@ -20,7 +20,7 @@ export default class Projects extends React.Component {
 	componentDidMount() {
 
 		// Call helper function to get all of a particular user's cars.
-		helpers.getProjectCars("steve").then(response => {
+		helpers.getProjectCars("Melissa").then(response => {
       this.setState({carList: response.usercars});
 		});
 

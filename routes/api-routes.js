@@ -183,6 +183,46 @@ module.exports = function(app) {
 
 	});
 
+	// Scraping for Car Info
+	app.get("/scrape", function(req, res) {
+
+	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=1GNDS13S682209636
+	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=JNRDR07X21W103154
+
+	request("https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=", function(error, response, html) {
+		if (error) throw error;
+		var $ = cheerio.load(html);
+
+		var results = {};
+
+		$("ul li").each(function(i, element) {
+			// console.log(i);
+			// console.log(element);
+
+			var content = $(element).find(".table_col_40").text();
+			// console.log(content);
+
+			var parent = $(element).find(".table_col_60").text();
+
+			if (parent === "MAKE") {
+				results.make = content;
+			}
+			else if (parent === "MODEL") {
+				results.model = content;
+			}
+			else if (parent === "YEAR") {
+				results.year = content;
+			}
+			
+		});
+
+		console.log(results);
+	});
+	res.send("Scrape Complete");
+});
+
+
+
 	// ===== USER =====
 	// GET - login information
 	app.get("/login", function(req,res){

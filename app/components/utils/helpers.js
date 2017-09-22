@@ -57,6 +57,14 @@ var helpers = {
 		
 		return axios.get("/get-car/" + vin).then(response => {
 			// console.log(response.data.maintenance);
+			console.log(response.data);
+			return response.data;
+		});
+	},
+
+	scrape: (vin) => {
+
+		return axios.get("/scrape", { params: { vin: vin }}).then(response => {
 			return response.data;
 		});
 	},

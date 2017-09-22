@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 // import Profile from '../components/Profile.js';
 import Projects from '../components/Projects.js';
 import Masterlist from '../components/Masterlist.js';
+import Add from '../components/Add.js';
 
 export default class Dashboard extends React.Component {
 
@@ -49,7 +50,7 @@ export default class Dashboard extends React.Component {
 					<ul className="nav nav-tabs">
 					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to="/dashboard-manager/my-projects">My Projects</Link></li>
 					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to="/dashboard-manager/masterlist">Masterlist</Link></li>
-					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to="/dashboard-manager/my-projects">Add/Edit Car</Link></li>
+					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to="/dashboard-manager/add-car">Add/Edit Car</Link></li>
 					</ul>
 					
 					{/* Tab Content */}
