@@ -39,6 +39,7 @@ export default class Profile extends React.Component {
 		this.addNewCategory = this.addNewCategory.bind(this);
 		this.deleteTaskInfo = this.deleteTaskInfo.bind(this);
 		this.deleteCategory = this.deleteCategory.bind(this);
+		this.updateCheck = this.updateCheck.bind(this);
 	}
 
 	componentDidMount(){
@@ -252,6 +253,50 @@ export default class Profile extends React.Component {
 		// this.setState({maintenance: currentMaintenanceArr});
 	}
 
+	updateCheck(checkedTaskObj, taskCategory){
+		// method to update a task's completed status from 0 to 1
+
+		for (var i = 0; i < this.state.maintenance.length; i++) {
+			// loop through the maintenance array
+
+			if (this.state.maintenance[i].category === taskCategory){
+				// find the matching category
+				
+				for (var j = 0; j < this.state.maintenance[i].tasks.length;j++){
+					// loop through that category's task array 
+					// find the matching task
+
+					if (this.state.maintenance[i].tasks[j].name == checkedTaskObj.name){
+
+						// splice the old taskObj off
+						this.state.maintenance[i].tasks.splice(j,1);
+
+						// then add the new checkedTaskObj
+						this.state.maintenance[i].tasks.push(checkedTaskObj);
+
+					}			
+
+				}
+			}
+		}
+
+		// save the key and value to be updated
+		var newMaintenanceTaskArr = this.state.maintenance;
+		var taskUpdateKey = "maintenance";
+
+		console.log(this.state.maintenance);
+
+		helpers.updateCarMaintenanceArray(this.state.vin, taskUpdateKey, newMaintenanceTaskArr)
+		.then((data) => {
+			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+				
+				this.setState({maintenance:data});
+				console.log(this.state.maintenance);
+				
+			});
+		})
+	}
+
  	componentDidUpdate(prevProps, prevState){
  		// method invoked every time the state updates
 
@@ -272,6 +317,7 @@ export default class Profile extends React.Component {
 
 	// render the component
 	render() {
+		console.log(this.state.maintenance);
 
 		return (
 			<div className="profile-container">
@@ -287,7 +333,7 @@ export default class Profile extends React.Component {
 
 					{
 						this.state.maintenance.map((taskbreakdown, i) => {
-						
+							
 							return(
 								<div className="col-md-6" key={i}>
 									<Taskbreakdown
@@ -298,6 +344,7 @@ export default class Profile extends React.Component {
 
 										addNewTask = {this.addNewTask}
 										deleteTaskInfo = {this.deleteTaskInfo}
+										updateCheck = {this.updateCheck}
 									/>
 									</div>
 							);

@@ -137,12 +137,33 @@ export default class Taskbreakdown extends React.Component {
 
 		// capture the task that has been checked
 		var checkedTask = event.target.value;
-		console.log("task: " + checkedTask);
 
 		// capture the task's current completed value
 		var completedStatus = this.state.taskInfo[event.target.id].completed;
-		console.log("completed status: " + completedStatus);
-		
+
+		// capture the category name
+		var taskCategory = this.state.categoryName;
+
+		// if the completed value is 0, 
+		// go through this whole process to change it to 1
+		// if it's already 1, leave it be
+		if (completedStatus == 0) {			
+			// loop through the taskInfo array to find the matching task
+			for (var i = 0; i < this.state.taskInfo.length; i++){
+
+				if (this.state.taskInfo[i].name == checkedTask){
+					// look for the matching task name
+					
+					// create new task obj with the completed value 1
+					var completedTaskObj = {
+						name: checkedTask,
+						completed:1
+					};
+
+					this.props.updateCheck(completedTaskObj, taskCategory);
+				}
+			}	
+		}	
 	}
 
 	render(){
