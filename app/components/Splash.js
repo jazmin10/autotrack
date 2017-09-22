@@ -4,6 +4,9 @@ import React from "react";
 // helper component for making API calls
 import helpers from "./utils/helpers.js";
 
+import router, {browserHistory} from "react-router";
+
+
 // creating the splash component
 export default class Splash extends React.Component {
 
@@ -21,6 +24,7 @@ export default class Splash extends React.Component {
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleRedirect = this.handleRedirect.bind(this);
 	}
 
 	handleChange(event) {
@@ -37,20 +41,27 @@ export default class Splash extends React.Component {
 		event.preventDefault();
 
 		helpers.getAuth(this.state.username, this.state.password)
-		.then(function(doc) {
-			if (doc !== req.body.username && req.body.password) {
+		.then(response => {
+
+			console.log(response);
+			
+			if (response === null) {
+
 				console.log("Username and Password not found");
 				return "Invalid Username or Password";
-			}else{
+
+			} else {
+
 				this.handleRedirect();
+
 			}
 		})
 	}
 	
 
 	handleRedirect() {
-		console.log("redirecting");
-		// browserHistory.push(/dashboard-manager);
+
+		browserHistory.push("/dashboard-manager");
 	}
 
 	render() {
@@ -79,7 +90,7 @@ export default class Splash extends React.Component {
 						
 						
 							<input
-							type="text"
+							type="password"
 							value={this.state.password}
 							id="password"
 							className="form-control"
