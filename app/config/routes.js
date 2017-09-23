@@ -32,18 +32,13 @@ export default (
         
           <Route path="masterlist" component={Masterlist} />
           <Route path="my-projects" component={Projects} />
-<<<<<<< HEAD
-           <Route path="add-car" component={Add} />
-=======
-          <Route path="add-car" component={Add} /> 
->>>>>>> Finfischley
-
+          <Route path="add-car" component={Add} />
           <Route path="profile/:vin" component={Profile} />
 
          <IndexRoute component={Projects} /> 
        </Route>
 
-      { <IndexRoute component={Splash} /> }
+      <IndexRoute component={Splash} />
     </Route>
   </Router>
 );

@@ -186,18 +186,6 @@ module.exports = function(app, jwt, secret) {
 
 	});
 
-<<<<<<< HEAD
-	// GET - Scrape car info
-	app.get("/scrape", function(req, res) {
-
-        request("https://www.vehiclehistory.com/paging-vin-report- data/specifications.php?vin=" + req.params.vin, function(error, response, html) {
-        	if (error) throw error;
-			var $ = cheerio.load(html);
-
-			var results = {};
-
-			$("ul li").each(function(i, element) {
-=======
 	// Scraping for Car Info
 	app.get("/scrape", function(req, res) {
 
@@ -217,7 +205,6 @@ module.exports = function(app, jwt, secret) {
 		var results = {};
 
 		$("ul li").each(function(i, element) {
->>>>>>> ea28606e29f474d6b58e165c3995379764665e24
 			// console.log(i);
 			// console.log(element);
 
@@ -235,26 +222,16 @@ module.exports = function(app, jwt, secret) {
 			else if (parent === "YEAR") {
 				results.year = content;
 			}
-<<<<<<< HEAD
 
 			});
 
 			console.log(results);
 
-		});
-		res.send("Scrape Complete");
-	 });
-=======
-			
-		});
-
 		console.log(results);
-	res.json(results);
+		res.json(results);
 	});
 });
 
-
->>>>>>> ea28606e29f474d6b58e165c3995379764665e24
 
 	// ===== USER =====
 	// GET - login information
