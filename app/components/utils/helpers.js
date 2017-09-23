@@ -56,8 +56,6 @@ var helpers = {
 	getCarInfo: (vin) => {
 		
 		return axios.get("/get-car/" + vin).then(response => {
-			// console.log(response.data.maintenance);
-			console.log(response.data);
 			return response.data;
 		});
 	},

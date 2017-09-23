@@ -4,6 +4,8 @@
 import React from 'react';
 import helpers from "./utils/helpers.js";
 import { Link } from 'react-router';
+import isEqual from 'lodash/isequal';
+import { SemiCircle } from "./react-progress.js";
 
 
 export default class Masterlist extends React.Component {
@@ -13,19 +15,123 @@ export default class Masterlist extends React.Component {
 		super(props);
 
 		this.state = {
-			masterlist: []
+			masterlist: [],
+      carMaintenance:[],
+      overallProgress: []
 		}
+
+    this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
+    this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
 	}
 
 	componentDidMount() {
+    // method invoked immediately after component is mounted
 
 		helpers.getMasterlist().then(response => {
-      this.setState({masterlist: response});
-		});
+      // helper to get info for masterlist
 
-	}
+      var newMaintenanceArr = [];
+
+      var maintenanceArr = response.map((maintenanceRes, j) => {
+
+        maintenanceRes.maintenance.map((tasks) => {
+          tasks.categoryProgress = 0;
+        });
+
+        newMaintenanceArr.push(maintenanceRes.maintenance);
+      });
+
+      this.setState({
+        masterlist: response, 
+        carMaintenance:newMaintenanceArr
+      }); 
+     
+		});
+  }
+
+  calculateCategoryProgress(){
+    // method to calculate the progress of each category's progress
+    
+    var superBigMaintenanceArray = [];
+
+    // loop through so that the category progress is calculated
+    // for all cars 
+    for (var i = 0; i < this.state.masterlist.length; i++){
+      
+      var carMaintenanceArray = [];
+      
+      this.state.carMaintenance[i].map((maintask, k) => {
+        var taskProgress = 0;
+        var numberOfTasks = maintask.tasks.length;
+
+        for (let j=0; j < maintask.tasks.length; j++) {
+          // get the sum of each task's completion
+          taskProgress += maintask.tasks[j].completed;
+        }
+
+        // calculate categoryProgress by dividing taskProgress by numberofTasks
+        var categoryProgressNum = Number((taskProgress / numberOfTasks));        
+
+        var newObject ={
+          category:maintask.category,
+          tasks:maintask.tasks,
+          categoryProgress:categoryProgressNum
+        };
+
+        carMaintenanceArray.push(newObject);
+
+      });
+
+      superBigMaintenanceArray.push(carMaintenanceArray);
+    }
+
+      this.setState({carMaintenance:superBigMaintenanceArray}, function(){
+        this.calculateOverallProgress();
+
+      });
+  }
+
+  calculateOverallProgress(){
+    var overallProgressArr = [];
+
+    this.state.carMaintenance.map(carInfo => {
+      var sumProgress = 0;
+      var calculatedProgress = 0;
+
+      carInfo.map(category => {
+        if (!isNaN(category.categoryProgress)) {
+          sumProgress += category.categoryProgress;
+        }
+      });
+
+      calculatedProgress = (sumProgress/carInfo.length);
+  
+      overallProgressArr.push(calculatedProgress); 
+    });
+
+    this.setState({overallProgress: overallProgressArr});
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    // method every time the state updates
+
+    if (!isEqual(prevState.overallProgress, this.state.overallProgress) ||
+      !isEqual(prevState.masterlist, this.state.masterlist) ||
+      !isEqual(prevState.carMaintenance, this.state.carMaintenance)) {
+
+      this.calculateCategoryProgress();
+        
+    }
+  }
 
 	render() {
+
+    
+
+    var containerStyle = {
+      width:'350px',
+      height:'200px'
+    };
 
     if (this.state.masterlist.length !== 0) {
 
@@ -33,15 +139,59 @@ export default class Masterlist extends React.Component {
 
             <div className="panel-body">
 
-              {this.state.masterlist.map((car, i) => {
+            {
+              this.state.masterlist.map((car, i) => {
 
-                return (
+                  return (
 
-                  <div className="well" key={i}>
-					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin} className="btn btn-primary"> View Profile</Link>
-                  </div>
-                );
-              })}
+                    <div className="well" key={i}>
+                      <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin} className="btn btn-primary"> View Profile</Link>
+                
+                  {
+                    this.state.overallProgress.map((progressbar,j) => {
+
+                      if (this.state.overallProgress == 1) {
+                        var options = {
+                          strokeWidth:2,
+                          color: '#42f445'
+                        };
+                      }
+                      else if (this.state.overallProgress < 1 && this.state.overallProgress >= .5) {
+                        var options = {
+                          strokeWidth:2,
+                          color: '#fb1'
+                        };
+                      }
+                      else {
+                        var options = {
+                          strokeWidth:2,
+                          color: '#f44242'
+                        };
+                      }
+
+                      if (i == j){
+                        return(
+                            <SemiCircle
+                              progress = {progressbar}
+                              text={""}
+                              options={options}
+                              initialAnimate={true}
+                              containerStyle={containerStyle}
+                              containerClassName={'.progressbar'}
+                              key={j}
+                            />
+                        );
+                      }
+                    })
+                  }
+
+                    </div>
+
+                  );
+                
+              })
+            }
+
             </div>
 
       );

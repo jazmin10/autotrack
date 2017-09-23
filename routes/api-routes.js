@@ -10,7 +10,7 @@ var Car = require("../models/Cars.js");
 // set mongoose to leverage built in JS ES6 Promises
 
 var mongoose = require("mongoose");
-// mongoose.Promise = Promise;
+mongoose.Promise = Promise;
 
 // ===== CAR & TASKS =====
 // GET - get all cars
