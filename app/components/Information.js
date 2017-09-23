@@ -1,10 +1,21 @@
-/* Information Component -  contains the car information (vin, make, model, year, color,
-mileage) for a car */
+/* ========== CAR INFORMATION COMPONENT ==========
+ 	- contains car information (vin, make, model, year, color,
+mileage) for a car
+	- child of profile
+*/
 
+// DEPENDENCIES -----------------------------
+// include the react library
 import React from 'react';
+
+// include helpers
 import helpers from "./utils/helpers.js";
 
-export default class Projects extends React.Component {
+// include QR code
+import { QRCode } from 'react-qr-svg';
+
+// INFORMATION -----------------------------
+export default class Information extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -17,7 +28,6 @@ export default class Projects extends React.Component {
 			mileage: 0
 		}
 	}
-
 
 	// componentDidMount() {
 
@@ -36,8 +46,7 @@ export default class Projects extends React.Component {
 	// }
 
 	componentWillReceiveProps(nextProps){
-
-		helpers.getCarInfo(this.props.vin).then((data) => {
+		helpers.getCarInfo(nextProps.vin).then((data) => {
 
 			this.setState({
 				vin: data.vin,
@@ -51,9 +60,19 @@ export default class Projects extends React.Component {
 	}
 
 	render() {
+
+		var QRVal = "http://localhost:3000/dashboard-manager/profile/" + (this.state.vin);
+		
 		return(
 			<div className="container" className="well">
 				<h2>Basic Specs</h2>
+				<QRCode
+                    bgColor="#FFFFFF"
+                    fgColor="#000000"
+                    level="Q"
+                    style={{ width: 256 }}
+                    value={QRVal} 
+                />
 				<h4>
 					{this.state.year} {this.state.color} {this.state.make} {this.state.model}
 				</h4>
