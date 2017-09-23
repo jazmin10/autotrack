@@ -183,6 +183,7 @@ module.exports = function(app) {
 
 	});
 
+<<<<<<< HEAD
 	// Scraping for Car Info
 	app.get("/scrape", function(req, res) {
 
@@ -196,6 +197,18 @@ module.exports = function(app) {
 		var results = {};
 
 		$("ul li").each(function(i, element) {
+=======
+	// GET - Scrape car info
+	app.get("/scrape", function(req, res) {
+
+        request("https://www.vehiclehistory.com/paging-vin-report- data/specifications.php?vin=" + req.params.vin, function(error, response, html) {
+        	if (error) throw error;
+			var $ = cheerio.load(html);
+
+			var results = {};
+
+			$("ul li").each(function(i, element) {
+>>>>>>> Finfischley
 			// console.log(i);
 			// console.log(element);
 
@@ -213,6 +226,7 @@ module.exports = function(app) {
 			else if (parent === "YEAR") {
 				results.year = content;
 			}
+<<<<<<< HEAD
 			
 		});
 
@@ -222,6 +236,16 @@ module.exports = function(app) {
 });
 
 
+=======
+
+			});
+
+			console.log(results);
+
+		});
+		res.send("Scrape Complete");
+	 });
+>>>>>>> Finfischley
 
 	// ===== USER =====
 	// GET - login information

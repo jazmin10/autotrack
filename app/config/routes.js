@@ -32,7 +32,11 @@ export default (
         
           <Route path="masterlist" component={Masterlist} />
           <Route path="my-projects" component={Projects} />
+<<<<<<< HEAD
            <Route path="add-car" component={Add} />
+=======
+          <Route path="add-car" component={Add} /> 
+>>>>>>> Finfischley
 
           <Route path="profile/:vin" component={Profile} />
 
