@@ -158,13 +158,13 @@ export default class Masterlist extends React.Component {
                   {
                     this.state.overallProgress.map((progressbar,j) => {
 
-                      if (this.state.overallProgress == 1) {
+                      if (progressbar == 1) {
                         var options = {
                           strokeWidth:2,
                           color: '#42f445'
                         };
                       }
-                      else if (this.state.overallProgress < 1 && this.state.overallProgress >= .5) {
+                      else if (progressbar < 1 && progressbar >= .5) {
                         var options = {
                           strokeWidth:2,
                           color: '#fb1'
@@ -181,7 +181,7 @@ export default class Masterlist extends React.Component {
                         return(
                             <SemiCircle
                               progress = {progressbar}
-                              text={""}
+                              text={(progressbar * 100).toFixed(0) + "%"}
                               options={options}
                               initialAnimate={true}
                               containerStyle={containerStyle}
