@@ -45,24 +45,17 @@ export default class Splash extends React.Component {
 
 			console.log(response);
 			
-<<<<<<< HEAD
 			if (response.username !== undefined) {
-=======
-			if (response === null) {
->>>>>>> master
+				localStorage.setItem("autotrackToken", response.token);
+				localStorage.setItem("username", response.username);
 
 
-<<<<<<< HEAD
-				// Redirect user to the dashboard page
 				this.handleRedirect();
-=======
-				console.log("Username and Password not found");
-				return "Invalid Username or Password";
->>>>>>> master
-
+				
 			} else {
 
-				this.handleRedirect();
+				console.log("Username and Password not found");
+				return "Invalid Username or Password";
 
 			}
 		})
