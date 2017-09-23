@@ -81,6 +81,7 @@ var helpers = {
 	scrape: (vin) => {
 
 		return axios.get("/scrape", { params: { vin: vin }}).then(response => {
+			console.log(response);
 			return response.data;
 		});
 	},

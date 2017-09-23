@@ -7,6 +7,9 @@ var path = require("path");
 var User = require("../models/User.js");
 var Car = require("../models/Cars.js");
 
+var cheerio = require("cheerio");
+var request = require("request");
+
 // set mongoose to leverage built in JS ES6 Promises
 
 var mongoose = require("mongoose");
@@ -186,10 +189,16 @@ module.exports = function(app, jwt, secret) {
 	// Scraping for Car Info
 	app.get("/scrape", function(req, res) {
 
+		console.log(req);
+
+		var queryURL = "https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=" + req.query.vin;
+
+		console.log(queryURL);
+
 	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=1GNDS13S682209636
 	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=JNRDR07X21W103154
 
-	request("https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=", function(error, response, html) {
+	request(queryURL, function(error, response, html) {
 		if (error) throw error;
 		var $ = cheerio.load(html);
 
@@ -217,8 +226,8 @@ module.exports = function(app, jwt, secret) {
 		});
 
 		console.log(results);
+	res.json(results);
 	});
-	res.send("Scrape Complete");
 });
 
 
