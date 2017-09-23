@@ -147,11 +147,37 @@ export default class Profile extends React.Component {
 		var updateK = "maintenance";
 		var updateVal = newMaintenanceArr;
 
+		var updateVal = [];
+
+		// remove category progress
+		newMaintenanceArr.map((category) => {
+			var newUpdateObj = {
+				category: category.category,
+				tasks: category.tasks
+			}
+
+			updateVal.push(newUpdateObj);
+		});
+
 		helpers.updateCarMaintenanceArray(this.props.params.vin, updateK, updateVal).then((data) => {
 
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
-				this.setState({maintenance:data}, function(){
+				// make sure to include category progress with value of 0
+				
+				var newMainArrNewTask = []
+
+				data.map((newCategory) => {
+					var newCatObj = {
+						category: newCategory.category,
+						tasks: newCategory.tasks,
+						categoryProgress: 0
+					}
+
+					newMainArrNewTask.push(newCatObj);
+				});
+
+				this.setState({maintenance: newMainArrNewTask}, function(){
 					this.calculateCategoryProgress();
 				});
 			});
