@@ -6,8 +6,11 @@ import helpers from "./utils/helpers.js";
 
 import router, {browserHistory} from "react-router";
 
+
 // creating the splash component
 export default class Splash extends React.Component {
+
+	// checkCredentials() {}
 
 	constructor(props){
 		
@@ -24,15 +27,6 @@ export default class Splash extends React.Component {
 		this.handleRedirect = this.handleRedirect.bind(this);
 	}
 
-	// When the landing page loads...
-	componentDidMount() {
-
-		// If user's token saved in local storage, redirect to dashboard
-		if (localStorage.getItem("autotrackToken") !== null) {
-				this.handleRedirect();
-		}
-	}
-
 	handleChange(event) {
 
 		var newState = {};
@@ -41,27 +35,25 @@ export default class Splash extends React.Component {
 		this.setState(newState);
 	}
 
+	// 
 	handleSubmit(event) {
 
 		event.preventDefault();
 
 		helpers.getAuth(this.state.username, this.state.password)
 		.then(response => {
+
+			console.log(response);
 			
-			if (response.username !== undefined) {
+			if (response === null) {
 
-				// If log in was successful, set token and username to the local storage
-				localStorage.setItem("autotrackToken", response.token);
-				localStorage.setItem("username", response.username);
 
-				// Redirect user to the dashboard page
-				this.handleRedirect();
+				console.log("Username and Password not found");
+				return "Invalid Username or Password";
 
 			} else {
 
-				// If user credentials were incorrect, 
-				console.log("Username and Password not found");
-				return "Invalid Username or Password";
+				this.handleRedirect();
 
 			}
 		})
@@ -70,7 +62,7 @@ export default class Splash extends React.Component {
 
 	handleRedirect() {
 
-		browserHistory.push("/dashboard-manager?token=" + localStorage.getItem("autotrackToken"));
+		browserHistory.push("/dashboard-manager");
 	}
 
 	render() {
