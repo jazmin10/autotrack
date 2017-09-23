@@ -14,7 +14,7 @@ var mongoose = require("mongoose");
 
 // ===== CAR & TASKS =====
 // GET - get all cars
-module.exports = function(app) {
+module.exports = function(app, jwt, secret) {
 
 	app.get("/get-cars", function(req,res){
 
@@ -226,7 +226,11 @@ module.exports = function(app) {
 	// ===== USER =====
 	// GET - login information
 	app.get("/login", function(req,res){
-		console.log(req.query.username, req.query.password);
+
+		if (req.query.username === null || req.query.password === null || req.query.username === "" || req.query.password === "") {
+			console.log("Invalid Credentials");
+			res.json({authenticated: false});
+		}
 
 		User.findOne({
 			username:req.query.username,
@@ -236,13 +240,18 @@ module.exports = function(app) {
 				console.log(err);
 				res.json({authenticated: false});
 			}
-			else if (req.body.username === null || req.body.password === null || req.body.username === "" || req.body.password === "") {
-				console.log("Invalid Credentials");
+
+			if (doc === null) {
 				res.json({authenticated: false});
 			}
 			else {
-				// how we handle logged in user here
-				res.json(doc);
+				// If credentials match a user in the db, respond with their username and jwt-token
+				var myToken = jwt.sign({}, secret);
+
+		 		res.status(200).json({
+		 			token: myToken,
+		 			username: doc.username
+		 		});
 			}
 		});
 	});

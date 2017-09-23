@@ -18,7 +18,7 @@ var helpers = {
 	/* ---------- GET ROUTES ----------- */
 
 	getAuth: function(username, password) {
-		console.log(username, password);
+		// console.log(username, password);
 		return axios.get("/login", {
 			params: {
 				username: username,
@@ -30,34 +30,50 @@ var helpers = {
 	},
 
 	// Using in Projects.js. Get all the cars assigned to a particular user and return.
+	// Needs to include token in request headers
 	getProjectCars: (username) => {
-		return axios.get("/user-projects/" + username)
-			.then(response => {
+		return axios({
+				method: 'GET',
+				url: "/user-projects/" + username,
+				headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+			}).then(response => {
 				return response.data;
 			});
 	},
 
 	// Using in Masterlist.js. Get a list of all the cars in the database and return.
+	// Needs to include token in request headers
 	getMasterlist: () => {
-		return axios.get("/get-cars/")
-			.then(response => {
+		return axios({
+			method: 'GET',
+			url: "/get-cars/",
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		}).then(response => {
 				return response.data;
 			});
 	},
 
 	// Using in Profile.js. Grab a car's maintenance information by vin
+	// Needs to include token in request headers
 	getCarMaintenanceInfo: (vin) => {
-		return axios.get("/get-car/" + vin).then(response => {
+		return axios({
+			method: 'GET',
+			url: "/get-car/" + vin,
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		}).then(response => {
 			return response.data.maintenance;
 		});
 	},
 
 	// Using in Information.js. Grab a car's information by vin
+	// Needs to include token in request headers[]
 	getCarInfo: (vin) => {
-		
-		return axios.get("/get-car/" + vin).then(response => {
-			// console.log(response.data.maintenance);
-			console.log(response.data);
+
+		return axios({
+			method: "GET",
+			url: "/get-car/" + vin,
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		}).then(response => {
 			return response.data;
 		});
 	},
@@ -72,10 +88,18 @@ var helpers = {
 	/* ---------- UPDATE ROUTES ----------- */
 
 	// Using in Profile.js. Update/"delete" a car profile's info/category/tasks.
+	// Needs to include token in request headers
 	updateCarMaintenanceArray: (vin, updateK, updateVal) => {
-		return axios.put("/manage-car-maintenance/" + vin, {updateKey:updateK, updateValue:updateVal}).then(response => {
+		return axios({
+			method: 'PUT',
+			url: "/manage-car-maintenance/" + vin,
+			data: {updateKey:updateK, updateValue:updateVal},
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		}).then(response => {
+			
 			return response.data;
 		});
+
 	}
 }
 

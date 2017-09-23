@@ -46,8 +46,7 @@ export default class Information extends React.Component {
 	// }
 
 	componentWillReceiveProps(nextProps){
-
-		helpers.getCarInfo(this.props.vin).then((data) => {
+		helpers.getCarInfo(nextProps.vin).then((data) => {
 
 			this.setState({
 				vin: data.vin,

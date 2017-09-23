@@ -12,6 +12,8 @@ import helpers from "./utils/helpers.js";
 import isEqual from 'lodash/isequal';
 // import {QRCode} from "react-qr-svg";
 
+import router, {browserHistory} from "react-router";
+
 // include children
 import Information from "./Information.js";
 import MainTasks from "./Maintasks.js";
@@ -45,19 +47,22 @@ export default class Profile extends React.Component {
 	componentDidMount(){
 		// method invoked immediately after component is mounted
 
-		// run helpers function to get car info from database
-		helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
-			// use vin number from url via react router link
+		if (localStorage.getItem("autotrackToken") !== null) {
+	     
+			// run helpers function to get car info from database
+			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
+				// use vin number from url via react router link
 
-			data.map((maintask) => {
-				maintask.categoryProgress = 0;
+				data.map((maintask) => {
+					maintask.categoryProgress = 0;
+				});
+
+				this.setState({
+					vin: this.props.params.vin, //need to make this dynamic
+					maintenance: data});
+
 			});
-
-			this.setState({
-				vin: this.props.params.vin, //need to make this dynamic
-				maintenance: data});
-
-		});
+		}
 
 	}
 
@@ -93,10 +98,7 @@ export default class Profile extends React.Component {
 		this.setState({maintenance: newArray}, function(){
 
 				this.calculateOverallProgress();
-				newArray=[];
-				taskProgress = 0;
-				numberOfTasks = 0;
-				categoryProgress = 0;
+				
 			});
 	
 	}

@@ -1,0 +1,34 @@
+<!-- No authorization page. Will be displayed if user needs to log in -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AutoTrack</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="/public/assets/css/style.css">
+</head>
+
+<body>
+	
+	<h1 id="displayMessage"></h1>
+
+	<!-- jQuery Link -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		if (localStorage.getItem("autotrackToken") !== null) {
+			$("#displayMessage").html("Redirecting...");
+			window.location.href = "/";
+		}
+		else {
+			$("#displayMessage").html("Please log in...");
+		}
+
+	</script>
+	
+</body>
+</html>

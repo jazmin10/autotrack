@@ -36,8 +36,7 @@ export default (
 
           <Route path="profile/:vin" component={Profile} />
 
-         {/* <IndexRoute component={Projects} /> 
-        */}
+         <IndexRoute component={Projects} /> 
        </Route>
 
       { <IndexRoute component={Splash} /> }
