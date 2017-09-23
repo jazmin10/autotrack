@@ -5,6 +5,7 @@ import React from 'react';
 import helpers from "./utils/helpers.js";
 import { Link } from 'react-router';
 
+import router, {browserHistory} from "react-router";
 
 export default class Masterlist extends React.Component {
 
@@ -16,6 +17,13 @@ export default class Masterlist extends React.Component {
 			masterlist: []
 		}
 	}
+
+  // If there isn't a token in the local storage then redirect user to home page for login
+  componentWillMount() {
+    if (localStorage.getItem("autotrackToken") === null) {
+      browserHistory.push("/");
+    }
+  }
 
 	componentDidMount() {
 
@@ -38,7 +46,7 @@ export default class Masterlist extends React.Component {
                 return (
 
                   <div className="well" key={i}>
-					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin} className="btn btn-primary"> View Profile</Link>
+					<h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary"> View Profile</Link>
                   </div>
                 );
               })}

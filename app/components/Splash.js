@@ -6,12 +6,8 @@ import helpers from "./utils/helpers.js";
 
 import router, {browserHistory} from "react-router";
 
-var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MDYwNTA0NTd9.sH38VNiJEDcPEI97ty2rY6djHLv-9JCO-v_rbzTmy10";
-
 // creating the splash component
 export default class Splash extends React.Component {
-
-	// checkCredentials() {}
 
 	constructor(props){
 		
@@ -28,14 +24,12 @@ export default class Splash extends React.Component {
 		this.handleRedirect = this.handleRedirect.bind(this);
 	}
 
+	// When the landing page loads...
 	componentDidMount() {
 
-		// If user's token saved in local storage matches jwt-token, redirect to dashboard
-		if (localStorage.getItem("autotrackToken") !== undefined) {
-			if (localStorage.getItem("autotrackToken") === token) {
-				// console.log("in here");
+		// If user's token saved in local storage, redirect to dashboard
+		if (localStorage.getItem("autotrackToken") !== null) {
 				this.handleRedirect();
-			}
 		}
 	}
 

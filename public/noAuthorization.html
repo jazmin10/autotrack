@@ -14,10 +14,21 @@
 
 <body>
 	
-	<h1>Please log in</h1>
+	<h1 id="displayMessage"></h1>
 
 	<!-- jQuery Link -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		if (localStorage.getItem("autotrackToken") !== null) {
+			$("#displayMessage").html("Redirecting...");
+			window.location.href = "/";
+		}
+		else {
+			$("#displayMessage").html("Please log in...");
+		}
+
+	</script>
 	
 </body>
 </html>

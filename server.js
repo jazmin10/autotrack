@@ -27,13 +27,15 @@ app.use("/public", express.static("./public"));
 // =============================================================
 
 // JSON Web Token
+var jwtInformation = require("./private.js");
 var expressJWT = require("express-jwt");
 var jwt = require("jsonwebtoken");
-var secret = "this is a our token";
+var secret = jwtInformation.secret;
 
-// Unprotected routes
+// Setting up middle ware for json web token
 app.use(expressJWT({
 	secret: secret,
+	// This is to provide the token in the url as well, not only in body of requests
 	getToken: function fromHeaderOrQuerystring (req) {
     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
         return req.headers.authorization.split(' ')[1];
@@ -42,7 +44,9 @@ app.use(expressJWT({
     }
     	return null;
   	}
-}).unless({ 
+})
+// Unprotected routes: don't need token to access
+.unless({ 
 	path: ['/', '/login']
 }));
 
