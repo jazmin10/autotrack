@@ -7,6 +7,9 @@ var path = require("path");
 var User = require("../models/User.js");
 var Car = require("../models/Cars.js");
 
+var cheerio = require("cheerio");
+var request = require("request");
+
 // set mongoose to leverage built in JS ES6 Promises
 
 var mongoose = require("mongoose");
@@ -14,7 +17,7 @@ var mongoose = require("mongoose");
 
 // ===== CAR & TASKS =====
 // GET - get all cars
-module.exports = function(app) {
+module.exports = function(app, jwt, secret) {
 
 	app.get("/get-cars", function(req,res){
 
@@ -183,21 +186,27 @@ module.exports = function(app) {
 
 	});
 
-<<<<<<< HEAD
+
 	// Scraping for Car Info
 	app.get("/scrape", function(req, res) {
+
+		console.log(req);
+
+		var queryURL = "https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=" + req.query.vin;
+
+		console.log(queryURL);
 
 	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=1GNDS13S682209636
 	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=JNRDR07X21W103154
 
-	request("https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=", function(error, response, html) {
+	request(queryURL, function(error, response, html) {
 		if (error) throw error;
 		var $ = cheerio.load(html);
 
 		var results = {};
 
 		$("ul li").each(function(i, element) {
-=======
+
 	// GET - Scrape car info
 	app.get("/scrape", function(req, res) {
 
@@ -208,7 +217,7 @@ module.exports = function(app) {
 			var results = {};
 
 			$("ul li").each(function(i, element) {
->>>>>>> Finfischley
+
 			// console.log(i);
 			// console.log(element);
 
@@ -226,17 +235,16 @@ module.exports = function(app) {
 			else if (parent === "YEAR") {
 				results.year = content;
 			}
-<<<<<<< HEAD
+
 			
 		});
 
 		console.log(results);
+	res.json(results);
 	});
-	res.send("Scrape Complete");
 });
 
 
-=======
 
 			});
 
@@ -245,12 +253,15 @@ module.exports = function(app) {
 		});
 		res.send("Scrape Complete");
 	 });
->>>>>>> Finfischley
 
 	// ===== USER =====
 	// GET - login information
 	app.get("/login", function(req,res){
-		console.log(req.query.username, req.query.password);
+
+		if (req.query.username === null || req.query.password === null || req.query.username === "" || req.query.password === "") {
+			console.log("Invalid Credentials");
+			res.json({authenticated: false});
+		}
 
 		User.findOne({
 			username:req.query.username,
@@ -260,13 +271,18 @@ module.exports = function(app) {
 				console.log(err);
 				res.json({authenticated: false});
 			}
-			else if (req.body.username === null || req.body.password === null || req.body.username === "" || req.body.password === "") {
-				console.log("Invalid Credentials");
+
+			if (doc === null) {
 				res.json({authenticated: false});
 			}
 			else {
-				// how we handle logged in user here
-				res.json(doc);
+				// If credentials match a user in the db, respond with their username and jwt-token
+				var myToken = jwt.sign({}, secret);
+
+		 		res.status(200).json({
+		 			token: myToken,
+		 			username: doc.username
+		 		});
 			}
 		});
 	});
