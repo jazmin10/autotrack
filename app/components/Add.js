@@ -1,6 +1,5 @@
 /* Add Component -  contains the add/edit form for the cars */
 
-
 import React from 'react';
 import helpers from "./utils/helpers.js";
 import Information from './Information.js'
@@ -20,13 +19,16 @@ export default class Add extends React.Component {
 			model: "",
 			year: 0,
 			color: "",
-			mileage: 0
+			mileage: 0,
+			vinExist: false
 		}
 
 		this.checkVIN = this.checkVIN.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmitVIN = this.handleSubmitVIN.bind(this);
-		this.handleSubmitInfo = this.handleSubmitInfo.bind(this);
+		this.createRecord = this.createRecord.bind(this);
+		this.updateRecord = this.updateRecord.bind(this);
+		// this.handleChange = this.handleChange.bind(this);
+		// this.handleSubmitInfo = this.handleSubmitInfo.bind(this);
 	}
 
 	handleChange(event){
@@ -41,7 +43,6 @@ export default class Add extends React.Component {
 		event.preventDefault();
 
 		console.log(this.state.vin)
-
         helpers.getCarInfo(this.state.vin)
          .then(response => {
 
@@ -55,7 +56,8 @@ export default class Add extends React.Component {
                  model: response.model,
                  year: response.year,
                  color: response.color,
-                 mileage: response.mileage
+                 mileage: response.mileage,
+                 vinExist: true
 
              })
 
@@ -66,10 +68,7 @@ export default class Add extends React.Component {
 
              }
 
-    	 }
-         //if DB return null then call helper.scrape()
-         //else set the state
-         )
+    	 })
     }
 
     scrape() {
@@ -77,134 +76,245 @@ export default class Add extends React.Component {
 	     helpers.scrape(this.state.vin)
 	      .then(response => {
 
-	      	console.log("scrape resonse " + response);
+	      	console.log("scrape response ");
+	      	console.log(response);
 
-	     this.setState({
-	         vin: response.vin,
-	         make: response.make,
-	         model: response.model,
-	         year: response.year,
-	         color: response.color,
-	         mileage: response.mileage
-	     })
-
-
-
-	      });
-
+		    this.setState({
+		        make: response.make,
+		        model: response.model,
+		        year: response.year,
+		     })
+	      })
     }
 
-	handleSubmitVIN(){}
+	updateRecord(){
+		console.log("updating record");
+	}
 
-	handleSubmitInfo(){
-
+	createRecord(){
+		console.log("create record");
 	}
 
 	render() {
 
+		if (this.state.make === "" || this.state.model === "" || this.state.year === "" ) {
+
+		// Render Check Vin input
 		return (
 
 			<div className="panel-body">
-				<form onSubmit={this.checkVIN}> 
-					
-						<input
-						type="text"
-						value={this.state.vin}
-						id="vin"
-						className="form-control"
-						onChange={this.handleChange}
-						required
-						/>
-											
-					<button type="submit" className="btn btn-default navbar-btn">Check VIN</button>
-				</form>
 
+				<div className="form-group">
+					<form onSubmit={this.checkVIN}>
+
+						<h3>VIN Number of the Car:</h3>
+						
+							<input
+							type="text"
+							value={this.state.vin}
+							id="vin"
+							className="form-control"
+							onChange={this.handleChange}
+							required
+							/>
+
+							<button type="submit" className="btn btn-default navbar-btn">Check VIN</button>
+					</form>
+												
+				</div>
 			</div>
 		)
+
+		}
+		else if (this.state.vinExist === false) {
+			return(
+			<div className="panel-body">
+
+					<div className="addEditForm">
+
+						{/* Create the form and add all the input fields */}
+
+						<form onSubmit={this.createRecord}>
+							
+							<div className="form-group">
+
+								<h3>VIN Number of the Car:</h3>
+
+						        <input value={this.state.vin} 
+									type="text"
+									className="form-control"
+					                id="vin"
+					                onChange={this.handleChange}
+					                required
+						        />
+						        <br/>
+
+								<h3>Make of the Car:</h3>
+
+								<input value={this.state.make} 
+									type="text"
+									className="form-control"
+					                id="make"
+					                onChange={this.handleChange}
+					                required
+					            />
+					            <br/>
+
+					            <h3>Model of the Car:</h3>
+
+					            <input value={this.state.model}
+						            type="text"
+						            className="form-control"
+						            id="model"
+						            onChange={this.handleChange}
+						            required
+					            />
+								<br/>
+
+								<h3>Year of the Car:</h3>
+
+								<input value={this.state.year}
+									type="text"
+									className="form-control"
+									id="year"
+									onChange={this.handleChange}
+									required
+								/>
+								<br/>
+
+								<h3>Color of the Car:</h3>
+									
+								<input value={this.state.color}
+									type="text"
+									className="form-control"
+									id="color"
+									onChange={this.handleChange}
+									required
+								/>
+								<br/>
+
+								<h3>Mileage of the Car:</h3>
+
+								<input value={this.state.mileage}
+									type="text"
+									className="form-control"
+									id="mileage"
+									onChange={this.handleChange}
+									required
+								/>
+								<br/>
+
+					            <button className="btn btn-primary" 
+					            	type="submit"> Add
+					            </button>
+
+					            <br/>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+				);
+		}
+
+		
+
+			// Render Add/Edit Form
+			return (
+
+				<div className="panel-body">
+
+					<div className="addEditForm">
+
+						{/* Create the form and add all the input fields */}
+
+						<form onSubmit={this.updateRecord}>
+							
+							<div className="form-group">
+
+								<h3>VIN Number of the Car:</h3>
+
+						        <input value={this.state.vin} 
+									type="text"
+									className="form-control"
+					                id="vin"
+					                onChange={this.handleChange}
+					                required
+						        />
+						        <br/>
+
+								<h3>Make of the Car:</h3>
+
+								<input value={this.state.make} 
+									type="text"
+									className="form-control"
+					                id="make"
+					                onChange={this.handleChange}
+					                required
+					            />
+					            <br/>
+
+					            <h3>Model of the Car:</h3>
+
+					            <input value={this.state.model}
+						            type="text"
+						            className="form-control"
+						            id="model"
+						            onChange={this.handleChange}
+						            required
+					            />
+								<br/>
+
+								<h3>Year of the Car:</h3>
+
+								<input value={this.state.year}
+									type="text"
+									className="form-control"
+									id="year"
+									onChange={this.handleChange}
+									required
+								/>
+								<br/>
+
+								<h3>Color of the Car:</h3>
+									
+								<input value={this.state.color}
+									type="text"
+									className="form-control"
+									id="color"
+									onChange={this.handleChange}
+									required
+								/>
+								<br/>
+
+								<h3>Mileage of the Car:</h3>
+
+								<input value={this.state.mileage}
+									type="text"
+									className="form-control"
+									id="mileage"
+									onChange={this.handleChange}
+									required
+								/>
+								<br/>
+
+					            <button className="btn btn-primary" 
+					            	type="submit"> Edit
+					            </button>
+
+					            <br/>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+			)
+		}
 	}
-		// return (
-
-		// 	<div className="panel-body">
-
-		// 	{/* Create the form and add all the input fields */}
-
-		// 	<form ref="form">
-		// 		<div className="form-group">
-
-		// 			<h3> VIN Number of the Car: </h3>
-
-		// 	        <input value={this.state.vin} 
-		// 				type="text"
-		// 				className="form-control"
-		//                 id="vin"
-		//                 onChange={this.handleSubmitVIN}
-		//                 required
-		// 	        />
-		// 	        <br/>
-
-		// 			<h3> Make of the Car: </h3>
-
-		// 			<input value={this.state.make} 
-		// 				type="text"
-		// 				className="form-control"
-		//                 id="make"
-		//                 onChange={this.handleChange}
-		//                 required
-		//             />
-		//             <br/>
-
-		//             <h3> Model of the Car: </h3>
-
-		//             <input value={this.state.model}
-		// 	            type="text"
-		// 	            className="form-control"
-		// 	            id="model"
-		// 	            onChange={this.handleChange}
-		// 	            required
-		//             />
-		// 			<br/>
-
-		// 			<h3> Year of the Car: </h3>
-
-		// 			<input value={this.state.year}
-		// 				type="text"
-		// 				className="form-control"
-		// 				id="year"
-		// 				onChange={this.handleChange}
-		// 				required
-		// 			/>
-		// 			<br/>
-
-		// 			<h3> Color of the Car: </h3>
-						
-		// 			<input value={this.state.color}
-		// 				type="text"
-		// 				className="form-control"
-		// 				id="color"
-		// 				onChange={this.handleChange}
-		// 				required
-		// 			/>
-		// 			<br/>
-
-		// 			<h3> Mileage of the Car: </h3>
-
-		// 			<input value={this.state.mileage}
-		// 				type="text"
-		// 				className="form-control"
-		// 				id="mileage"
-		// 				onChange={this.handleChange}
-		// 				required
-		// 			/>
-		// 			<br/>
-
-		//             <button className="btn btn-primary" 
-		//             	type="submit"> Add/Edit
-		//             </button>
-		//             <br/>
-		// 		</div>
-		// 	</form>
-
-		// 	</div>
-
-		// )
-}
