@@ -10,7 +10,6 @@
 import React from 'react';
 import helpers from "./utils/helpers.js";
 import isEqual from 'lodash/isequal';
-// import {QRCode} from "react-qr-svg";
 
 import router, {browserHistory} from "react-router";
 
@@ -59,7 +58,8 @@ export default class Profile extends React.Component {
 
 				this.setState({
 					vin: this.props.params.vin, //need to make this dynamic
-					maintenance: data});
+					maintenance: data
+				});
 
 			});
 		}
@@ -81,7 +81,6 @@ export default class Profile extends React.Component {
 
 			// calculate categoryProgress by dividing taskProgress by numberofTasks
 			var categoryProgress = Number((taskProgress / numberOfTasks));
-			console.log("number of tasks: " + numberOfTasks);
 			
 			// store updated category progress in newObject
 			var newObject = {
@@ -98,8 +97,7 @@ export default class Profile extends React.Component {
 		this.setState({maintenance: newArray}, function(){
 
 				this.calculateOverallProgress();
-				
-			});
+		});
 	
 	}
 
