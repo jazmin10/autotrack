@@ -1,4 +1,9 @@
-/* Masterlist Component -  lists of all cars saved in the cars collection */
+/* ========== MASTERLIST COMPONENT ==========
+  - lists of all cars saved in the cars collection
+  and their progressbars
+ */
+
+// DEPENDENCIES -----------------------------
 
 // Include the React library
 import React from 'react';
@@ -9,6 +14,7 @@ import { SemiCircle } from "./react-progress.js";
 
 import router, {browserHistory} from "react-router";
 
+// MASTERLIST -----------------------------
 export default class Masterlist extends React.Component {
 
 	// Initial state setup
@@ -100,6 +106,7 @@ export default class Masterlist extends React.Component {
   }
 
   calculateOverallProgress(){
+    // method to calculate overall progress for each car
     var overallProgressArr = [];
 
     this.state.carMaintenance.map(carInfo => {
@@ -133,8 +140,6 @@ export default class Masterlist extends React.Component {
   }
 
 	render() {
-
-    
 
     var containerStyle = {
       width:'350px',
@@ -205,6 +210,9 @@ export default class Masterlist extends React.Component {
       );
     }
 
-    return(<div>No cars</div>);
+    return(
+      <div>
+        <h2>There are no cars in the masterlist.</h2>
+      </div>);
   }
 }
