@@ -41,6 +41,7 @@ export default class Profile extends React.Component {
 		this.deleteTaskInfo = this.deleteTaskInfo.bind(this);
 		this.deleteCategory = this.deleteCategory.bind(this);
 		this.updateCheck = this.updateCheck.bind(this);
+		this.deleteCar = this.deleteCar.bind(this);
 	}
 
 	componentDidMount(){
@@ -402,7 +403,7 @@ export default class Profile extends React.Component {
 						<h1>DANGER ZONE</h1>
 
 						<h4>Delete this car</h4>
-						<p>Once you delete a car, there's no going back.</p><button onClick={this.deleteCar}></button>
+						<p>Once you delete a car, there's no going back.</p><button className="btn btn-danger" onClick={this.deleteCar}>DELETE</button>
 					</div>
 				</div>
 

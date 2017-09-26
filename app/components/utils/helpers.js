@@ -121,13 +121,24 @@ var helpers = {
 			return response.data;
 		});
 	},
-	/* ----- Create Route -------*/
+
+	/* ----- CREATE ROUTES -------*/
+	
 	createCar: (username, car) => {
-		console.log(car);
 		return axios({
 			method: 'POST',
 			url: "/add-new-car/" + username, 
 			data: car,
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		});
+	},
+
+	/* ---------- DELETE ROUTES ----------- */
+
+	deleteCar: (vin) => {
+		return axios({
+			method:'DELETE',
+			url:'/delete-car/' + vin,
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
 		});
 	}

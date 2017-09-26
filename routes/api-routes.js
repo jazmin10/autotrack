@@ -163,6 +163,8 @@ module.exports = function(app, jwt, secret) {
 	// DELETE - delete car from database by VIN#
 	app.delete("/delete-car/:vin", function(req,res){
 		// Find the car in the cars collection and remove it
+		console.log(req.params.vin);
+
 		Car.findOneAndRemove({
 			"vin":req.params.vin
 			}).exec(function(err,doc){
