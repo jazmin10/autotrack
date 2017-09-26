@@ -82,17 +82,63 @@ export default class Add extends React.Component {
 		    this.setState({
 		        make: response.make,
 		        model: response.model,
-		        year: response.year,
+		        year: response.year
 		     })
 	      })
     }
 
-	updateRecord(){
+	updateRecord(event) {
+
+		event.preventDefault();
+		// update DB where this record is
 		console.log("updating record");
+		// console.log(this.state.make);
+		helpers.updateCarInfo(this.state.vin).then((data) => {
+
+			helpers.getCarInfo(this.state.vin).then((response) => {
+				// console.log(response);
+				this.setState({
+					make: response.make,
+					model:response.model,
+					year: response.year,
+					color: response.color,
+					mileage: response.mileage
+				
+				})
+			});	
+		});
 	}
 
-	createRecord(){
-		console.log("create record");
+	createRecord(event) {
+		var username = "steve";
+		event.preventDefault();
+		console.log(this.state.vin);
+		console.log(this.state.make);
+
+		var newCar = {
+			vin: this.state.vin,
+			make: this.state.make,
+			model:this.state.model,
+			year: this.state.year,
+			color: this.state.color,
+			mileage: this.state.mileage,
+			maintenance: []
+		}
+		
+		helpers.createCar(username, newCar);
+		 // 	.then((response) =>
+			
+			// this.setState({
+		 // 		vin: this.state.vin
+		// 			make: this.state.make,
+		// 			model:this.state.model,
+		// 			year: this.state.year
+		// 			// color: response.color,
+		// 			// mileage: response.mileage
+		// 		}))
+		// console.log("create record");
+			// })
+			
 	}
 
 	render() {

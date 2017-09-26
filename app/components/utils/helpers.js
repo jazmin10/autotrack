@@ -80,7 +80,12 @@ var helpers = {
 
 	scrape: (vin) => {
 
-		return axios.get("/scrape", { params: { vin: vin }}).then(response => {
+		return axios({
+			method: "GET",
+			url: "/scrape", 
+			params: { vin: vin },
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		}).then(response => {
 			console.log(response);
 			return response.data;
 		});
@@ -101,7 +106,49 @@ var helpers = {
 			return response.data;
 		});
 
-	}
+	},
+
+	updateCarInfo: (vin) => {
+
+		// let {vin: vin, make: make, model: model, year: year, color: color, mileage: mileage} = car;
+		// console.log(vin);
+		return axios({
+			method: 'PUT',
+			url: "/manage-car-maintenance/" + vin,
+			// data: JSON.stringify({
+			// 	vin: req.body.vin,
+			// 	make: req.body.make,
+			// 	model: req.body.model,
+			// 	year: req.body.year,
+			// 	color: req.body.color,
+			// 	mileage: req.body.mileage
+			// }),
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		}).then(response => {
+
+			return response.data;
+		});
+	},
+	/* ----- Create Route -------*/
+	createCar: (username, car) => {
+		console.log(car);
+		return axios({
+			method: 'POST',
+			url: "/add-new-car/" + username, 
+			// data: ({
+			// vin: vin,
+			// 	make1: make,
+			// 	model1: model,
+			// 	year1: year
+			// 	// color: this.state.color,
+			// 	// mileage: this.state.mileage
+			// }),
+			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+		})
+		// .then(response => {
+		// 	return response.data;
+		}
+	// }
 }
 
 // export helper
