@@ -42,49 +42,38 @@ export default class Add extends React.Component {
 
 		event.preventDefault();
 
-		console.log(this.state.vin)
-        helpers.getCarInfo(this.state.vin)
-         .then(response => {
+    helpers.getCarInfo(this.state.vin).then(response => {
 
-             console.log(response);
+        if(response != null) {
 
-             if(response != null) {
+     	    this.setState({
+             vin: response.vin,
+             make: response.make,
+             model: response.model,
+             year: response.year,
+             color: response.color,
+             mileage: response.mileage,
+             vinExist: true
 
-         	     this.setState({
-                 vin: response.vin,
-                 make: response.make,
-                 model: response.model,
-                 year: response.year,
-                 color: response.color,
-                 mileage: response.mileage,
-                 vinExist: true
+         	});
 
-             })
+        } else {
+         	this.scrape();
+        }
 
-             } else {
-             	console.log("Response is null!");
-
-             	this.scrape();
-
-             }
-
-    	 })
+    	});
     }
 
     scrape() {
 
-	     helpers.scrape(this.state.vin)
-	      .then(response => {
-
-	      	console.log("scrape response ");
-	      	console.log(response);
+	  	helpers.scrape(this.state.vin).then(response => {
 
 		    this.setState({
-		        make: response.make,
-		        model: response.model,
-		        year: response.year
-		     })
-	      })
+	        make: response.make,
+	        model: response.model,
+	        year: response.year
+		    });
+	    });
     }
 
 	updateRecord(event) {
@@ -110,10 +99,11 @@ export default class Add extends React.Component {
 	}
 
 	createRecord(event) {
-		var username = localStorage.getItem("username");
 		event.preventDefault();
-		console.log(this.state.vin);
-		console.log(this.state.make);
+		var username = localStorage.getItem("username");
+
+		// console.log(this.state.vin);
+		// console.log(this.state.make);
 
 		var newCar = {
 			vin: this.state.vin,
@@ -125,20 +115,19 @@ export default class Add extends React.Component {
 			maintenance: []
 		}
 		
-		helpers.createCar(username, newCar);
-		 // 	.then((response) =>
-			
-			// this.setState({
-		 // 		vin: this.state.vin
-		// 			make: this.state.make,
-		// 			model:this.state.model,
-		// 			year: this.state.year
-		// 			// color: response.color,
-		// 			// mileage: response.mileage
-		// 		}))
-		// console.log("create record");
-			// })
-			
+		helpers.createCar(username, newCar).then(() => {
+			console.log('done');
+
+			this.setState({
+				vin: "",
+				make: "", 
+				model: "", 
+				year: 0, 
+				color: "", 
+				mileage: 0
+			});
+		});
+		
 	}
 
 	render() {

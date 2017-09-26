@@ -131,24 +131,18 @@ var helpers = {
 	},
 	/* ----- Create Route -------*/
 	createCar: (username, car) => {
-		console.log(car);
+		// console.log(car);
 		return axios({
 			method: 'POST',
 			url: "/add-new-car/" + username, 
-			// data: ({
-			// vin: vin,
-			// 	make1: make,
-			// 	model1: model,
-			// 	year1: year
-			// 	// color: this.state.color,
-			// 	// mileage: this.state.mileage
-			// }),
+			data: car,
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
 		})
 		// .then(response => {
-		// 	return response.data;
-		}
-	// }
+		// 	console.log(response);
+		// 	// return response.data;
+		// });
+	}
 }
 
 // export helper
