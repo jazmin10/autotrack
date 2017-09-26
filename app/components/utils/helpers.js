@@ -61,6 +61,7 @@ var helpers = {
 			url: "/get-car/" + vin,
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
 		}).then(response => {
+			
 			return response.data.maintenance;
 		});
 	},
@@ -109,15 +110,14 @@ var helpers = {
 	},
 
 	updateCarInfo: (vin, car) => {
-		 console.log(vin);
-		console.log(car);
+
 		return axios({
 			method: 'PUT',
 			url: "/manage-car-info/" + vin,
 			data: car,
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
-		}).then(response => {
-
+		})
+		.then(response => {
 			return response.data;
 		});
 	},
@@ -129,11 +129,8 @@ var helpers = {
 			url: "/add-new-car/" + username, 
 			data: car,
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
-		})
-		// .then(response => {
-		// 	return response.data;
-		}
-	// }
+		});
+	}
 }
 
 // export helper

@@ -47,7 +47,7 @@ export default class Profile extends React.Component {
 		// method invoked immediately after component is mounted
 
 		if (localStorage.getItem("autotrackToken") !== null) {
-	     
+	   
 			// run helpers function to get car info from database
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				// use vin number from url via react router link

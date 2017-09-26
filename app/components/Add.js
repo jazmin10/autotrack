@@ -7,6 +7,8 @@ import Information from './Information.js'
 //Not sure if it is needed. Add it for now..
 import { Link } from 'react-router';
 
+import router, {browserHistory} from "react-router";
+
 export default class Add extends React.Component {
 
 	//initial state setup in constructor
@@ -27,6 +29,7 @@ export default class Add extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.createRecord = this.createRecord.bind(this);
 		this.updateRecord = this.updateRecord.bind(this);
+		this.handleUpdateRedirect = this.handleUpdateRedirect.bind(this);
 		// this.handleChange = this.handleChange.bind(this);
 		// this.handleSubmitInfo = this.handleSubmitInfo.bind(this);
 	}
@@ -89,21 +92,11 @@ export default class Add extends React.Component {
 			color: this.state.color,
 			mileage: this.state.mileage
 		}
-		helpers.updateCarInfo(this.state.vin, updateCar)
-		.then((data) => {
-			console.log(data);
 
-		// 	helpers.getCarInfo(this.state.vin).then((response) => {
-		// 		// console.log(response);
-		// 		this.setState({
-		// 			make: response.make,
-		// 			model:response.model,
-		// 			year: response.year,
-		// 			color: response.color,
-		// 			mileage: response.mileage
-				
-		// 		})
-		// 	});	
+		helpers.updateCarInfo(this.state.vin, updateCar)
+		.then(data => {
+
+			this.handleUpdateRedirect(data.vin);
 		});
 	}
 
@@ -137,6 +130,10 @@ export default class Add extends React.Component {
 			});
 		});
 		
+	}
+
+	handleUpdateRedirect(vin) {
+		browserHistory.push("/dashboard-manager/profile/" + vin);
 	}
 
 	render() {
