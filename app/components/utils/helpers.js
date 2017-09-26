@@ -108,21 +108,13 @@ var helpers = {
 
 	},
 
-	updateCarInfo: (vin) => {
-
-		// let {vin: vin, make: make, model: model, year: year, color: color, mileage: mileage} = car;
-		// console.log(vin);
+	updateCarInfo: (vin, car) => {
+		 console.log(vin);
+		console.log(car);
 		return axios({
 			method: 'PUT',
-			url: "/manage-car-maintenance/" + vin,
-			// data: JSON.stringify({
-			// 	vin: req.body.vin,
-			// 	make: req.body.make,
-			// 	model: req.body.model,
-			// 	year: req.body.year,
-			// 	color: req.body.color,
-			// 	mileage: req.body.mileage
-			// }),
+			url: "/manage-car-info/" + vin,
+			data: car,
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
 		}).then(response => {
 
@@ -131,7 +123,7 @@ var helpers = {
 	},
 	/* ----- Create Route -------*/
 	createCar: (username, car) => {
-		// console.log(car);
+		console.log(car);
 		return axios({
 			method: 'POST',
 			url: "/add-new-car/" + username, 
@@ -139,10 +131,9 @@ var helpers = {
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
 		})
 		// .then(response => {
-		// 	console.log(response);
-		// 	// return response.data;
-		// });
-	}
+		// 	return response.data;
+		}
+	// }
 }
 
 // export helper

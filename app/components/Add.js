@@ -82,19 +82,28 @@ export default class Add extends React.Component {
 		// update DB where this record is
 		console.log("updating record");
 		// console.log(this.state.make);
-		helpers.updateCarInfo(this.state.vin).then((data) => {
+		var updateCar = {
+			make: this.state.make,
+			model:this.state.model,
+			year: this.state.year,
+			color: this.state.color,
+			mileage: this.state.mileage
+		}
+		helpers.updateCarInfo(this.state.vin, updateCar)
+		.then((data) => {
+			console.log(data);
 
-			helpers.getCarInfo(this.state.vin).then((response) => {
-				// console.log(response);
-				this.setState({
-					make: response.make,
-					model:response.model,
-					year: response.year,
-					color: response.color,
-					mileage: response.mileage
+		// 	helpers.getCarInfo(this.state.vin).then((response) => {
+		// 		// console.log(response);
+		// 		this.setState({
+		// 			make: response.make,
+		// 			model:response.model,
+		// 			year: response.year,
+		// 			color: response.color,
+		// 			mileage: response.mileage
 				
-				})
-			});	
+		// 		})
+		// 	});	
 		});
 	}
 

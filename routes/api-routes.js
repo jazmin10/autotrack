@@ -135,6 +135,33 @@ module.exports = function(app, jwt, secret) {
 
 	});
 
+	// UPDATE CAR INFO IN DB
+	app.put("/manage-car-info/:vin"), function(req, res){
+
+		console.log(req.body);
+		console.log(req.params.vin);
+		var updateDoc = {};
+
+		updateDoc.make = req.body.make;
+		updateDoc.model = req.body.model;
+		updateDoc.year = req.body.year;
+		updateDoc.color = req.body.color;
+		updateDoc.mileage = req.body.mileage;
+
+		Car.findOneAndUpdate({
+			"vin":req.params.vin
+		},
+		{
+			$set:updateDoc
+		}).exec(function(err, doc){
+			if(err) throw(err);
+			
+			console.log(doc);
+			res.json(doc);
+		})
+
+
+	}
 	// DELETE - delete car from database by VIN#
 	app.delete("/delete-car/:vin", function(req,res){
 		// Find the car in the cars collection and remove it
