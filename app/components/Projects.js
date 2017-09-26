@@ -167,25 +167,38 @@ export default class Projects extends React.Component {
                           strokeWidth:2,
                           color: '#42f445'
                         };
+                        var text = (progressbar * 100).toFixed(0) + "%";
                       }
                     else if (progressbar < 1 && progressbar >= .5) {
                       var options = {
                         strokeWidth:2,
                         color: '#fb1'
                       };
+                      var text = (progressbar * 100).toFixed(0) + "%";
                     }
-                    else {
+                    else if (progressbar < .5 && progressbar >= 0) {
                       var options = {
                         strokeWidth:2,
                         color: '#f44242'
                       };
+                      var text = (progressbar * 100).toFixed(0) + "%";
+                    }
+
+                    else {
+                      var options={
+                        strokeWidth:2,
+                        color:'#262525'
+                      }
+                      var text = "No tasks yet.";
+
+                      progressbar = 1;
                     }
 
                     if (i == j){
                       return(
                           <SemiCircle
                             progress = {progressbar}
-                            text={(progressbar * 100).toFixed(0) + "%"}
+                            text={text}
                             options={options}
                             initialAnimate={true}
                             containerStyle={containerStyle}

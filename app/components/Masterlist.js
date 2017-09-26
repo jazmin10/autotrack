@@ -154,54 +154,67 @@ export default class Masterlist extends React.Component {
 
             {
               this.state.masterlist.map((car, i) => {
-
                   return (
 
                     <div className="well" key={i}>
                       <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin} className="btn btn-primary"> View Profile</Link>
                 
-                  {
-                    this.state.overallProgress.map((progressbar,j) => {
+                      {
+                        this.state.overallProgress.map((progressbar,j) => {
 
-                      if (progressbar == 1) {
-                        var options = {
-                          strokeWidth:2,
-                          color: '#42f445'
-                        };
-                      }
-                      else if (progressbar < 1 && progressbar >= .5) {
-                        var options = {
-                          strokeWidth:2,
-                          color: '#fb1'
-                        };
-                      }
-                      else {
-                        var options = {
-                          strokeWidth:2,
-                          color: '#f44242'
-                        };
+                          if (progressbar == 1) {
+                            var options = {
+                              strokeWidth:2,
+                              color: '#42f445'
+                            };
+
+                            var text = (progressbar * 100).toFixed(0) + "%";
+                          }
+                          else if (progressbar < 1 && progressbar >= .5) {
+                            var options = {
+                              strokeWidth:2,
+                              color: '#fb1'
+                            };
+                            var text = (progressbar * 100).toFixed(0) + "%";
+                          }
+
+                          else if (progressbar < .5 && progressbar >= 0) {
+                            var options = {
+                              strokeWidth:2,
+                              color: '#f44242'
+                            };
+                            var text = (progressbar * 100).toFixed(0) + "%";
+                          }
+
+                          else {
+                            var options={
+                              strokeWidth:2,
+                              color:'#262525'
+                            }
+                            var text = "No tasks yet.";
+
+                            progressbar = 1;
+                          }
+
+                          if (i == j){
+                            return(
+                                <SemiCircle
+                                  progress = {progressbar}
+                                  text={text}
+                                  options={options}
+                                  initialAnimate={true}
+                                  containerStyle={containerStyle}
+                                  containerClassName={'.progressbar'}
+                                  key={j}
+                                />
+                            );
+                          }
+                        })
                       }
 
-                      if (i == j){
-                        return(
-                            <SemiCircle
-                              progress = {progressbar}
-                              text={(progressbar * 100).toFixed(0) + "%"}
-                              options={options}
-                              initialAnimate={true}
-                              containerStyle={containerStyle}
-                              containerClassName={'.progressbar'}
-                              key={j}
-                            />
-                        );
-                      }
-                    })
-                  }
-
-                    </div>
+                  </div>
 
                   );
-                
               })
             }
             
