@@ -25,6 +25,8 @@ export default class Dashboard extends React.Component {
 		};
 
 		this.tabClick = this.tabClick.bind(this);
+		this.logOut = this.logOut.bind(this);
+		this.handleRedirect = this.handleRedirect.bind(this);
 		// this.handleRedirect = this.handleRedirect.bind(this);
 	}
 
@@ -37,8 +39,19 @@ export default class Dashboard extends React.Component {
 	// If there isn't a token in the local storage then redirect user to home page for login
 	componentWillMount() {
 		if (localStorage.getItem("autotrackToken") === null) {
-			browserHistory.push("/");
+			this.handleRedirect();
 		}
+	}
+
+	logOut(event){
+		event.preventDefault();
+		localStorage.clear();
+
+		this.handleRedirect();
+	}
+
+	handleRedirect() {
+		browserHistory.push("/");
 	}
 
 	render() {
@@ -51,7 +64,7 @@ export default class Dashboard extends React.Component {
 				    <div className="navbar-header">
 				      <a className="navbar-brand" href="#">
 				        <img alt="AutoTrack" />
-				    	<button type="button" className="btn btn-default navbar-btn">Log Out</button>
+				    	<button type="button" className="btn btn-default navbar-btn" onClick={this.logOut}>Log Out</button>
 				      </a>
 				    </div>
 				  </div>
