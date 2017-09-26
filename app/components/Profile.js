@@ -10,7 +10,6 @@
 import React from 'react';
 import helpers from "./utils/helpers.js";
 import isEqual from 'lodash/isequal';
-// import {QRCode} from "react-qr-svg";
 
 import router, {browserHistory} from "react-router";
 
@@ -59,7 +58,8 @@ export default class Profile extends React.Component {
 
 				this.setState({
 					vin: this.props.params.vin, //need to make this dynamic
-					maintenance: data});
+					maintenance: data
+				});
 
 			});
 		}
@@ -81,7 +81,6 @@ export default class Profile extends React.Component {
 
 			// calculate categoryProgress by dividing taskProgress by numberofTasks
 			var categoryProgress = Number((taskProgress / numberOfTasks));
-			console.log("number of tasks: " + numberOfTasks);
 			
 			// store updated category progress in newObject
 			var newObject = {
@@ -98,8 +97,7 @@ export default class Profile extends React.Component {
 		this.setState({maintenance: newArray}, function(){
 
 				this.calculateOverallProgress();
-				
-			});
+		});
 	
 	}
 
@@ -147,11 +145,37 @@ export default class Profile extends React.Component {
 		var updateK = "maintenance";
 		var updateVal = newMaintenanceArr;
 
+		var updateVal = [];
+
+		// remove category progress
+		newMaintenanceArr.map((category) => {
+			var newUpdateObj = {
+				category: category.category,
+				tasks: category.tasks
+			}
+
+			updateVal.push(newUpdateObj);
+		});
+
 		helpers.updateCarMaintenanceArray(this.props.params.vin, updateK, updateVal).then((data) => {
 
 			helpers.getCarMaintenanceInfo(this.props.params.vin).then((data) => {
 				
-				this.setState({maintenance:data}, function(){
+				// make sure to include category progress with value of 0
+				
+				var newMainArrNewTask = []
+
+				data.map((newCategory) => {
+					var newCatObj = {
+						category: newCategory.category,
+						tasks: newCategory.tasks,
+						categoryProgress: 0
+					}
+
+					newMainArrNewTask.push(newCatObj);
+				});
+
+				this.setState({maintenance: newMainArrNewTask}, function(){
 					this.calculateCategoryProgress();
 				});
 			});

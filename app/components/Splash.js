@@ -1,4 +1,4 @@
-// include React
+  // include React
 import React from "react";
 
 // helper component for making API calls
@@ -35,7 +35,15 @@ export default class Splash extends React.Component {
 		this.setState(newState);
 	}
 
-	// 
+	componentDidMount() {
+  
+		// If user's token saved in local storage, redirect to dashboard
+		if (localStorage.getItem("autotrackToken") !== null) {
+  				this.handleRedirect();
+			}
+  	}
+  	
+
 	handleSubmit(event) {
 
 		event.preventDefault();
@@ -64,7 +72,7 @@ export default class Splash extends React.Component {
 
 	handleRedirect() {
 
-		browserHistory.push("/dashboard-manager");
+		browserHistory.push("/dashboard-manager?token=" + localStorage.getItem("autotrackToken"));
 	}
 
 	render() {

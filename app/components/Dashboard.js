@@ -20,7 +20,9 @@ export default class Dashboard extends React.Component {
 	constructor(props){
 		super(props);
 
-		this.state = { isActive: false };
+		this.state = { 
+			isActive: false
+		};
 
 		this.tabClick = this.tabClick.bind(this);
 		// this.handleRedirect = this.handleRedirect.bind(this);
