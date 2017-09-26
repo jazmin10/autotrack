@@ -50,7 +50,7 @@ module.exports = function(app, jwt, secret) {
 
 	// POST - add new car to database
 	app.post("/add-new-car/:username", function(req,res){
-
+		console.log(req.body);
 		// the new car that will be added into the database
 		var carDoc = {};
 
@@ -68,34 +68,34 @@ module.exports = function(app, jwt, secret) {
 		var newCar = new Car(carDoc);
 
 		// save new Car to database
-		newCar.save(function(err,doc){
+		// newCar.save(function(err,doc){
 
-			if (err) {
-				console.log(err);
-				// handle cars that have already been saved
-				// cars that are saved in database must be unique
-				// res.json({alreadySaved: true});
-			}
-			else {
+		// 	if (err) {
+		// 		console.log(err);
+		// 		// handle cars that have already been saved
+		// 		// cars that are saved in database must be unique
+		// 		// res.json({alreadySaved: true});
+		// 	}
+		// 	else {
 
-				// find the user associated with this car
-				User.findOneAndUpdate({
-					"username":req.params.username
-					},
-					{
-						$push:{
-							"usercars":doc._id
-						}
-				}).exec(function(err,newdoc){
-						if(err){
-							res.send(err);
-						}
-						else {
-							res.json(newdoc);
-						}
-				});
-			}
-		});
+		// 		// find the user associated with this car
+		// 		User.findOneAndUpdate({
+		// 			"username":req.params.username
+		// 			},
+		// 			{
+		// 				$push:{
+		// 					"usercars":doc._id
+		// 				}
+		// 		}).exec(function(err,newdoc){
+		// 				if(err){
+		// 					res.send(err);
+		// 				}
+		// 				else {
+		// 					res.json(newdoc);
+		// 				}
+		// 		});
+			// }
+		// });
 	});
 
 	// UPDATE - car information, maintenance, or tasks

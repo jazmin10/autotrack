@@ -110,7 +110,7 @@ export default class Add extends React.Component {
 	}
 
 	createRecord(event) {
-		var username = "steve";
+		var username = localStorage.getItem("username");
 		event.preventDefault();
 		console.log(this.state.vin);
 		console.log(this.state.make);
