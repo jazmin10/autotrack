@@ -328,6 +328,17 @@ export default class Profile extends React.Component {
 		})
 	}
 
+	deleteCar(){
+		// method invoked when delete button is clicked
+		// deletes car from the database and redirects user back to their projects
+
+		// call helper function to delete
+		helpers.deleteCar(this.props.params.vin).then((data) => {
+			// redirect to projects
+			browserHistory.push("/");
+		});
+	}
+
  	componentDidUpdate(prevProps, prevState){
  		// method invoked every time the state updates
 
@@ -358,7 +369,7 @@ export default class Profile extends React.Component {
 
 		return (
 			<div className="profile-container">
-				this is a copy
+				
 				<div>
 					<Information vin={this.state.vin}/>
 					<MainTasks
@@ -386,6 +397,13 @@ export default class Profile extends React.Component {
 							);
 						})
 					}
+
+					<div className="well">
+						<h1>DANGER ZONE</h1>
+
+						<h4>Delete this car</h4>
+						<p>Once you delete a car, there's no going back.</p><button onClick={this.deleteCar}></button>
+					</div>
 				</div>
 
 
