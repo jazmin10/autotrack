@@ -138,9 +138,6 @@ module.exports = function(app, jwt, secret) {
 	// UPDATE CAR INFO IN DB
 	app.put("/manage-car-info/:vin", function(req, res){
 
-		console.log(req.body);
-		console.log(req.params.vin);
-
 		var updateDoc = {};
 
 		updateDoc.make = req.body.make;
@@ -148,8 +145,6 @@ module.exports = function(app, jwt, secret) {
 		updateDoc.year = req.body.year;
 		updateDoc.color = req.body.color;
 		updateDoc.mileage = req.body.mileage;
-
-		console.log(updateDoc);
 
 		Car.findOneAndUpdate({
 			"vin": req.params.vin

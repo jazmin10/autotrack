@@ -133,7 +133,7 @@ export default class Add extends React.Component {
 	}
 
 	handleUpdateRedirect(vin) {
-		browserHistory.push("/dashboard-manager/profile/" + vin);
+		browserHistory.push("/dashboard-manager/profile/" + vin + "?token=" + localStorage.getItem("autotrackToken"));
 	}
 
 	render() {

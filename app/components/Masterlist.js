@@ -157,7 +157,7 @@ export default class Masterlist extends React.Component {
                   return (
 
                     <div className="well" key={i}>
-                      <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin} className="btn btn-primary"> View Profile</Link>
+                      <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary"> View Profile</Link>
                 
                       {
                         this.state.overallProgress.map((progressbar,j) => {
