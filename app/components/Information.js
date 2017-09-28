@@ -64,20 +64,41 @@ export default class Information extends React.Component {
 		var QRVal = "http://localhost:3000/dashboard-manager/profile/" + (this.state.vin);
 		
 		return(
-			<div className="container" className="well">
-				<h2>Basic Specs</h2>
-				<QRCode
-                    bgColor="#FFFFFF"
-                    fgColor="#000000"
-                    level="Q"
-                    style={{ width: 256 }}
-                    value={QRVal} 
-                />
-				<h4>
-					{this.state.year} {this.state.color} {this.state.make} {this.state.model}
-				</h4>
-				<h5>Mileage: {this.state.mileage}</h5>
-				<h5>VIN: {this.state.vin}</h5>
+			<div className="well information-well">
+				<div className="clearfix">
+					<h2 id="basic-specs-title">Basic Specs</h2>
+					{/*<QRCode
+						className="qr-code"
+	                    bgColor="#FFFFFF"
+	                    fgColor="#000000"
+	                    level="Q"
+	                    style={{ width: 256 }}
+	                    value={QRVal} 
+	                />*/}
+	                <div className="specs-div">
+	                	<h5 className="spec-titles">MAKE</h5>
+	                	<h2 className="specs">{this.state.make}</h2>
+	                	<h5 className="spec-titles">MODEL</h5>
+	                	<h2 className="specs">{this.state.model}</h2>
+	                	<h5 className="spec-titles">YEAR</h5>
+	                	<h2 className="specs">{this.state.year}</h2>
+	                	<h5 className="spec-titles">COLOR</h5>
+	                	<h2 className="specs">{this.state.color}</h2>
+	                	<h5 className="spec-titles">MILEAGE</h5>
+	                	<h2 className="specs">{this.state.mileage}</h2>
+	                	<h5 className="spec-titles">VIN</h5>
+	                	<h2 className="specs">{this.state.vin}</h2>
+					</div>
+
+					<QRCode
+						className="qr-code"
+	                    bgColor="#FFFFFF"
+	                    fgColor="#000000"
+	                    level="Q"
+	                    style={{ width: 256 }}
+	                    value={QRVal} 
+	                />
+				</div>
 			</div>
 		);
 	}

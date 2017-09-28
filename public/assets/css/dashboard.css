@@ -2,9 +2,13 @@
 	font-family: 'Geo', sans-serif;
 	text-align: center;
 	color: deepskyblue;
-	text-shadow: 0px 0px 35px aqua;
+	text-shadow: 0px 0px 35px teal;
 	font-size: 300%;
 	padding: 10px;
+}
+
+#logo img {
+	width: 50%;
 }
 
 #nav-pills {
