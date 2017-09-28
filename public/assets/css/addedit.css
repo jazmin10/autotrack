@@ -1,0 +1,40 @@
+
+/*------------Add/Edit-------------*/
+#add-panel {
+	background: url("../images/carcrop.png");
+	background-repeat: no-repeat;
+	background-position: right;
+
+
+}
+
+h3 {
+	font-family: 'Abel', sans-serif;
+	color: #66ccff;
+}
+
+#steve-btn {
+	font-family: 'Abel', sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	background: linear-gradient(to bottom, #66ccff 0%, #0066ff 100%);
+	
+}
+
+.addEditForm {
+	margin: 15px;
+	border: 2px;
+	border-color: #FF9933;
+}
+
+input[type="text"] {
+	padding-left: 20px;
+	background: '#000000';
+	border-color: #FF9933;
+	border-width: 2px;
+}
+
+/*Matches blue color of buttons
+div {
+    background: linear-gradient(to bottom, #66ccff 0%, #0066ff 100%);
+}*/
