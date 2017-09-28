@@ -399,7 +399,7 @@ export default class Profile extends React.Component {
 						})
 					}
 
-					<div className="well">
+					<div className="well danger-zone-well">
 						<h1>DANGER ZONE</h1>
 
 						<h4>Delete this car</h4>

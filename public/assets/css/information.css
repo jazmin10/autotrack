@@ -1,0 +1,41 @@
+.information-well {
+	background: url("../images/well-bg.png") no-repeat;
+	background-size: 100% 100%;
+	border: none;
+}
+
+.specs-div {
+	width: 50%;
+	margin: 0;
+	display: inline-block;
+}
+
+.clearfix {
+	padding-top: 2%;
+	padding-left: 4%;
+}
+
+#basic-specs-title {
+	color: #ff9122;
+	font-family: 'Audiowide', sans-serif;
+}
+
+.qr-code {
+	padding: 1%;
+	background: #ffffff;
+	float: right;
+	margin-right: 2%;
+	margin-bottom: 2%;
+}
+
+.spec-titles {
+	color: #00bfff;
+	margin-bottom: 0;
+	font-family: 'Geo', sans-serif;
+}
+
+.specs {
+	color: #ffffff;
+	margin-top: 0;
+	font-family: 'Audiowide', sans-serif;
+}

@@ -58,7 +58,7 @@ export default class Dashboard extends React.Component {
 
 		return(
 			<div>
-				<div id="logo">AUTOTRACK</div>
+				<div id="logo"><img alt="AUTOTRACK" src="../../public/assets/images/autotrack-logo.png"/></div>
 
 				<div>
 
