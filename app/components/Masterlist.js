@@ -143,21 +143,20 @@ export default class Masterlist extends React.Component {
 
     var containerStyle = {
       width:'350px',
-      height:'200px'
+      height:'150px'
     };
 
     if (this.state.masterlist.length !== 0) {
 
       return (
 
-            <div className="panel-body">
+            <div className="panel-body masterlist-div">
 
             {
               this.state.masterlist.map((car, i) => {
                   return (
 
-                    <div className="well masterlist-well" key={i}>
-                      <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary"> View Profile</Link>
+                    <div className="well masterlist-content" key={i}>
                 
                       {
                         this.state.overallProgress.map((progressbar,j) => {
@@ -189,7 +188,7 @@ export default class Masterlist extends React.Component {
                           else {
                             var options={
                               strokeWidth:2,
-                              color:'#262525'
+                              color:'#fff'
                             }
                             var text = "No tasks yet.";
 
@@ -204,13 +203,17 @@ export default class Masterlist extends React.Component {
                                   options={options}
                                   initialAnimate={true}
                                   containerStyle={containerStyle}
-                                  containerClassName={'.progressbar'}
+                                  containerClassName={'progressbar'}
                                   key={j}
                                 />
                             );
                           }
                         })
                       }
+
+                      <h4 className="masterlist-h4"><strong>{car.year} {car.make} {car.model}</strong></h4>
+                      <br/>
+                      <Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary masterlist-btn"> View Profile</Link>
 
                   </div>
 

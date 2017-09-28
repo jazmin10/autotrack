@@ -186,7 +186,7 @@ export default class Projects extends React.Component {
                     else {
                       var options={
                         strokeWidth:2,
-                        color:'#262525'
+                        color:'#fff'
                       }
                       var text = "No tasks yet.";
 
@@ -205,13 +205,14 @@ export default class Projects extends React.Component {
                             containerClassName={'progressbar'}
                             key={j}
                           />
-                          
 
                       );
                     }  
                   })
                 } 
-                <h4 className="projects-h4"><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary projects-btn"> View Profile</Link>
+                <h4 className="projects-h4"><strong>{car.year} {car.make} {car.model}</strong></h4>
+                <br/>
+                <Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary projects-btn"> View Profile</Link>
                 
               </div>
             );
