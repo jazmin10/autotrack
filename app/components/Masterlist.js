@@ -142,7 +142,7 @@ export default class Masterlist extends React.Component {
 	render() {
 
     var containerStyle = {
-      width:'350px',
+      width:'300px',
       height:'150px'
     };
 
