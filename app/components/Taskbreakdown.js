@@ -212,68 +212,67 @@ export default class Taskbreakdown extends React.Component {
 					<div>
 						{/* category name, list of tasks, progress bar line */}
 
-						<div className="well">
-							<h1>{this.state.categoryName}</h1>
+						<div className="well tasks-content">
 
-							<hr/>
+							<div className="individual-tasks-div">
+								<h1 className="tasks-h1">{this.state.categoryName}</h1>
 
-							<h3>Task Breakdown</h3>
+								<div>
+									<Line
+										progress = {this.state.categoryProgress}
+										text={percentNum}
+										options={options}
+										initialAnimate={true}
+										containerStyle={containerStyle}
+										containerClassName={'lineprogressbar'}
+									/>
+								</div>
 
-							<div>
-								<Line
-									progress = {this.state.categoryProgress}
-									text={percentNum}
-									options={options}
-									initialAnimate={true}
-									containerStyle={containerStyle}
-									containerClassName={'.progressbar'}
-								/>
-							</div>
+								{
 
-							{
+									this.state.taskInfo.map((tasks,i)=>{
 
-								this.state.taskInfo.map((tasks,i)=>{
+										if (tasks.completed == 0) {
+											return(
+												<div key={i} className="well">
+													<h3 className="tasks-incomplete-h3"><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name} checked={this.state.checked}/> {tasks.name}</h3> 
+													<button className="btn task-delete-btn" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+												</div>
+											);
+										}
 
-									if (tasks.completed == 0) {
 										return(
 											<div key={i} className="well">
-												<h3><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name} checked={this.state.checked}/> {tasks.name}</h3> 
-												<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+												<h3 className="tasks-complete-h3"><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> {tasks.name}</h3>
+												<button className="btn task-delete-btn" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
 											</div>
 										);
-									}
+										
+									})
+								}
 
-									return(
-										<div key={i} className="well">
-											<h3><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> {tasks.name}</h3>
-											<button className="btn btn-xs btn-danger" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+								<div className="add-task-container">
+
+									<form>
+										<div className="form-group tasks-form">
+											<h4 className="tasks-add-form-h4">Add {this.state.categoryName} Task:</h4>
+
+											<input
+												value={this.state.newTask}
+												type="text"
+												className="form-control tasks-add-form-input"
+												id="newTask"
+												onChange={this.handleFormChange}
+												required
+											/>
+											<button className="btn task-add-btn" type="submit" onClick={this.handleAddTask}>Add Task</button>
+											<br/>
+											
 										</div>
-									);
-									
-								})
-							}
+									</form>
+								</div>
 
-							<div className="add-task-container">
-
-								<form>
-									<div className="form-group">
-										<h4>Add {this.state.categoryName} Task:</h4>
-
-										<input
-											value={this.state.newTask}
-											type="text"
-											className="form-control"
-											id="newTask"
-											onChange={this.handleFormChange}
-											required
-										/>
-										<br/>
-
-										<button className="btn btn-primary" type="submit" onClick={this.handleAddTask}>Submit</button>
-									</div>
-								</form>
 							</div>
-
 						</div>
 					</div>
 
