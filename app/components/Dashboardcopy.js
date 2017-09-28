@@ -58,18 +58,18 @@ export default class Dashboard extends React.Component {
 
 		return(
 			<div>
+
 				<div id="logo">AUTOTRACK</div>
 
 				<div>
-
+					{/* Tabs for My Projects, Masterlist, and Add/Edit Car */}
 					<div id="nav-pills">
-						{/* Tabs for My Projects, Masterlist, and Add/Edit Car */}
-						<ul className="nav nav-tabs">
-						  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/my-projects?token=" + localStorage.getItem("autotrackToken")}>My Projects</Link></li>
-						  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/masterlist?token=" + localStorage.getItem("autotrackToken")}>Masterlist</Link></li>
-						  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/add-car?token=" + localStorage.getItem("autotrackToken")}>Add/Edit Car</Link></li>
-							<li role="presentation" className={this.state.isActive ? "active" : null} className="pull-right" onClick={this.logOut}><Link>Log Out</Link></li>
-						</ul>
+					<ul className="nav nav-tabs">
+					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/my-projects?token=" + localStorage.getItem("autotrackToken")}>MY PROJECTS</Link></li>
+					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/masterlist?token=" + localStorage.getItem("autotrackToken")}>MASTERLIST</Link></li>
+					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/add-car?token=" + localStorage.getItem("autotrackToken")}>ADD/EDIT CAR</Link></li>
+					  <li role="presentation" className={this.state.isActive ? "active" : null} className="pull-right" onClick={this.logOut}><Link>Log Out</Link></li>
+					</ul>
 					</div>
 					
 					{/* Tab Content */}
