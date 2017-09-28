@@ -1,3 +1,16 @@
+/* =========== MY PROJECTS STYLING ==========
+
+	Table of Contents
+	-----------------
+	General - divs, inherited style changes
+	My Projects
+		Progressbar
+		Content Div
+		Buttons
+		Text
+		Media Queries
+*/
+
 /* ========== GENERAL ========== */
 
 .panel {
@@ -20,37 +33,38 @@ div.progressbar {
 	float:left;
 
 	margin:0;
+	margin-top:5%;
 	padding:0;
 	border:0;
+
+	position:relative;
+	left:4%;
 }
 
 /* ----------- CONTENT DIV ----------- */
 .projects-content {
-/* each projects container div */
-
 	display:block;
-	background-color: #050111;
-	height:200px;
+	height:300px;
+	width:100%;
 
-	border-width: 1px;
-	border-style:solid;
-	border-color:#7200ff;
-
-	margin:3%;
+	background:transparent;
+	border:none;
+	background: url("../images/well-bg.png") no-repeat;
+	background-size: 100% 100%;
+	border-radius: 35px;
 }
 
 /* ----------- BUTTONS ----------- */
 
 .projects-btn {
-/* view profile btn in projects */
-	display:block;
+	display:inline-block;
 	float:right;
 	position:relative;
-	bottom:0;
-	right:0;
+	left:5%;
+	margin:3%;
 
 	background-color:transparent;
-	border-color: #bb00ff;
+	border-color: #00cbff;
 	border-style:outset;
 	border-width: 2px; 
 	color:#bb00ff;
@@ -67,20 +81,32 @@ div.progressbar {
 
 /* ----------- TEXT ----------- */
 .projects-h4 {
-	display:block;
+	display:inline-block;
 	float:right;
 	position:relative;
-	right:0;
+	right:4%;
+	width:50%;
 	
-	color:#fff;
+	color:#ff6a00;
 	font-family: 'Audiowide', cursive;
-	line-height: 2;
+	text-align: right;
 	letter-spacing: 2;
-	font-size: 45px;
+	font-size: 40px;
+}
+
+strong {
+	float:right;
 }
 
 /* ----------- MEDIA QUERIES ----------- */
-@media screen and (min-width:636px) and (max-width:1201px) {
+@media screen and (min-width:1202px) {
+	.projects-btn {
+		top:35%;
+		left:45%;
+	}
+}
+
+@media screen and (min-width:993px) and (max-width:1201px) {
 
 	.projects-content {
 		position:relative;
@@ -92,13 +118,21 @@ div.progressbar {
 		display: block;
 		position:relative;
 		float:left;
-		left:5%;
+		left:14%;
+		right:0%;
+		width:100%;
+
 		font-size:35px;
+		text-align:center;
 		padding:2%;
 	}
 
+	strong {
+		float:left;
+	}
+
 	.projects-btn {
-		margin:0 47%;
+		margin:0 35%;
 		display:block;
 		float:left;
 	}
@@ -113,7 +147,7 @@ div.progressbar {
 
 }
 
-@media screen and (min-width:513px) and (max-width:635px) {
+@media screen and (min-width:675px) and (max-width:992px) {
 
 	.projects-content {
 		position:relative;
@@ -125,20 +159,29 @@ div.progressbar {
 		display: block;
 		position:relative;
 		float:left;
-		left:5%;
-		font-size:35px;
-		padding:2%;
+		left:4%;
+		right:0%;
+		width:90%;
+		margin:0 auto;
+
+		font-size:30px;
+		text-align: left;
+		padding:6%;
+	}
+
+	strong {
+		float:left;
 	}
 
 	.projects-btn {
-		margin:0 37%;
+		margin:0 35%;
 		display:block;
 		float:left;
 	}
 
 	div.progressbar {
 		position:relative;
-		left:20%;
+		left:24%;
 		float:left;
 		display:inline-block;
 
@@ -146,7 +189,162 @@ div.progressbar {
 
 }
 
-@media screen and (max-width:512px) {
+@media screen and (min-width:455px) and (max-width:674px) {
+
+	div.panel.panel-default,div#nav-pills, div#logo {
+		width:100%;
+		margin:auto 0;
+	}
+
+	div#nav-pills {
+		margin-bottom:30px;
+	}
+
+	div#nav-pills a {
+		float:left;
+		margin:0;
+		display:block;
+		width:100%;
+	}
+
+	ul.nav.nav-tabs {
+		margin:0 auto;
+		padding:1%;
+		width:100%;
+	}
+
+	.projects-content {
+		position:relative;
+		display:block;
+		height:400px;
+	}
+
+	.projects-h4 {
+		display: block;
+		position:relative;
+		float:left;
+		left:2%;
+		right:0%;
+		width:100%;
+
+		font-size:25px;
+		padding:6%;
+	}
+
+	strong {
+		float:left;
+	}
+
+	.projects-btn {
+		margin:0 35%;
+		display:block;
+		float:left;
+	}
+
+	div.progressbar {
+		position:relative;
+		left:18%;
+		float:left;
+		display:inline-block;
+
+	}
+
+}
+
+@media screen and (min-width:400px) and (max-width:454px) {
+
+	div.panel.panel-default,div#nav-pills, div#logo {
+		width:100%;
+		margin:auto 0;
+	}
+
+	div#nav-pills {
+		margin-bottom:30px;
+	}
+
+	div#nav-pills a {
+		float:left;
+		margin:0;
+		display:block;
+		width:100%;
+	}
+
+	ul.nav.nav-tabs {
+		margin:0 auto;
+		padding:1%;
+		width:100%;
+	}
+
+	.projects-content {
+		position:relative;
+		display:block;
+		height:400px;
+		width:100%;
+
+	}
+
+	.projects-h4 {
+		display: block;
+		position:relative;
+		float:left;
+		left:0%;
+		right:0%;
+		width:auto;
+
+		font-size:20px;
+		text-align:center;
+		padding:1%;
+		margin-top:10%;
+	}
+
+	strong {
+		float:left;
+	}
+
+	.projects-btn {
+		margin:0 35%;
+		display:block;
+		float:left;
+	}
+
+	div.progressbar {
+		position:relative;
+		left:3%;
+		float:left;
+		display:block;
+		height:50px;
+		width:200px;
+
+	}
+
+}
+
+@media screen and (max-width:399px) {
+	div.panel.panel-default,div#nav-pills, div#logo {
+		width:100%;
+		margin:auto 0;
+	}
+
+	div#nav-pills {
+		margin-bottom:30px;
+	}
+
+	div#nav-pills a {
+		float:left;
+		margin:0;
+		display:block;
+		width:100%;
+	}
+
+	ul.nav.nav-tabs {
+		margin:0 auto;
+		padding:1%;
+		width:100%;
+	}
+	
+	.container {
+		overflow:hidden;
+	}
 
 	#logo {
 		width:350px;
@@ -178,27 +376,47 @@ div.progressbar {
 	.projects-content {
 		position:relative;
 		display:block;
-		height:500px;
+		height:400px;
+		width:300px;
+
+		background: url("../images/well-bg.png") no-repeat;
+		background-size: 304px 400px;
+		border-radius: 30px;
+		margin-left:1%;
+
 	}
 
 	.projects-h4 {
 		display: block;
 		position:relative;
 		float:left;
-		left:5%;
-		font-size:35px;
-		padding:2%;
+		left:1%;
+		right:1%;
+		width:300px;
+
+		font-size:19px;
+		text-align:left;
+		padding:1%;
+		margin-top:15%;
+		overflow-wrap:normal;
+	}
+
+	strong {
+		float:left;
 	}
 
 	.projects-btn {
-		margin:0 27%;
+		position:relative;
+		top:5%;
+		left:0;
+		margin:15% 0%;
 		display:block;
 		float:left;
 	}
 
 	div.progressbar {
 		position:relative;
-		left:0%;
+		margin-right:5%;
 		float:left;
 		display:inline-block;
 
