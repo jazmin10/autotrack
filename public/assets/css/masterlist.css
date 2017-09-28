@@ -185,8 +185,26 @@ strong {
 
 @media screen and (min-width:455px) and (max-width:674px) {
 
-	div.panel.panel-default {
-		margin-right:0;
+	div.panel.panel-default,div#nav-pills, div#logo {
+		width:100%;
+		margin:auto 0;
+	}
+
+	div#nav-pills {
+		margin-bottom:30px;
+	}
+
+	div#nav-pills a {
+		float:left;
+		margin:0;
+		display:block;
+		width:100%;
+	}
+
+	ul.nav.nav-tabs {
+		margin:0 auto;
+		padding:1%;
+		width:100%;
 	}
 
 	.masterlist-content {
@@ -229,6 +247,28 @@ strong {
 }
 
 @media screen and (min-width:400px) and (max-width:454px) {
+
+	div.panel.panel-default,div#nav-pills, div#logo {
+		width:100%;
+		margin:auto 0;
+	}
+
+	div#nav-pills {
+		margin-bottom:30px;
+	}
+
+	div#nav-pills a {
+		float:left;
+		margin:0;
+		display:block;
+		width:100%;
+	}
+
+	ul.nav.nav-tabs {
+		margin:0 auto;
+		padding:1%;
+		width:100%;
+	}
 
 	.masterlist-content {
 		position:relative;
@@ -274,7 +314,29 @@ strong {
 
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:399px) {
+	div.panel.panel-default,div#nav-pills, div#logo {
+		width:100%;
+		margin:auto 0;
+	}
+
+	div#nav-pills {
+		margin-bottom:30px;
+	}
+
+	div#nav-pills a {
+		float:left;
+		margin:0;
+		display:block;
+		width:100%;
+	}
+
+	ul.nav.nav-tabs {
+		margin:0 auto;
+		padding:1%;
+		width:100%;
+	}
+	
 	.container {
 		overflow:hidden;
 	}
