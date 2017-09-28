@@ -143,15 +143,16 @@ export default class Add extends React.Component {
 		// Render Check Vin input
 		return (
 
-			<div className="panel-body">
+			<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
 
 				<div className="form-group">
 					<form onSubmit={this.checkVIN}>
 
-						<h3>VIN Number of the Car:</h3>
+						<h3>VIN Number:</h3>
 						
 							<input
 							type="text"
+							style={{backgroundColor: '#000000', display: 'flex'}}
 							value={this.state.vin}
 							id="vin"
 							className="form-control"
@@ -159,7 +160,8 @@ export default class Add extends React.Component {
 							required
 							/>
 
-							<button type="submit" className="btn btn-default navbar-btn">Check VIN</button>
+							<button type="submit" 
+							id="steve-btn" className="btn btn-default navbar-btn">Check VIN</button>
 					</form>
 												
 				</div>
@@ -169,9 +171,9 @@ export default class Add extends React.Component {
 		}
 		else if (this.state.vinExist === false) {
 			return(
-			<div className="panel-body">
+			<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
 
-					<div className="addEditForm">
+					<div className="addEditForm" style={{backgroundColor: '#000000', display: 'flex'}}>
 
 						{/* Create the form and add all the input fields */}
 
@@ -179,10 +181,11 @@ export default class Add extends React.Component {
 							
 							<div className="form-group">
 
-								<h3>VIN Number of the Car:</h3>
+								<h3>VIN Number:</h3>
 
 						        <input value={this.state.vin} 
 									type="text"
+									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
 					                id="vin"
 					                onChange={this.handleChange}
@@ -190,10 +193,11 @@ export default class Add extends React.Component {
 						        />
 						        <br/>
 
-								<h3>Make of the Car:</h3>
+								<h3>Make:</h3>
 
 								<input value={this.state.make} 
 									type="text"
+									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
 					                id="make"
 					                onChange={this.handleChange}
@@ -201,7 +205,7 @@ export default class Add extends React.Component {
 					            />
 					            <br/>
 
-					            <h3>Model of the Car:</h3>
+					            <h3>Model:</h3>
 
 					            <input value={this.state.model}
 						            type="text"
@@ -212,7 +216,7 @@ export default class Add extends React.Component {
 					            />
 								<br/>
 
-								<h3>Year of the Car:</h3>
+								<h3>Year:</h3>
 
 								<input value={this.state.year}
 									type="text"
@@ -223,7 +227,7 @@ export default class Add extends React.Component {
 								/>
 								<br/>
 
-								<h3>Color of the Car:</h3>
+								<h3>Color:</h3>
 									
 								<input value={this.state.color}
 									type="text"
@@ -234,7 +238,7 @@ export default class Add extends React.Component {
 								/>
 								<br/>
 
-								<h3>Mileage of the Car:</h3>
+								<h3>Mileage:</h3>
 
 								<input value={this.state.mileage}
 									type="text"
@@ -245,7 +249,7 @@ export default class Add extends React.Component {
 								/>
 								<br/>
 
-					            <button className="btn btn-primary" 
+					            <button id="steve-btn" className="btn btn-primary" 
 					            	type="submit"> Add
 					            </button>
 
@@ -266,9 +270,9 @@ export default class Add extends React.Component {
 			// Render Add/Edit Form
 			return (
 
-				<div className="panel-body">
+				<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
 
-					<div className="addEditForm">
+					<div id="inForm" className="addEditForm" style={{backgroundColor: '#000000', display: 'flex'}}>
 
 						{/* Create the form and add all the input fields */}
 
@@ -276,10 +280,11 @@ export default class Add extends React.Component {
 							
 							<div className="form-group">
 
-								<h3>VIN Number of the Car:</h3>
+								<h3>VIN Number:</h3>
 
 						        <input value={this.state.vin} 
 									type="text"
+									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
 					                id="vin"
 					                onChange={this.handleChange}
@@ -287,10 +292,11 @@ export default class Add extends React.Component {
 						        />
 						        <br/>
 
-								<h3>Make of the Car:</h3>
+								<h3>Make:</h3>
 
 								<input value={this.state.make} 
 									type="text"
+									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
 					                id="make"
 					                onChange={this.handleChange}
@@ -298,10 +304,11 @@ export default class Add extends React.Component {
 					            />
 					            <br/>
 
-					            <h3>Model of the Car:</h3>
+					            <h3>Model:</h3>
 
 					            <input value={this.state.model}
 						            type="text"
+						            style={{backgroundColor: '#000000', display: 'flex'}}
 						            className="form-control"
 						            id="model"
 						            onChange={this.handleChange}
@@ -309,10 +316,11 @@ export default class Add extends React.Component {
 					            />
 								<br/>
 
-								<h3>Year of the Car:</h3>
+								<h3>Year:</h3>
 
 								<input value={this.state.year}
 									type="text"
+									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
 									id="year"
 									onChange={this.handleChange}
@@ -320,10 +328,11 @@ export default class Add extends React.Component {
 								/>
 								<br/>
 
-								<h3>Color of the Car:</h3>
+								<h3>Color:</h3>
 									
 								<input value={this.state.color}
 									type="text"
+									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
 									id="color"
 									onChange={this.handleChange}
@@ -331,10 +340,11 @@ export default class Add extends React.Component {
 								/>
 								<br/>
 
-								<h3>Mileage of the Car:</h3>
+								<h3>Mileage:</h3>
 
 								<input value={this.state.mileage}
 									type="text"
+									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
 									id="mileage"
 									onChange={this.handleChange}
@@ -342,7 +352,7 @@ export default class Add extends React.Component {
 								/>
 								<br/>
 
-					            <button className="btn btn-primary" 
+					            <button id="steve-btn" className="btn btn-primary" 
 					            	type="submit"> Edit
 					            </button>
 

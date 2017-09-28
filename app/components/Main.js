@@ -16,7 +16,7 @@ export default class Main extends React.Component {
   render() {
 
     return (
-      <div className="container">
+      <div className="container" style={{backgroundColor: '#000000', display: 'flex'}}>
         <div>
           {/* Display children components */}
           {this.props.children}
