@@ -58,25 +58,19 @@ export default class Dashboard extends React.Component {
 
 		return(
 			<div>
-				{/* Navbar with logo and log out button */}
-				<nav className="navbar navbar-default">
-				  <div className="container-fluid">
-				    <div className="navbar-header">
-				      <a className="navbar-brand" href="#">
-				        <img alt="AutoTrack" />
-				    	<button type="button" className="btn btn-default navbar-btn" onClick={this.logOut}>Log Out</button>
-				      </a>
-				    </div>
-				  </div>
-				</nav>
+				<div id="logo">AUTOTRACK</div>
 
-				<div className="container">
-					{/* Tabs for My Projects, Masterlist, and Add/Edit Car */}
-					<ul className="nav nav-tabs">
-					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/my-projects?token=" + localStorage.getItem("autotrackToken")}>My Projects</Link></li>
-					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/masterlist?token=" + localStorage.getItem("autotrackToken")}>Masterlist</Link></li>
-					  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/add-car?token=" + localStorage.getItem("autotrackToken")}>Add/Edit Car</Link></li>
-					</ul>
+				<div>
+
+					<div id="nav-pills">
+						{/* Tabs for My Projects, Masterlist, and Add/Edit Car */}
+						<ul className="nav nav-tabs">
+						  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/my-projects?token=" + localStorage.getItem("autotrackToken")}>My Projects</Link></li>
+						  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/masterlist?token=" + localStorage.getItem("autotrackToken")}>Masterlist</Link></li>
+						  <li role="presentation" className={this.state.isActive ? "active" : null} onClick={this.tabClick}><Link to={"/dashboard-manager/add-car?token=" + localStorage.getItem("autotrackToken")}>Add/Edit Car</Link></li>
+							<li role="presentation" className={this.state.isActive ? "active" : null} className="pull-right" onClick={this.logOut}><Link>Log Out</Link></li>
+						</ul>
+					</div>
 					
 					{/* Tab Content */}
 					<div className="panel panel-default">

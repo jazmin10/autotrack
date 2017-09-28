@@ -156,7 +156,7 @@ export default class Masterlist extends React.Component {
               this.state.masterlist.map((car, i) => {
                   return (
 
-                    <div className="well" key={i}>
+                    <div className="well masterlist-well" key={i}>
                       <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary"> View Profile</Link>
                 
                       {
