@@ -140,8 +140,8 @@ export default class Projects extends React.Component {
 	render() {
 
     var containerStyle = {
-      width:'350px',
-      height:'200px'
+      width:'300px',
+      height:'150px'
     };
 
 	  // If carList is not empty, render list of cars.
@@ -149,15 +149,14 @@ export default class Projects extends React.Component {
 
       return (
 
-        <div className="panel-body">
+        <div className="panel-body projects-div">
 
           {
             this.state.carList.map((car, i) => {
 
             return (
 
-              <div className="well" key={i}>
-                <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary"> View Profile</Link>
+              <div className="well projects-content" key={i}>
               
                 {
                   this.state.overallProgress.map((progressbar,j) => {
@@ -196,19 +195,24 @@ export default class Projects extends React.Component {
 
                     if (i == j){
                       return(
+
                           <SemiCircle
                             progress = {progressbar}
                             text={text}
                             options={options}
                             initialAnimate={true}
                             containerStyle={containerStyle}
-                            containerClassName={'.progressbar'}
+                            containerClassName={'progressbar'}
                             key={j}
                           />
+                          
+
                       );
                     }  
                   })
-                }
+                } 
+                <h4 className="projects-h4"><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary projects-btn"> View Profile</Link>
+                
               </div>
             );
           })}
