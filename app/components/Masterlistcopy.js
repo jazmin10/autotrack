@@ -150,14 +150,22 @@ export default class Masterlist extends React.Component {
 
       return (
 
-            <div className="panel-body">
-
+            <div className="panel-body masterlist-body">
             {
               this.state.masterlist.map((car, i) => {
                   return (
 
                     <div className="well masterlist-well" key={i}>
-                      <h4><strong>{car.year} {car.make} {car.model}</strong></h4><Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary"> View Profile</Link>
+                      <h4>
+                        <strong>
+                        {car.year}
+                        <br/> 
+                        {car.make} 
+                        <br/>
+                        {car.model}
+                        </strong>
+                      </h4>
+                      <Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary">View Profile</Link>
                 
                       {
                         this.state.overallProgress.map((progressbar,j) => {

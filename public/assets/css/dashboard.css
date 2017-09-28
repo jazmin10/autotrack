@@ -1,0 +1,33 @@
+#logo {
+	font-family: 'Geo', sans-serif;
+	text-align: center;
+	color: deepskyblue;
+	text-shadow: 0px 0px 35px aqua;
+	font-size: 300%;
+	padding: 10px;
+}
+
+#nav-pills {
+	border: solid;
+	border-color: deepskyblue;
+	box-shadow: 0px 0px 25px aqua;
+	margin-bottom: 30px;
+	border-radius: 5px;
+}
+
+.nav-tabs {
+	border: none;
+}
+
+.nav-tabs li a {
+	color: white;
+	font-family: 'Geo', sans-serif;
+	font-size: 150%;
+}
+
+.panel-default {
+	background: black;
+	border-color: deepskyblue;
+	box-shadow: 0px 0px 15px aqua;
+	border-width: initial;
+}
