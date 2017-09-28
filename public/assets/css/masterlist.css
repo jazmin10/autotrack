@@ -1,3 +1,16 @@
+/* =========== MASTERLIST STYLING ==========
+
+	Table of Contents
+	-----------------
+	General - divs, inherited style changes
+	Masterlist
+		Progressbar
+		Content Div
+		Buttons
+		Text
+		Media Queries
+*/
+
 /* ========== GENERAL ========== */
 
 .panel {
@@ -20,17 +33,19 @@ div.progressbar {
 	float:left;
 
 	margin:0;
+	margin-top:5%;
 	padding:0;
 	border:0;
 
 	position:relative;
-	left:10%;
+	left:4%;
 }
 
 /* ----------- CONTENT DIV ----------- */
 .masterlist-content {
 	display:block;
-	height:250px;
+	height:300px;
+	width:100%;
 
 	background: transparent;
 	border: none;
@@ -41,7 +56,7 @@ div.progressbar {
 
 /* ----------- BUTTONS ----------- */
 .masterlist-btn {
-	display:block;
+	display:inline-block;
 	float:right;
 	position:relative;
 	right:5%;
@@ -65,19 +80,276 @@ div.progressbar {
 
 /* ----------- TEXT ----------- */
 .masterlist-h4 {
-	display:block;
+	display:inline-block;
 	float:right;
 	position:relative;
-	right:5%;
-	margin:3%;
+	right:4%;
+	width:50%;
 
 	color: #ff6a00;
 	font-family: 'Audiowide', cursive;
-	line-height:2px;
+	text-align:right;
+
 	letter-spacing:2px;
-	font-size:35px;
+	font-size:40px;
+}
+
+strong {
+	float:right;
 }
 
 /* ----------- MEDIA QUERIES ----------- */
 
+@media screen and (min-width:993px) and (max-width:1201px) {
 
+	.masterlist-content {
+		position:relative;
+		display:block;
+		height:400px;
+	}
+
+	.masterlist-h4 {
+		display: block;
+		position:relative;
+		float:left;
+		left:14%;
+		right:0%;
+		width:100%;
+
+		font-size:35px;
+		text-align:center;
+		padding:4%;
+	}
+
+	strong {
+		float:left;
+	}
+
+	.masterlist-btn {
+		margin:0 47%;
+		display:block;
+		float:left;
+	}
+
+	div.progressbar {
+		position:relative;
+		left:35%;
+		float:left;
+		display:inline-block;
+
+	}
+
+}
+
+@media screen and (min-width:675px) and (max-width:992px) {
+
+	.masterlist-content {
+		position:relative;
+		display:block;
+		height:400px;
+	}
+
+	.masterlist-h4 {
+		display: block;
+		position:relative;
+		float:left;
+		left:4%;
+		right:0%;
+		width:90%;
+		margin:0 auto;
+
+		font-size:30px;
+		text-align:left;
+		padding:6%;
+	}
+
+	strong {
+		float:left;
+	}
+
+	.masterlist-btn {
+		margin:0 47%;
+		display:block;
+		float:left;
+	}
+
+	div.progressbar {
+		position:relative;
+		left:24%;
+		float:left;
+		display:inline-block;
+
+	}
+
+}
+
+@media screen and (min-width:455px) and (max-width:674px) {
+
+	div.panel.panel-default {
+		margin-right:0;
+	}
+
+	.masterlist-content {
+		position:relative;
+		display:block;
+		height:400px;
+	}
+
+	.masterlist-h4 {
+		display: block;
+		position:relative;
+		float:left;
+		left:2%;
+		right:0%;
+		width:100%;
+
+		font-size:25px;
+		text-align:center;
+		padding:6%;
+	}
+
+	strong {
+		float:left;
+	}
+
+	.masterlist-btn {
+		margin:0 40%;
+		display:block;
+		float:left;
+	}
+
+	div.progressbar {
+		position:relative;
+		left:7%;
+		float:left;
+		display:inline-block;
+
+	}
+
+}
+
+@media screen and (min-width:400px) and (max-width:454px) {
+
+	.masterlist-content {
+		position:relative;
+		display:block;
+		height:400px;
+		width:100%;
+
+	}
+
+	.masterlist-h4 {
+		display: block;
+		position:relative;
+		float:left;
+		left:0%;
+		right:0%;
+		width:auto;
+
+		font-size:20px;
+		text-align:center;
+		padding:1%;
+		margin-top:10%;
+	}
+
+	strong {
+		float:left;
+	}
+
+	.masterlist-btn {
+		margin:0 40%;
+		display:block;
+		float:left;
+	}
+
+	div.progressbar {
+		position:relative;
+		left:3%;
+		float:left;
+		display:block;
+		height:50px;
+		width:200px;
+
+	}
+
+}
+
+@media screen and (max-width:400px) {
+	.container {
+		overflow:hidden;
+	}
+
+	#logo {
+		width:350px;
+		padding:0;
+		margin:0;
+		border:0;
+		float:left;
+	}
+
+	div#nav-pills {
+		width:350px;
+		overflow:hidden;
+	}
+	
+	.nav-tabs {
+		width:350px;
+	}
+
+	.nav-tabs li a {
+		color: white;
+		font-family: 'Geo', sans-serif;
+		font-size: 150%;
+	}
+
+	.panel-default {
+		width:350px;
+	}
+
+	.masterlist-content {
+		position:relative;
+		display:block;
+		height:400px;
+		width:300px;
+
+		background: url("../images/well-bg.png") no-repeat;
+		background-size: 300px 400px;
+		border-radius: 30px;
+		margin-left:1%;
+
+	}
+
+	.masterlist-h4 {
+		display: block;
+		position:relative;
+		float:left;
+		left:1%;
+		right:1%;
+		width:300px;
+
+		font-size:19px;
+		text-align:left;
+		padding:1%;
+		margin-top:15%;
+		overflow-wrap:normal;
+	}
+
+	strong {
+		float:left;
+	}
+
+	.masterlist-btn {
+		margin:15% 30%;
+		display:block;
+		float:left;
+	}
+
+	div.progressbar {
+		position:relative;
+		left:3%;
+		float:left;
+		display:inline-block;
+
+	}
+
+}

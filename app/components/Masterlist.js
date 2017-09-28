@@ -163,7 +163,7 @@ export default class Masterlist extends React.Component {
 
                           if (progressbar == 1) {
                             var options = {
-                              strokeWidth:2,
+                              strokeWidth:1,
                               color: '#42f445'
                             };
 
@@ -171,7 +171,7 @@ export default class Masterlist extends React.Component {
                           }
                           else if (progressbar < 1 && progressbar >= .5) {
                             var options = {
-                              strokeWidth:2,
+                              strokeWidth:1,
                               color: '#fb1'
                             };
                             var text = (progressbar * 100).toFixed(0) + "%";
@@ -179,7 +179,7 @@ export default class Masterlist extends React.Component {
 
                           else if (progressbar < .5 && progressbar >= 0) {
                             var options = {
-                              strokeWidth:2,
+                              strokeWidth:1,
                               color: '#f44242'
                             };
                             var text = (progressbar * 100).toFixed(0) + "%";
@@ -187,7 +187,7 @@ export default class Masterlist extends React.Component {
 
                           else {
                             var options={
-                              strokeWidth:2,
+                              strokeWidth:1,
                               color:'#fff'
                             }
                             var text = "No tasks yet.";
@@ -197,15 +197,17 @@ export default class Masterlist extends React.Component {
 
                           if (i == j){
                             return(
-                                <SemiCircle
-                                  progress = {progressbar}
-                                  text={text}
-                                  options={options}
-                                  initialAnimate={true}
-                                  containerStyle={containerStyle}
-                                  containerClassName={'progressbar'}
-                                  key={j}
-                                />
+                              
+                              <SemiCircle
+                                progress = {progressbar}
+                                text={text}
+                                options={options}
+                                initialAnimate={true}
+                                containerStyle={containerStyle}
+                                containerClassName={'progressbar'}
+                                key={j}
+                              />
+
                             );
                           }
                         })

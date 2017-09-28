@@ -25,6 +25,12 @@
 	font-size: 150%;
 }
 
+.nav-tabs li a:hover, .nav-tabs li a:active {
+	background-color:transparent;
+	border:none;
+	text-shadow:1px 1px deepskyblue;
+}
+
 .panel-default {
 	background: black;
 	border-color: deepskyblue;

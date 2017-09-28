@@ -148,6 +148,33 @@ div.progressbar {
 
 @media screen and (max-width:512px) {
 
+	#logo {
+		width:350px;
+		padding:0;
+		margin:0;
+		border:0;
+		float:left;
+	}
+
+	div#nav-pills {
+		width:350px;
+		overflow:hidden;
+	}
+	
+	.nav-tabs {
+		width:350px;
+	}
+
+	.nav-tabs li a {
+		color: white;
+		font-family: 'Geo', sans-serif;
+		font-size: 150%;
+	}
+
+	.panel-default {
+		width:350px;
+	}
+
 	.projects-content {
 		position:relative;
 		display:block;
