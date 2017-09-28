@@ -81,7 +81,7 @@ export default class Splash extends React.Component {
 		return (
 			<div className="splash-container">
 
-				<div className="jumbotron" style={{backgroundColor: '#000000', display: 'flex', marginTop: '50'}}>
+				<div className="jumbotron" style={{backgroundColor: '#000000', marginTop: '100', height: '100vh'}}>
 					<div className="col-md-3"></div>
 					<div className="col-md-6">
 
