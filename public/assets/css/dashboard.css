@@ -1,8 +1,8 @@
 #logo {
 	font-family: 'Geo', sans-serif;
 	text-align: center;
-	color: deepskyblue;
-	text-shadow: 0px 0px 35px teal;
+	color: #00bfff;
+	text-shadow: 0px 0px 35px #00ffff;
 	font-size: 300%;
 	padding: 10px;
 }
@@ -13,8 +13,8 @@
 
 #nav-pills {
 	border: solid;
-	border-color: deepskyblue;
-	box-shadow: 0px 0px 25px aqua;
+	border-color: #00bfff;
+	box-shadow: 0px 0px 25px #00ffff;
 	margin-bottom: 30px;
 	border-radius: 5px;
 }
@@ -24,7 +24,7 @@
 }
 
 .nav-tabs li a {
-	color: white;
+	color: #ffffff;
 	font-family: 'Geo', sans-serif;
 	font-size: 150%;
 	border:none;
@@ -33,12 +33,12 @@
 .nav-tabs li a:hover, .nav-tabs li a:active {
 	background-color:transparent;
 	border:none;
-	text-shadow:1px 1px deepskyblue;
+	text-shadow:1px 1px #00bfff;
 }
 
 .panel-default {
-	background: black;
-	border-color: deepskyblue;
-	box-shadow: 0px 0px 15px aqua;
+	background: #000000;
+	border-color: #00bfff;
+	box-shadow: 0px 0px 15px #00ffff;
 	border-width: initial;
 }

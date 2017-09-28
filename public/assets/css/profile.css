@@ -27,7 +27,7 @@
 	font-size: 120%;
 }
 
-.danger-zone-well button {
+.danger-zone-btn {
 	background: #000000;
 	border-width: initial;
 	border-color: #ff0001;
@@ -36,7 +36,7 @@
 	border-style: outset;
 }
 
-.danger-zone-well button:hover {
+.danger-zone-btn:hover {
 	border-width: initial;
 	border-color: #ff0001;
 	background: #ff0001;

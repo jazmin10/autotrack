@@ -2,30 +2,25 @@
 	background: url("../images/well-bg.png") no-repeat;
 	background-size: 100% 100%;
 	border: none;
+	margin: 2%;
+	overflow: auto;
 }
 
-.specs-div {
+.basic-specs-div {
+	padding-top: 2%;
+	padding-left: 4%;
+	overflow: auto;
+}
+
+.specs-info-div {
 	width: 50%;
 	margin: 0;
 	display: inline-block;
 }
 
-.clearfix {
-	padding-top: 2%;
-	padding-left: 4%;
-}
-
 #basic-specs-title {
 	color: #ff9122;
 	font-family: 'Audiowide', sans-serif;
-}
-
-.qr-code {
-	padding: 1%;
-	background: #ffffff;
-	float: right;
-	margin-right: 2%;
-	margin-bottom: 2%;
 }
 
 .spec-titles {
@@ -38,4 +33,40 @@
 	color: #ffffff;
 	margin-top: 0;
 	font-family: 'Audiowide', sans-serif;
+}
+
+.qr-code {
+	padding: 1%;
+	background: #ffffff;
+	float: right;
+	margin-right: 5%;
+	margin-bottom: 2%;
+}
+
+@media screen and (max-width: 721px) {
+	.basic-specs-div {
+		padding: 10%;	
+	}
+
+	#vin {
+		font-size: 150%;
+	}
+}
+
+@media screen and (min-width: 500px) and (max-width: 655px){
+	.qr-code {
+		margin-right: 15%;
+	}
+}
+
+@media screen and (min-width: 656px) and (max-width: 721px){
+	.qr-code {
+		margin-right: 25%;
+	}
+}
+
+@media screen and (max-width: 427px){
+	.qr-code {
+		margin: 0;
+	}
 }

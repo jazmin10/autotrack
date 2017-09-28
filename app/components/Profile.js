@@ -403,7 +403,7 @@ export default class Profile extends React.Component {
 						<h1>DANGER ZONE</h1>
 
 						<h4>Delete this car</h4>
-						<p>Once you delete a car, there's no going back.</p><button className="btn btn-danger" onClick={this.deleteCar}>DELETE</button>
+						<p>Once you delete a car, there's no going back.</p><button className="btn btn-danger danger-zone-btn" onClick={this.deleteCar}>DELETE</button>
 					</div>
 				</div>
 
