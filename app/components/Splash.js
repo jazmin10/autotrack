@@ -79,48 +79,49 @@ export default class Splash extends React.Component {
 	render() {
 
 		return (
-				<div className="splash-container">
+			<div className="splash-container">
 
 				<div className="jumbotron" style={{backgroundColor: '#000000', display: 'flex', marginTop: '50'}}>
-				<div className="col-md-3"></div>
-				<div className="col-md-6">
+					<div className="col-md-3"></div>
+					<div className="col-md-6">
 
-					<img src="../../public/assets/images/autotrack-logo.png" style={{width: '100%'}} alt="AutoTrack" />
+						<img src="../../public/assets/images/autotrack-logo.png" style={{width: '100%'}} alt="AutoTrack" />
 
-					<form onSubmit={this.handleSubmit}> 
-						
-							<input
-							type="text"
-							value={this.state.username}
-							placeholder="Username"
-							id="username"
-							className="form-control"
-							onChange={this.handleChange}
-							required
-							/>
+						<form onSubmit={this.handleSubmit}> 
+							
+								<input
+								type="text"
+								value={this.state.username}
+								placeholder="Username"
+								id="username"
+								className="form-control"
+								onChange={this.handleChange}
+								required
+								/>
 
-							<br/>
-						
-						
-							<input
-							type="password"
-							value={this.state.password}
-							placeholder="Password"
-							id="password"
-							className="form-control"
-							onChange= {this.handleChange}
-							required
-							/>
+								<br/>
+							
+							
+								<input
+								type="password"
+								value={this.state.password}
+								placeholder="Password"
+								id="password"
+								className="form-control"
+								onChange= {this.handleChange}
+								required
+								/>
 
-							<br/>
-						
-						<input type="image" src="../../public/assets/images/autotrack-start.png" className="center-block" style={{width: '100'}} alt="Start/Login" />
-					</form>
+								<br/>
+							
+							<input type="image" src="../../public/assets/images/autotrack-start.png" className="center-block" style={{width: '100'}} alt="Start/Login" />
+						</form>
+					</div>
+					<div className="col-md-3"></div>
 				</div>
-				<div className="col-md-3"></div>
-				</div>				
-				</div>
-				);
+
+			</div>
+		);
 
 	}
 }
