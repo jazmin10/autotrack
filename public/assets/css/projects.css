@@ -72,7 +72,7 @@ div.progressbar {
 	letter-spacing: 2px;
 }
 
-.projects-btn:hover, .projects-btn:active {
+.projects-btn:hover, .projects-btn:active, .projects-btn:focus {
 	border-color: #65ff00;
 	border-style:inset;
 	color:#65ff00;

@@ -71,7 +71,7 @@ div.progressbar {
 	letter-spacing: 2px;
 }
 
-.masterlist-btn:hover, .masterlist-btn:active {
+.masterlist-btn:hover, .masterlist-btn:active, .master-btn:focus {
 	border-color: #65ff00;
 	border-style:inset;
 	color:#65ff00;
