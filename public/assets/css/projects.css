@@ -1,19 +1,7 @@
 /* ========== GENERAL ========== */
 
-body, html {
-	background-color: #050111;
-}
-
 .panel {
 	background-color:transparent;
-}
-
-.panel-default {
-	/*border:none;*/
-}
-
-.panel {
-	/*box-shadow: none;*/
 }
 
 .panel-body {
@@ -23,8 +11,10 @@ body, html {
 .nav-tabs {
 	border-bottom:none;
 }
+
 /* ========== MY PROJECTS ========== */
 
+/* ----------- PROGRESSBAR ----------- */
 div.progressbar {
 	display:block;
 	float:left;
@@ -34,25 +24,7 @@ div.progressbar {
 	border:0;
 }
 
-.projects-div {
-/* outer container div */
-	background-color: #050111;
-
-	border-width: 2px;
-	border-style:solid;
-	border-color:#ff6a00;
-	border-radius:15px;
-
-	margin-top:10%;
-
-	box-shadow:0 0 13px #ff3700;
-}
-
-.projects-div:hover {
-	border-color:#7200ff;
-	box-shadow:0 0 13px #a100ff;
-}
-
+/* ----------- CONTENT DIV ----------- */
 .projects-content {
 /* each projects container div */
 
@@ -67,9 +39,7 @@ div.progressbar {
 	margin:3%;
 }
 
-.projects-content:hover {
-	border-color:#ff6a00;
-}
+/* ----------- BUTTONS ----------- */
 
 .projects-btn {
 /* view profile btn in projects */
@@ -95,8 +65,8 @@ div.progressbar {
 	background-color: transparent;
 }
 
+/* ----------- TEXT ----------- */
 .projects-h4 {
-
 	display:block;
 	float:right;
 	position:relative;
@@ -109,6 +79,7 @@ div.progressbar {
 	font-size: 45px;
 }
 
+/* ----------- MEDIA QUERIES ----------- */
 @media screen and (min-width:636px) and (max-width:1201px) {
 
 	.projects-content {

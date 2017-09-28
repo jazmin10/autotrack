@@ -1,16 +1,83 @@
-.masterlist-well {
+/* ========== GENERAL ========== */
+
+.panel {
+	background-color: transparent;
+}
+
+.panel-body {
+	border:none;
+}
+
+.nav-tabs {
+	border-bottom:none;
+}
+
+/* ========== MASTERLIST ========== */
+
+/* ----------- PROGRESSBAR ----------- */
+div.progressbar {
+	display:block;
+	float:left;
+
+	margin:0;
+	padding:0;
+	border:0;
+
+	position:relative;
+	left:10%;
+}
+
+/* ----------- CONTENT DIV ----------- */
+.masterlist-content {
+	display:block;
+	height:250px;
+
 	background: transparent;
 	border: none;
-	color: #ff9933;
 	background: url("../images/well-bg.png") no-repeat;
 	background-size: 100% 100%;
 	border-radius: 35px;
 }
 
-.masterlist-well h4 {
-	font-size: 200%;
-	font-family: 'Abel', sans-serif;
+/* ----------- BUTTONS ----------- */
+.masterlist-btn {
+	display:block;
+	float:right;
+	position:relative;
+	right:5%;
+	margin:3%;
+
+	background-color:transparent;
+	border-color: #00cbff;
+	border-style:outset;
+	border-width: 2px; 
+	color: #00cbff;
+	font-style:monospace;
+	letter-spacing: 2px;
 }
 
+.masterlist-btn:hover, .masterlist-btn:active {
+	border-color: #65ff00;
+	border-style:inset;
+	color:#65ff00;
+	background-color: transparent;
+}
+
+/* ----------- TEXT ----------- */
+.masterlist-h4 {
+	display:block;
+	float:right;
+	position:relative;
+	right:5%;
+	margin:3%;
+
+	color: #ff6a00;
+	font-family: 'Audiowide', cursive;
+	line-height:2px;
+	letter-spacing:2px;
+	font-size:35px;
+}
+
+/* ----------- MEDIA QUERIES ----------- */
 
 
