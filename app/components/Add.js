@@ -174,7 +174,7 @@ export default class Add extends React.Component {
 							/>
 
 							<button type="submit" 
-							id="steve-btn" className="btn btn-default navbar-btn">Check VIN</button>
+							id="steve-btn" className="btn">SEARCH VIN</button>
 					</form>
 												
 				</div>
