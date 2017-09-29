@@ -284,32 +284,36 @@ export default class Taskbreakdown extends React.Component {
 
 			if (this.state.categoryName !== "" || this.state.categoryName !== null) {
 				return(
-					<div className="well">
-							
-							<h1>{this.state.categoryName}</h1>
+					<div className="tasks-container">
+						<div>
+							<div className="well tasks-content">
+									
+									<h1 className="tasks-h1">{this.state.categoryName}</h1>
 
-							<hr/>
+								<div className="individual-tasks-div">
+									<div className="add-task-container">
 
-						<div className="add-task-container">
+										<form>
+											<div className="form-group tasks-form">
+												<h4 className="tasks-add-form-h4">Add {this.state.categoryName} Task:</h4>
 
-								<form>
-									<div className="form-group">
-										<h4>Add {this.state.categoryName} Task:</h4>
+												<input
+													value={this.state.newTask}
+													type="text"
+													className="form-control tasks-add-form-input"
+													id="newTask"
+													onChange={this.handleFormChange}
+													required
+												/>
+												<br/>
 
-										<input
-											value={this.state.newTask}
-											type="text"
-											className="form-control"
-											id="newTask"
-											onChange={this.handleFormChange}
-											required
-										/>
-										<br/>
-
-										<button className="btn btn-primary" type="submit" onClick={this.handleAddTask}>Submit</button>
+												<button className="btn task-add-btn" type="submit" onClick={this.handleAddTask}>ADD TASK</button>
+											</div>
+										</form>
 									</div>
-								</form>
+								</div>
 							</div>
+						</div>
 					</div>
 				);
 			}
