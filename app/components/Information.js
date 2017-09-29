@@ -53,7 +53,7 @@ export default class Information extends React.Component {
 
 	render() {
 
-		var QRVal = "http://localhost:3000/dashboard-manager/profile/" + (this.state.vin);
+		var QRVal = "https://autotrackofficial.herokuapp.com/dashboard-manager/profile/" + (this.state.vin);
 		
 		return(
 			<div className="well information-well">
