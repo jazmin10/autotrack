@@ -1,0 +1,20 @@
+#empty-task {
+	background-color: black;
+}
+
+.well-lg {
+	background: black;
+}
+
+.well {
+	border: solid;
+	border-color: deepskyblue;
+	box-shadow: 0px 0px 25px aqua;
+	background: black;
+}
+
+#main-tasks {
+	font-family:  Audiowide, cursive;
+	color: #ff9122;
+	font-size: 40px;
+}

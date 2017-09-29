@@ -371,7 +371,7 @@ export default class Profile extends React.Component {
 		return (
 			<div className="profile-container">
 				
-				<div>
+				<div className="task-container">
 					<Information vin={this.state.vin}/>
 					<MainTasks
 						maintenance={this.state.maintenance}
@@ -383,7 +383,7 @@ export default class Profile extends React.Component {
 					{
 						this.state.maintenance.map((taskbreakdown, i) => {
 							return(
-								<div key={i}>
+								<div className="maintask-container" key={i}>
 									<Taskbreakdown
 										passedMaintenance = {taskbreakdown}
 										

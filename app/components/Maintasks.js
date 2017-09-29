@@ -101,8 +101,8 @@ export default class Maintasks extends React.Component {
 				<div className="well well-lg">
 
 						{/* Display a list of names of the main tasks */}
-						<div>
-							<h2>Main Tasks</h2>
+						<div id="empty-task">
+							<h2 id="main-tasks">Main Tasks</h2>
 							<hr/>
 
 							{/* Display the overall progress of the car using semi-circle progress bar */}
@@ -162,7 +162,7 @@ export default class Maintasks extends React.Component {
 		}
 
 		return (
-				<div className="well well-lg">
+				<div id="empty-task" className="well well-lg">
 
 						{/* Display a list of names of the main tasks */}
 						<div>

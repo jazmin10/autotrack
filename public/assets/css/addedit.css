@@ -29,7 +29,7 @@ h3 {
 
 input[type="text"] {
 	padding-left: 20px;
-	background: '#000000';
+	background: #000000;
 	border-color: #FF9933;
 	border-width: 2px;
 }
@@ -38,3 +38,17 @@ input[type="text"] {
 div {
     background: linear-gradient(to bottom, #66ccff 0%, #0066ff 100%);
 }*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000000;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
