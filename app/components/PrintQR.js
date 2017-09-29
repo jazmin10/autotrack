@@ -31,7 +31,7 @@ export default class PrintQR extends React.Component {
 
    render() {
 
-		var QRVal = "https://autotrackofficial.herokuapp.com/dashboard-manager/profile/" + (this.props.params.vin);
+		var QRVal = "https://autotrackofficial.herokuapp.com/dashboard-manager/profile/" + (this.props.params.vin) + "?token=" + localStorage.getItem("autotrackToken");
 
 		var screenSize = window.innerWidth;
 
