@@ -19,6 +19,7 @@ import Profile from '../components/Profile.js';
 import Projects from '../components/Projects.js';
 import Masterlist from '../components/Masterlist.js';
 import Add from '../components/Add.js';
+import PrintQR from '../components/PrintQR.js';
 
 // Export the Routes
 export default (
@@ -38,6 +39,8 @@ export default (
 
          <IndexRoute component={Projects} /> 
        </Route>
+
+       <Route path="qr-code/:vin" component={PrintQR} />
 
       <IndexRoute component={Splash} />
     </Route>
