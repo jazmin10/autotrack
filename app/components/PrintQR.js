@@ -18,6 +18,11 @@ export default class PrintQR extends React.Component {
 		}
 
 		this.print = this.print.bind(this);
+		this.redirectBack = this.redirectBack.bind(this);
+	}
+
+	redirectBack(){
+		browserHistory.push("/dashboard-manager/profile/" + this.props.params.vin + "?token=" + localStorage.getItem("autotrackToken"));
 	}
 
 	print(){
@@ -29,20 +34,24 @@ export default class PrintQR extends React.Component {
 		var QRVal = "http://localhost:3000/dashboard-manager/profile/" + (this.props.params.vin);
 		
 		return(
-			<div className="well information-well">
-					<div className="qr-code">
-						<QRCode
-		                    bgColor="#FFFFFF"
-		                    fgColor="#000000"
-		                    level="Q"
-		                    style={{ width: 500 }}
-		                    value={QRVal} 
-	                	/>
-		            </div>
-                    <div className="well information-well">
-                    	<button onClick={this.print}> PRINT </button> 
-                    </div>
+
+			<div className="print-qr-well well">
+
+				<h2>VIN: {this.props.params.vin}</h2>
+      	<span className="glyphicon glyphicon-circle-arrow-left" onClick={this.redirectBack}></span>
+        <button onClick={this.print}> PRINT </button> 
+				<div className="print-qr">
+					<QRCode
+            bgColor="#FFFFFF"
+            fgColor="#000000"
+            level="Q"
+            style={{ width: 400 }}
+            value={QRVal} 
+           />
+	      </div>
+	      
 			</div>
+			
 		);
 	}
 }
