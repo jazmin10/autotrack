@@ -71,12 +71,53 @@
 }
 
 /* ========== FORM ========== */
+/* ---------- CONTAINER DIV ---------- */
+.add-panel {
+	width:96%;
+	margin:2% auto;
+}
+
+/* ---------- BACK & BUTTONS ---------- */
+.glyphicon-arrow-left{
+	color:#66ccff;
+	padding:2%;
+}
+
+.glyphicon-arrow-left:hover, .glyphicon-arrow-left:active, .glyphicon-arrow-left:focus {
+	color:#ff9933;
+}
+
+#addcar-btn, #editcar-btn {
+	display:inline-block;
+	float:left;
+	position:relative;
+	left:0%;
+	margin-top:5%;
+
+	background-color:transparent;
+	border-color: #66ccff;
+	border-style:outset;
+	border-width: 2px; 
+	color: #66ccff;
+	font-style:monospace;
+	letter-spacing: 2px;
+}
+
+#addcar-btn:hover, #addcar-btn:active, #addcar-btn:focus, #editcar-btn:hover, #editcar-btn:active, #editcar-btn:focus {
+	border-color: #fff;
+	border-style:inset;
+	color:#fff;
+	background-color: transparent;
+}
+
+/* ---------- FORM STYLING ---------- */
 .addEditForm {
 	margin: 15px;
 	border: 2px;
 	border-color: #FF9933;
 }
 
+/* ---------- INPUT/TEXT ---------- */
 input[type="text"] {
 	padding-left: 20px;
 	background: '#000000';
@@ -84,6 +125,21 @@ input[type="text"] {
 	border-width: 2px;
 }
 
+.addedit-form-h3 {
+	color:#fff;
+	font-family: 'Audiowide', cursive;
+	font-size:30px;
+
+	display: inline-block;
+}
+
+.addedit-input {
+	background-color: transparent;
+	color:#66ccff;
+
+	display: inline-block;
+	float:left;
+}
 /* ========== MEDIA QUERIES ========== */
 
 @media screen and (max-width:1200px) {
