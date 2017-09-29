@@ -20,7 +20,7 @@ export default class Add extends React.Component {
 			make: "",
 			model: "",
 			year: 0,
-			color: "",
+			color: "N/A",
 			mileage: 0,
 			vinExist: false
 		}
@@ -39,7 +39,7 @@ export default class Add extends React.Component {
 			make: "",
 			model: "",
 			year: 0,
-			color: "",
+			color: "N/A",
 			mileage: 0,
 			vinExist: false
 		});
@@ -129,7 +129,7 @@ export default class Add extends React.Component {
 				make: "", 
 				model: "", 
 				year: 0, 
-				color: "", 
+				color: "N/A", 
 				mileage: 0
 			});
 		});
@@ -238,6 +238,7 @@ export default class Add extends React.Component {
 									id="color"
 									onChange={this.handleChange}
 									required
+									
 								/>
 								<br/>
 

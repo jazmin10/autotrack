@@ -18,6 +18,26 @@ mongoose.Promise = Promise;
 // ===== CAR & TASKS =====
 // GET - get all cars
 module.exports = function(app, jwt, secret) {
+	
+
+	app.post("/new-user", function(req, res){
+
+		var results = {
+			username: req.body.username,
+			email: req.body.email,
+			password: req.body.password,
+			usercars: []
+		}
+
+		var newUser = new User(results);
+
+		newUser.save(function(err, user){
+			if (err) throw err;
+
+			res.json(user);
+		});
+
+	});
 
 	app.get("/get-cars", function(req,res){
 

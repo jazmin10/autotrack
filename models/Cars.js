@@ -31,7 +31,8 @@ var CarSchema = new Schema({
 		type:String
 	},
 	mileage:{
-		type:Number
+		type:Number,
+		default: 0
 	},
 	maintenance:{
 		type:Array
