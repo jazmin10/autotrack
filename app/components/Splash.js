@@ -71,6 +71,21 @@ export default class Splash extends React.Component {
 		return (
 			<div className="splash-container">
 
+			<div className="scroll-fixed-wrapper">    
+  <ul className="scroll-fixed">
+      <li>
+          <a href="#app">Main</a>
+      </li>
+      <li>
+          <a href="#about">About</a>
+      </li>
+      <li>
+          <a href="#contact">Contact</a>
+      </li>
+  </ul>
+</div>
+
+
 				<div className="jumbotron splash-jumbotron">
 					<div className="col-md-3"></div>
 					<div className="col-md-6">
