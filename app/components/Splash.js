@@ -81,7 +81,7 @@ export default class Splash extends React.Component {
 		return (
 			<div className="splash-container">
 
-				<div className="jumbotron" style={{backgroundColor: '#000000', marginTop: '100', height: '100vh'}}>
+				<div className="jumbotron splash-jumbotron">
 					<div className="col-md-3"></div>
 					<div className="col-md-6">
 
@@ -90,6 +90,7 @@ export default class Splash extends React.Component {
 						<form onSubmit={this.handleSubmit}> 
 							
 								<input
+								className="splash-input"
 								type="text"
 								value={this.state.username}
 								placeholder="Username"
@@ -103,6 +104,7 @@ export default class Splash extends React.Component {
 							
 							
 								<input
+								className="splash-input"
 								type="password"
 								value={this.state.password}
 								placeholder="Password"
@@ -122,17 +124,17 @@ export default class Splash extends React.Component {
 
 				{/* ABOUT SECTION */}
 
-			    <section id="about" style={{backgroundColor: '#000000', marginTop: '100', height: '100vh'}}>
-			        <div className="container">
+			    <section id="about" className="splash-well">
+			        <div className="container splash-div">
 			            <div className="row">
 			                <div className="col-lg-12 text-center">
-			                    <h2>About</h2>
-			                    <hr/>
+			                    <h2 className="splash-h2">About</h2>
+			                    <hr className="splash-hr"/>
 			                </div>
 			            </div>
 			            <div className="row">
 			                <div className="col-lg-8 col-lg-offset-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum, ipsum id cursus euismod, metus est varius elit, fringilla vestibulum magna massa quis purus. In eu lacinia nisi. Aenean dui nunc, accumsan sed ante vel, volutpat aliquam odio. Phasellus tempus sed risus sed laoreet. Aliquam convallis volutpat leo ut porta. Ut tincidunt ipsum ac felis ultrices, eu accumsan tortor suscipit. Nullam quam ante, volutpat quis interdum ac, ullamcorper at ante. Pellentesque ac mattis orci. Etiam pharetra lacus sed augue facilisis, sit amet efficitur dolor semper. Sed malesuada odio et justo placerat feugiat.
+									<p className="splash-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum, ipsum id cursus euismod, metus est varius elit, fringilla vestibulum magna massa quis purus. In eu lacinia nisi. Aenean dui nunc, accumsan sed ante vel, volutpat aliquam odio. Phasellus tempus sed risus sed laoreet. Aliquam convallis volutpat leo ut porta. Ut tincidunt ipsum ac felis ultrices, eu accumsan tortor suscipit. Nullam quam ante, volutpat quis interdum ac, ullamcorper at ante. Pellentesque ac mattis orci. Etiam pharetra lacus sed augue facilisis, sit amet efficitur dolor semper. Sed malesuada odio et justo placerat feugiat.
 									</p>
 			                </div>
 			            </div>
@@ -141,17 +143,17 @@ export default class Splash extends React.Component {
 
 			    {/* CONTACT SECTION */}
 
-			    <section id="contact" style={{backgroundColor: '#000000', marginTop: '100', height: '100vh'}}>
-			        <div className="container">
+			    <section id="contact" className="splash-well">
+			        <div className="container splash-div">
 			            <div className="row">
 			                <div className="col-lg-12 text-center">
-			                    <h2>Contact Me</h2>
-			                    <hr/>
+			                    <h2 className="splash-h2">Contact Me</h2>
+			                    <hr className="splash-hr"/>
 			                </div>
 			            </div>
 			            <div className="row">
 			                <div className="col-lg-8 col-lg-offset-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum, ipsum id cursus euismod, metus est varius elit, fringilla vestibulum magna massa quis purus. In eu lacinia nisi. Aenean dui nunc, accumsan sed ante vel, volutpat aliquam odio. Phasellus tempus sed risus sed laoreet. Aliquam convallis volutpat leo ut porta. Ut tincidunt ipsum ac felis ultrices, eu accumsan tortor suscipit. Nullam quam ante, volutpat quis interdum ac, ullamcorper at ante. Pellentesque ac mattis orci. Etiam pharetra lacus sed augue facilisis, sit amet efficitur dolor semper. Sed malesuada odio et justo placerat feugiat.
+									<p className="splash-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum, ipsum id cursus euismod, metus est varius elit, fringilla vestibulum magna massa quis purus. In eu lacinia nisi. Aenean dui nunc, accumsan sed ante vel, volutpat aliquam odio. Phasellus tempus sed risus sed laoreet. Aliquam convallis volutpat leo ut porta. Ut tincidunt ipsum ac felis ultrices, eu accumsan tortor suscipit. Nullam quam ante, volutpat quis interdum ac, ullamcorper at ante. Pellentesque ac mattis orci. Etiam pharetra lacus sed augue facilisis, sit amet efficitur dolor semper. Sed malesuada odio et justo placerat feugiat.
 									</p>
 			                </div>
 			            </div>
