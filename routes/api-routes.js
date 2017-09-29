@@ -122,10 +122,6 @@ module.exports = function(app, jwt, secret) {
 
 			if (err){
 				console.log(err);
-
-				// possible errors
-
-				// wrong data type
 			}
 			else {
 				res.json(doc);
@@ -217,10 +213,6 @@ module.exports = function(app, jwt, secret) {
 	app.get("/scrape", function(req, res) {
 
 		var queryURL = "https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=" + req.query.vin;
-
-		// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=1GNDS13S682209636
-		// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=JNRDR07X21W103154
-		//https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=1gkkvted5cj124758
 
 		request(queryURL, function(error, response, html) {
 			if (error) throw error;

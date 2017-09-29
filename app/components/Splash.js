@@ -10,8 +10,6 @@ import router, {browserHistory} from "react-router";
 // creating the splash component
 export default class Splash extends React.Component {
 
-	// checkCredentials() {}
-
 	constructor(props){
 		
 		super(props);

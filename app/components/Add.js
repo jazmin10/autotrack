@@ -31,8 +31,6 @@ export default class Add extends React.Component {
 		this.updateRecord = this.updateRecord.bind(this);
 		this.handleUpdateRedirect = this.handleUpdateRedirect.bind(this);
 		this.clear = this.clear.bind(this);
-		// this.handleChange = this.handleChange.bind(this);
-		// this.handleSubmitInfo = this.handleSubmitInfo.bind(this);
 	}
 
 	clear(){
