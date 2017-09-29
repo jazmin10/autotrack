@@ -28,6 +28,7 @@
 	font-family: 'Geo', sans-serif;
 	font-size: 150%;
 	border:none;
+	background: transparent;
 }
 
 .nav-tabs li a:hover, .nav-tabs li a:active {
@@ -36,9 +37,15 @@
 	text-shadow:1px 1px #00bfff;
 }
 
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	background: transparent;
+	border: none;
+	color: #00bfff;
+}
+
 .panel-default {
 	background: #000000;
 	border-color: #00bfff;
 	box-shadow: 0px 0px 15px #00ffff;
-	border-width: initial;
+	border-width: thick;
 }
