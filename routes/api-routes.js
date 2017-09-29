@@ -122,13 +122,8 @@ module.exports = function(app, jwt, secret) {
 
 			if (err){
 				console.log(err);
-
-				// possible errors
-
-				// wrong data type
 			}
 			else {
-				console.log(doc);
 				res.json(doc);
 			}
 		});
@@ -163,8 +158,7 @@ module.exports = function(app, jwt, secret) {
 	// DELETE - delete car from database by VIN#
 	app.delete("/delete-car/:vin", function(req,res){
 		// Find the car in the cars collection and remove it
-		console.log(req.params.vin);
-
+		
 		Car.findOneAndRemove({
 			"vin":req.params.vin
 			}).exec(function(err,doc){
@@ -218,47 +212,31 @@ module.exports = function(app, jwt, secret) {
 	// Scraping for Car Info
 	app.get("/scrape", function(req, res) {
 
-		// console.log(req);
-
 		var queryURL = "https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=" + req.query.vin;
 
-		// console.log(queryURL);
+		request(queryURL, function(error, response, html) {
+			if (error) throw error;
+			var $ = cheerio.load(html);
 
-	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=1GNDS13S682209636
-	// https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=JNRDR07X21W103154
+			var results = {};
 
-	request(queryURL, function(error, response, html) {
-		if (error) throw error;
-		var $ = cheerio.load(html);
+			$("ul li").each(function(i, element) {
+				var content = $(element).find(".table_col_40").text();
+				var parent = $(element).find(".table_col_60").text();
 
-		var results = {};
-
-		$("ul li").each(function(i, element) {
-			// console.log(i);
-			// console.log(element);
-
-			var content = $(element).find(".table_col_40").text();
-			// console.log(content);
-
-			var parent = $(element).find(".table_col_60").text();
-
-			if (parent === "MAKE") {
-				results.make = content;
-			}
-			else if (parent === "MODEL") {
-				results.model = content;
-			}
-			else if (parent === "YEAR") {
-				results.year = content;
-			}
-			
+				if (parent === "MAKE") {
+					results.make = content;
+				}
+				else if (parent === "MODEL") {
+					results.model = content;
+				}
+				else if (parent === "YEAR") {
+					results.year = content;
+				}
+				
+			});
+			res.json(results);
 		});
-
-	
-
-		// console.log(results);
-		res.json(results);
-	});
 	});
 
 	// ===== USER =====
@@ -266,7 +244,6 @@ module.exports = function(app, jwt, secret) {
 	app.get("/login", function(req,res){
 
 		if (req.query.username === null || req.query.password === null || req.query.username === "" || req.query.password === "") {
-			console.log("Invalid Credentials");
 			res.json({authenticated: false});
 		}
 

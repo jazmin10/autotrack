@@ -14,6 +14,8 @@ import helpers from "./utils/helpers.js";
 // include QR code
 import { QRCode } from 'react-qr-svg';
 
+import router, {browserHistory} from "react-router";
+
 // INFORMATION -----------------------------
 export default class Information extends React.Component {
 	constructor(props) {
@@ -27,23 +29,9 @@ export default class Information extends React.Component {
 			color: "",
 			mileage: 0
 		}
+
+		this.redirectPrint = this.redirectPrint.bind(this);
 	}
-
-	// componentDidMount() {
-
-	// 	console.log(this.props.params.vin)
-	// 	helpers.getCarInfo(this.props.params.vin).then((data) => {
-
-	// 		this.setState({
-	// 			vin: data.vin,
-	// 			make: data.make,
-	// 			model: data.model,
-	// 			year: data.year,
-	// 			color: data.color,
-	// 			mileage: data.mileage
-	// 		});
-	// 	});
-	// }
 
 	componentWillReceiveProps(nextProps){
 		helpers.getCarInfo(nextProps.vin).then((data) => {
@@ -58,6 +46,10 @@ export default class Information extends React.Component {
 			});
 		});
 	}
+
+	redirectPrint(){
+  		browserHistory.push("/qr-code/" + this.state.vin + "?token=" + localStorage.getItem("autotrackToken"));
+  	}
 
 	render() {
 
@@ -85,6 +77,7 @@ export default class Information extends React.Component {
 
 					<div className="qr-code">
 					<QRCode
+						onClick={this.redirectPrint}
 	                    bgColor="#FFFFFF"
 	                    fgColor="#000000"
 	                    level="Q"

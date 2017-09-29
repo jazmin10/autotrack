@@ -194,13 +194,6 @@ export default class Maintasks extends React.Component {
 
 				</div>
 			);
-
-
-
-
-
-
-
 	}
 }
 
