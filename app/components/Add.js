@@ -149,25 +149,24 @@ export default class Add extends React.Component {
 		// Render Check Vin input
 		return (
 
-			<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
+			<div id="vinsearch-panel" className="panel-body">
 
-				<div className="form-group">
+				<div className="form-group vinsearch-form">
 					<form onSubmit={this.checkVIN}>
 
-						<h3>VIN Number:</h3>
+						<h3 className="vin-h3">VIN Number</h3>
 						
 							<input
 							type="text"
-							style={{backgroundColor: '#000000', display: 'flex'}}
 							value={this.state.vin}
 							id="vin"
-							className="form-control"
+							className="form-control vinsearch-input"
 							onChange={this.handleChange}
 							required
 							/>
 
 							<button type="submit" 
-							id="steve-btn" className="btn">SEARCH VIN</button>
+							id="vinsearch-btn" className="btn">SEARCH VIN</button>
 					</form>
 												
 				</div>
