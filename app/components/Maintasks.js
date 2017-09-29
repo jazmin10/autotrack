@@ -98,12 +98,12 @@ export default class Maintasks extends React.Component {
 		if (this.state.categoryNames.length !== 0) {
 
 			return (
-				<div className="well well-lg">
-
+				<div className="tasks-container">
+					<div className="tasks-content">
 						{/* Display a list of names of the main tasks */}
-						<div id="empty-task">
-							<h2 id="main-tasks">Main Tasks</h2>
-							<hr/>
+						<div className="well">
+							<h1 className="main-tasks">Main Tasks</h1>
+							
 
 							{/* Display the overall progress of the car using semi-circle progress bar */}
 							<div>
@@ -120,12 +120,12 @@ export default class Maintasks extends React.Component {
 							
 							{this.state.categoryNames.map((category, i) => {
 								return (
-									<div key={i} className="well">
+									<div className="well" key={i}>
 										{category}
 									
 										<button 
 											value={category}
-											className="btn btn-xs btn-danger"
+											className="maintask-delete"
 											onClick={this.handleDelete}>
 											Delete {/* Group notes: do not use bootstrap glyphicons */}
 										</button>
@@ -136,16 +136,16 @@ export default class Maintasks extends React.Component {
 						</div>
 
 						{/* Add a new main task form */}
-						<div>
+						<div className="add-task-container">
 							{/* Need to add onSubmit=method to the form tag */}
 							<form onSubmit={this.handleSubmit}>
-								<div className="form-group">
-									<h4>Add Main Task:</h4>
+								<div className="add-maintask">
+									<h4 className="tasks-add-form-h4">Add Main Task:</h4>
 
 		            	<input
 		               	value={this.state.newCategory}
 		                type="text"
-		                className="form-control"
+		                className="form-control tasks-add-form"
 		                id="newCategory"
 		                onChange={this.handleChange}
 		                required
@@ -156,7 +156,7 @@ export default class Maintasks extends React.Component {
 								</div>
 							</form>
 						</div>
-
+					</div>	
 				</div>
 			);
 		}

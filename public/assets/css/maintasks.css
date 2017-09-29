@@ -1,4 +1,47 @@
-#empty-task {
+
+#category-name {
+	font-size: 30px;
+	color: #ffffff;
+	font-family: 'Audiowide', sans-serif;
+}
+
+.maintask-delete {
+	display: inline-block;
+    float: right;
+    position: relative;
+    background-color: transparent;
+    border-color: #ff0001;
+    border-style: outset;
+    border-width: 2px;
+    color: #ff0001;
+    font-style: monospace;
+    letter-spacing: 2px;
+}
+
+.main-tasks {
+	padding: 10px;
+	color: #ff9122;
+	font-family: 'Audiowide', sans-serif;
+	margin-top: 30px;
+}
+
+.add-maintask {
+	margin-top:5%;
+	height:50px;
+
+}
+
+.tasks-add-form {
+	margin-left: 3%;
+    height: 25px;
+    width: 55%;
+    display: inline-block;
+    float: left;
+    background-color: transparent;
+    color: #66ccff;
+    font-family: monospace;
+}
+/*#empty-task {
 	background-color: black;
 }
 
@@ -17,4 +60,4 @@
 	font-family:  Audiowide, cursive;
 	color: #ff9122;
 	font-size: 40px;
-}
+}*/
