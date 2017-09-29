@@ -1,8 +1,47 @@
 
-#category-name {
+/*---------Table of Contents
+	-----------------
+	General - divs, inherited style changes
+	Taskbreakdown
+		Container Div
+		Main Tasks
+		Progressbar
+		Form
+		Buttons
+		Text
+		Media Queries
+*/
+
+/*==========General============*/
+.well {
+	background-color: transparent;
+	border:none;
+	box-shadow: none;
+}
+
+/*==========Main Tasks============*/
+
+/*#category-name {
 	font-size: 30px;
 	color: #ffffff;
 	font-family: 'Audiowide', sans-serif;
+}
+*/
+.main-task-add-btn {
+	margin-top: -1%;
+	margin-right: 5%;
+	display:inline-block;
+	float:right;
+	position:relative;
+	right:0%;
+
+	background-color:transparent;
+	border-color: #65ff00;
+	border-style:outset;
+	border-width: 2px; 
+	color: #65ff00;
+	font-style:monospace;
+	letter-spacing: 2px;
 }
 
 .maintask-delete {
@@ -15,6 +54,7 @@
     border-width: 2px;
     color: #ff0001;
     font-style: monospace;
+    font-size: 20px;
     letter-spacing: 2px;
 }
 
@@ -26,9 +66,15 @@
 }
 
 .add-maintask {
-	margin-top:5%;
-	height:50px;
+	display: inline-block;
 
+}
+
+.main-cat {
+	color: #ffffff;
+	font-family: 'Audiowide', sans-serif;
+	display:inline-block;
+	font
 }
 
 .tasks-add-form {
@@ -40,6 +86,15 @@
     background-color: transparent;
     color: #66ccff;
     font-family: monospace;
+}
+
+.add-task-container {
+	margin-left: 100px;
+	height:100px;
+}
+
+#newCategory {
+	font-size: 30px;
 }
 /*#empty-task {
 	background-color: black;

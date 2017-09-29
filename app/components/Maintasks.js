@@ -99,9 +99,9 @@ export default class Maintasks extends React.Component {
 
 			return (
 				<div className="tasks-container">
-					<div className="tasks-content">
+					<div className="well tasks-content individual-tasks-div">
 						{/* Display a list of names of the main tasks */}
-						<div className="well">
+						<div className="">
 							<h1 className="main-tasks">Main Tasks</h1>
 							
 
@@ -121,7 +121,7 @@ export default class Maintasks extends React.Component {
 							{this.state.categoryNames.map((category, i) => {
 								return (
 									<div className="well" key={i}>
-										{category}
+										<h3 className="main-cat">{category}</h3>
 									
 										<button 
 											value={category}
@@ -139,20 +139,20 @@ export default class Maintasks extends React.Component {
 						<div className="add-task-container">
 							{/* Need to add onSubmit=method to the form tag */}
 							<form onSubmit={this.handleSubmit}>
-								<div className="add-maintask">
-									<h4 className="tasks-add-form-h4">Add Main Task:</h4>
+								<div className="form-group tasks-form">
+								 <h4 className="tasks-add-form-h4">Add Main Task:</h4>
+									
 
-		            	<input
-		               	value={this.state.newCategory}
-		                type="text"
-		                className="form-control tasks-add-form"
-		                id="newCategory"
-		                onChange={this.handleChange}
-		                required
-		              />
-		              <br/>
-
-		              <button className="btn btn-primary" type="submit">Submit</button>
+				            	<input
+				               	value={this.state.newCategory}
+				                type="text"
+				                className="form-control tasks-add-form"
+				                id="newCategory"
+				                onChange={this.handleChange}
+				                required
+				              	/>
+				      			<button className="btn main-task-add-btn" type="submit">Submit</button>
+								<br/>
 								</div>
 							</form>
 						</div>
