@@ -287,10 +287,11 @@ export default class Taskbreakdown extends React.Component {
 					<div className="tasks-container">
 						<div>
 							<div className="well tasks-content">
-									
-									<h1 className="tasks-h1">{this.state.categoryName}</h1>
 
 								<div className="individual-tasks-div">
+									
+									<h1 className="tasks-h1">{this.state.categoryName}</h1>
+									
 									<div className="add-task-container">
 
 										<form>
