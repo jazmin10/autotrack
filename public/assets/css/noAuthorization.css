@@ -1,0 +1,47 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #000000;
+}
+
+div.container {
+	margin-top: 10%;
+	text-align: center;
+	height: 100vh;
+}
+
+#logo {
+	font-family: 'Geo', sans-serif;
+	text-align: center;
+	color: #00bfff;
+	text-shadow: 0px 0px 35px #00ffff;
+	font-size: 400%;
+	padding: 10px;
+	width: 70%;
+}
+
+#displayMessage {
+	color: #ffffff;
+	font-family: 'Audiowide', sans-serif;
+}
+
+#displayMessage a {
+	color: #00bfff;
+	font-family: 'Audiowide', sans-serif;
+	text-decoration: underline;
+}
+
+#displayMessage a:hover {
+	color: #ff9122;
+	font-family: 'Audiowide', sans-serif;
+}
+
+#redirecting {
+	font-family: 'Audiowide', sans-serif;
+	color: #00bfff;
+	text-shadow: 0px 0px 35px aqua;
+	letter-spacing: 2px;
+	font-size: 500%;
+}
