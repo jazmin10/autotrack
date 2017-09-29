@@ -371,7 +371,7 @@ export default class Profile extends React.Component {
 		return (
 			<div className="profile-container">
 				
-				<div className="task-container">
+				<div>
 					<Information vin={this.state.vin}/>
 					<MainTasks
 						maintenance={this.state.maintenance}
@@ -383,7 +383,7 @@ export default class Profile extends React.Component {
 					{
 						this.state.maintenance.map((taskbreakdown, i) => {
 							return(
-								<div className="maintask-container" key={i}>
+								<div key={i}>
 									<Taskbreakdown
 										passedMaintenance = {taskbreakdown}
 										
@@ -399,11 +399,11 @@ export default class Profile extends React.Component {
 						})
 					}
 
-					<div className="well">
+					<div className="well danger-zone-well">
 						<h1>DANGER ZONE</h1>
 
 						<h4>Delete this car</h4>
-						<p>Once you delete a car, there's no going back.</p><button className="btn btn-danger" onClick={this.deleteCar}>DELETE</button>
+						<p>Once you delete a car, there's no going back.</p><button className="btn btn-danger danger-zone-btn" onClick={this.deleteCar}>DELETE</button>
 					</div>
 				</div>
 

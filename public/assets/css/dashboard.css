@@ -1,16 +1,20 @@
 #logo {
 	font-family: 'Geo', sans-serif;
 	text-align: center;
-	color: deepskyblue;
-	text-shadow: 0px 0px 35px aqua;
+	color: #00bfff;
+	text-shadow: 0px 0px 35px #00ffff;
 	font-size: 300%;
 	padding: 10px;
 }
 
+#logo img {
+	width: 50%;
+}
+
 #nav-pills {
 	border: solid;
-	border-color: deepskyblue;
-	box-shadow: 0px 0px 25px aqua;
+	border-color: #00bfff;
+	box-shadow: 0px 0px 25px #00ffff;
 	margin-bottom: 30px;
 	border-radius: 5px;
 }
@@ -20,36 +24,28 @@
 }
 
 .nav-tabs li a {
-	color: white;
+	color: #ffffff;
 	font-family: 'Geo', sans-serif;
 	font-size: 150%;
+	border:none;
+	background: transparent;
 }
 
 .nav-tabs li a:hover, .nav-tabs li a:active {
 	background-color:transparent;
 	border:none;
-	text-shadow:1px 1px deepskyblue;
+	text-shadow:1px 1px #00bfff;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	background: transparent;
+	border: none;
+	color: #00bfff;
 }
 
 .panel-default {
-	background: black;
-	border-color: deepskyblue;
-	box-shadow: 0px 0px 15px aqua;
-	border-width: initial;
-}
-
-/*input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus
-input:-webkit-autofill, 
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover
-textarea:-webkit-autofill:focus,*/
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: 1px solid green;
-  -webkit-text-fill-color: green;
-  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
-  transition: background-color 5000s ease-in-out 0s;
+	background: #000000;
+	border-color: #00bfff;
+	box-shadow: 0px 0px 15px #00ffff;
+	border-width: thick;
 }

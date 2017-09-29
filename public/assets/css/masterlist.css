@@ -59,7 +59,7 @@ div.progressbar {
 	display:inline-block;
 	float:right;
 	position:relative;
-	right:5%;
+	left:5%;
 	margin:3%;
 
 	background-color:transparent;
@@ -71,11 +71,14 @@ div.progressbar {
 	letter-spacing: 2px;
 }
 
-.masterlist-btn:hover, .masterlist-btn:active {
+.masterlist-btn:hover, .masterlist-btn:active, .master-btn:focus {
 	border-color: #65ff00;
 	border-style:inset;
 	color:#65ff00;
 	background-color: transparent;
+
+	color: #ffffff;
+	border-color: #ff9122;
 }
 
 /* ----------- TEXT ----------- */
@@ -86,10 +89,9 @@ div.progressbar {
 	right:4%;
 	width:50%;
 
-	color: #ff6a00;
+	color: #ffffff;
 	font-family: 'Audiowide', cursive;
 	text-align:right;
-
 	letter-spacing:2px;
 	font-size:40px;
 }
@@ -99,6 +101,12 @@ strong {
 }
 
 /* ----------- MEDIA QUERIES ----------- */
+@media screen and (min-width:1202px) {
+	.masterlist-btn {
+		top:35%;
+		left:45%;
+	}
+}
 
 @media screen and (min-width:993px) and (max-width:1201px) {
 
@@ -126,7 +134,7 @@ strong {
 	}
 
 	.masterlist-btn {
-		margin:0 47%;
+		margin:0 35%;
 		display:block;
 		float:left;
 	}
@@ -168,7 +176,7 @@ strong {
 	}
 
 	.masterlist-btn {
-		margin:0 47%;
+		margin:0 35%;
 		display:block;
 		float:left;
 	}
@@ -180,7 +188,6 @@ strong {
 		display:inline-block;
 
 	}
-
 }
 
 @media screen and (min-width:455px) and (max-width:674px) {
@@ -231,14 +238,14 @@ strong {
 	}
 
 	.masterlist-btn {
-		margin:0 40%;
+		margin:0 35%;
 		display:block;
 		float:left;
 	}
 
 	div.progressbar {
 		position:relative;
-		left:7%;
+		left:18%;
 		float:left;
 		display:inline-block;
 
@@ -297,7 +304,7 @@ strong {
 	}
 
 	.masterlist-btn {
-		margin:0 40%;
+		margin:0 35%;
 		display:block;
 		float:left;
 	}
@@ -375,7 +382,7 @@ strong {
 		width:300px;
 
 		background: url("../images/well-bg.png") no-repeat;
-		background-size: 300px 400px;
+		background-size: 304px 400px;
 		border-radius: 30px;
 		margin-left:1%;
 
@@ -401,14 +408,17 @@ strong {
 	}
 
 	.masterlist-btn {
-		margin:15% 30%;
+		position:relative;
+		top:5%;
+		left:0;
+		margin:15% 0%;
 		display:block;
 		float:left;
 	}
 
 	div.progressbar {
 		position:relative;
-		left:3%;
+		margin-right:5%;
 		float:left;
 		display:inline-block;
 

@@ -212,7 +212,7 @@ export default class Projects extends React.Component {
                 } 
                 <h4 className="projects-h4"><strong>{car.year} {car.make} {car.model}</strong></h4>
                 <br/>
-                <Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn btn-primary projects-btn"> View Profile</Link>
+                <Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn projects-btn">VIEW PROFILE</Link>
                 
               </div>
             );
@@ -224,7 +224,7 @@ export default class Projects extends React.Component {
 
     // If carList is empty, render message saying there are no cars to list.
     return(
-      <div>
+      <div className="no-cars-div">
         <h2>You have no cars in your project list.</h2>
       </div>
       );

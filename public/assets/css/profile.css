@@ -1,0 +1,45 @@
+.danger-zone-well {
+	height: 300px;
+	border: none;
+	background: url("../images/well-bg-red.png") no-repeat;
+	background-size: 100% 100%;
+	padding-left: 7%;
+	padding-top: 5%;
+	margin:2%;
+}
+
+.danger-zone-well h1 {
+	color: #ff0001;
+	font-family: 'Audiowide', cursive;
+}
+
+.danger-zone-well h4 {
+	color: #fffff6;
+	font-family: 'Audiowide', cursive;
+	font-size: 170%;
+}
+
+.danger-zone-well p {
+	color: #fffff6;
+	font-family: 'Audiowide', sans-serif;
+	font-size: 120%;
+}
+
+.danger-zone-btn {
+	background: #000000;
+	border-width: initial;
+	border-color: #ff0001;
+	color: #ff0001;
+	font-family: 'Audiowide', cursive;
+	border-style: outset;
+}
+
+.danger-zone-btn:hover {
+	border-width: initial;
+	border-color: #ff0001;
+	background: #ff0001;
+	color: #fffff6;
+	font-family: 'Audiowide', sans-serif;
+	border-style: inset;
+}
+

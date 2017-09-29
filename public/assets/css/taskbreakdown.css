@@ -1,0 +1,201 @@
+/* =========== MASTERLIST STYLING ==========
+
+	Table of Contents
+	-----------------
+	General - divs, inherited style changes
+	Taskbreakdown
+		Container Div
+		Individual Tasks
+		Progressbar
+		Form
+		Buttons
+		Text
+		Media Queries
+*/
+
+/* ========== GENERAL ========== */
+.well {
+	background-color: transparent;
+	border:none;
+	box-shadow: none;
+}
+
+/* ========== TASKBREAKDOWN ========== */
+
+/* ---------- CONTAINER DIV ---------- */
+.tasks-container {
+	width:100%;
+	margin:0 auto;
+}
+
+.tasks-content {
+	background: url("../images/well-bg.png") no-repeat;
+	background-size: 100% 100%;
+	border-radius: 35px;
+
+	margin:2%;
+}
+
+/* ---------- INDIVIDUAL TASKS ----------- */
+.individual-tasks-div {
+	width:90%;
+	height:auto;
+	margin:0 auto;
+	margin-top:6%;
+	margin-bottom:5%;
+}
+
+/* ---------- PROGRESSBAR ----------- */
+.lineprogressbar {
+	width:100%;
+	margin:0 auto;
+}
+
+/* ---------- FORM ----------- */
+.tasks-form {
+	margin-top:5%;
+	height:50px;
+}
+
+.tasks-add-form-h4 {
+	font-family: 'Geo', sans-serif;
+	font-size:24px;	
+	color:#66ccff;
+	display:inline-block;
+	float:left;
+}
+
+.tasks-add-form-input {
+	margin-top:9px;
+	margin-left:3%;
+	height:25px;
+	width:55%;
+	display:inline-block;
+	float:left;
+
+	background-color:transparent;
+	color:#66ccff;
+	font-family: monospace;
+}
+
+/* ---------- BUTTONS ----------- */
+
+.task-delete-btn {
+	display:inline-block;
+	float:right;
+	position:relative;
+	left:5%;
+	margin:3%;
+
+	background-color:transparent;
+	border-color: #ff0001;
+	border-style:outset;
+	border-width: 2px; 
+	color: #ff0001;
+	font-style:monospace;
+	letter-spacing: 2px;
+}
+
+.task-delete-btn:hover, .task-delete-btn:active, .task-delete-btn:focus {
+	border-color: #fff;
+	border-style:inset;
+	color:#fff;
+	background-color: transparent;
+}
+
+.task-add-btn {
+	display:inline-block;
+	float:right;
+	position:relative;
+	right:0%;
+
+	background-color:transparent;
+	border-color: #65ff00;
+	border-style:outset;
+	border-width: 2px; 
+	color: #65ff00;
+	font-style:monospace;
+	letter-spacing: 2px;
+}
+
+.task-add-btn:hover, .task-add-btn:active, .task-add-btn:focus {
+	border-color: #fff;
+	border-style:inset;
+	color:#fff;
+	background-color: transparent;
+}
+
+/* ---------- TEXT ----------- */
+.tasks-h1 {
+	color: #ff9122;
+	font-family: 'Audiowide', sans-serif;
+
+	display:inline-block;
+}
+
+.tasks-incomplete-h3 {
+	color:#fff;
+	font-family: 'Audiowide', sans-serif;
+	font-size:30px;
+
+	display:inline-block;
+}
+
+.tasks-complete-h3 {
+	color:#66ccff;
+	font-family:'Audiowide', cursive;
+	font-size:30px;
+
+	display:inline-block;
+}
+
+/* ---------- MEDIA QUERIES ----------- */
+
+@media screen and (min-width:454px) and (max-width:995px) {
+	
+	.tasks-content {
+		padding-bottom:30%;
+	}
+
+	.tasks-add-form-input {
+		width:100%;
+		margin-left:0%;
+	}
+
+	.task-add-btn {
+		margin-top:5%;
+		float:left;
+	}
+}
+
+@media screen and (max-width:453px) {
+	.tasks-content {
+		padding-bottom:30%;
+	}
+
+	.tasks-form {
+		margin-top:7%;
+	}
+
+	.tasks-h1 {
+		margin-top:20%;
+		width:100%;
+		display:inline-block;
+		font-size:30px;
+		float:right;
+	}
+
+	.tasks-add-form-input {
+		width:100%;
+		margin-left:0%;
+	}
+	
+	.task-add-btn {
+		margin-top:5%;
+		float:left;
+	}
+
+	.lineprogressbar {
+		float:right;
+	}
+}
