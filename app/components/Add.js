@@ -20,7 +20,7 @@ export default class Add extends React.Component {
 			make: "",
 			model: "",
 			year: 0,
-			color: "",
+			color: "N/A",
 			mileage: 0,
 			vinExist: false
 		}
@@ -31,8 +31,6 @@ export default class Add extends React.Component {
 		this.updateRecord = this.updateRecord.bind(this);
 		this.handleUpdateRedirect = this.handleUpdateRedirect.bind(this);
 		this.clear = this.clear.bind(this);
-		// this.handleChange = this.handleChange.bind(this);
-		// this.handleSubmitInfo = this.handleSubmitInfo.bind(this);
 	}
 
 	clear(){
@@ -41,7 +39,7 @@ export default class Add extends React.Component {
 			make: "",
 			model: "",
 			year: 0,
-			color: "",
+			color: "N/A",
 			mileage: 0,
 			vinExist: false
 		});
@@ -96,8 +94,6 @@ export default class Add extends React.Component {
 
 		event.preventDefault();
 		// update DB where this record is
-		console.log("updating record");
-		// console.log(this.state.make);
 		var updateCar = {
 			make: this.state.make,
 			model:this.state.model,
@@ -117,9 +113,6 @@ export default class Add extends React.Component {
 		event.preventDefault();
 		var username = localStorage.getItem("username");
 
-		// console.log(this.state.vin);
-		// console.log(this.state.make);
-
 		var newCar = {
 			vin: this.state.vin,
 			make: this.state.make,
@@ -131,14 +124,12 @@ export default class Add extends React.Component {
 		}
 		
 		helpers.createCar(username, newCar).then(() => {
-			console.log('done');
-
 			this.setState({
 				vin: "",
 				make: "", 
 				model: "", 
 				year: 0, 
-				color: "", 
+				color: "N/A", 
 				mileage: 0
 			});
 		});
@@ -156,25 +147,24 @@ export default class Add extends React.Component {
 		// Render Check Vin input
 		return (
 
-			<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
+			<div id="vinsearch-panel" className="panel-body">
 
-				<div className="form-group">
+				<div className="form-group vinsearch-form">
 					<form onSubmit={this.checkVIN}>
 
-						<h3>VIN Number:</h3>
+						<h3 className="vin-h3">VIN Number</h3>
 						
 							<input
 							type="text"
-							style={{backgroundColor: '#000000', display: 'flex'}}
 							value={this.state.vin}
 							id="vin"
-							className="form-control"
+							className="form-control vinsearch-input"
 							onChange={this.handleChange}
 							required
 							/>
 
 							<button type="submit" 
-							id="steve-btn" className="btn">SEARCH VIN</button>
+							id="vinsearch-btn" className="btn">SEARCH VIN</button>
 					</form>
 												
 				</div>
@@ -184,11 +174,11 @@ export default class Add extends React.Component {
 		}
 		else if (this.state.vinExist === false) {
 			return(
-			<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
+			<div className="panel-body add-panel">
 
 					<span className="glyphicon glyphicon-arrow-left" onClick={this.clear}></span>
 
-					<div className="addEditForm" style={{backgroundColor: '#000000', display: 'flex'}}>
+					<div className="addEditForm">
 
 						{/* Create the form and add all the input fields */}
 
@@ -196,76 +186,75 @@ export default class Add extends React.Component {
 							
 							<div className="form-group">
 
-								<h3>VIN Number:</h3>
+								<h3 className="addedit-form-h3">VIN Number</h3>
 
 						        <input value={this.state.vin} 
-											type="text"
-											style={{backgroundColor: '#000000', display: 'flex'}}
-											className="form-control"
-			                id="vin"
-			                onChange={this.handleChange}
-			                required
-						        />
+									type="text"
+									className="form-control addedit-input"
+					                id="vin"
+					                onChange={this.handleChange}
+					                required
+								        />
 						        <br/>
 
-								<h3>Make:</h3>
+								<h3 className="addedit-form-h3">Make</h3>
 
 								<input value={this.state.make} 
 									type="text"
-									style={{backgroundColor: '#000000', display: 'flex'}}
-									className="form-control"
-	                id="make"
-	                onChange={this.handleChange}
-	                required
+									className="form-control addedit-input"
+					                id="make"
+					                onChange={this.handleChange}
+					                required
 					            />
 					            <br/>
 
-					            <h3>Model:</h3>
+					            <h3 className="addedit-form-h3">Model</h3>
 
 					            <input value={this.state.model}
 						            type="text"
-						            className="form-control"
+						            className="form-control addedit-input"
 						            id="model"
 						            onChange={this.handleChange}
 						            required
 					            />
 								<br/>
 
-								<h3>Year:</h3>
+								<h3 className="addedit-form-h3">Year</h3>
 
 								<input value={this.state.year}
 									type="text"
-									className="form-control"
+									className="form-control addedit-input"
 									id="year"
 									onChange={this.handleChange}
 									required
 								/>
 								<br/>
 
-								<h3>Color:</h3>
+								<h3 className="addedit-form-h3">Color</h3>
 									
 								<input value={this.state.color}
 									type="text"
-									className="form-control"
+									className="form-control addedit-input"
 									id="color"
 									onChange={this.handleChange}
 									required
+									
 								/>
 								<br/>
 
-								<h3>Mileage:</h3>
+								<h3 className="addedit-form-h3">Mileage</h3>
 
 								<input value={this.state.mileage}
 									type="text"
-									className="form-control"
+									className="form-control addedit-input"
 									id="mileage"
 									onChange={this.handleChange}
 									required
 								/>
 								<br/>
 
-					            <button id="steve-btn" className="btn btn-primary" 
-					            	type="submit"> Add
+					            <button id="addcar-btn" className="btn" 
+					            	type="submit"> Add Car
 					            </button>
 
 					            <br/>
@@ -278,18 +267,18 @@ export default class Add extends React.Component {
 
 				</div>
 				);
-		}
+			}
 
 		
 
 			// Render Add/Edit Form
 			return (
 
-				<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
+				<div className="panel-body add-panel">
 
 					<span className="glyphicon glyphicon-arrow-left" onClick={this.clear}></span>
 					
-					<div id="inForm" className="addEditForm" style={{backgroundColor: '#000000', display: 'flex'}}>
+					<div id="inForm" className="addEditForm">
 
 						{/* Create the form and add all the input fields */}
 
@@ -297,80 +286,74 @@ export default class Add extends React.Component {
 							
 							<div className="form-group">
 
-								<h3>VIN Number:</h3>
+								<h3 className="addedit-form-h3">VIN Number</h3>
 
 						        <input value={this.state.vin} 
 									type="text"
-									style={{backgroundColor: '#000000', display: 'flex'}}
-									className="form-control"
+									className="form-control addedit-input"
 					                id="vin"
 					                onChange={this.handleChange}
 					                required
 						        />
 						        <br/>
 
-								<h3>Make:</h3>
+								<h3 className="addedit-form-h3">Make</h3>
 
 								<input value={this.state.make} 
 									type="text"
-									style={{backgroundColor: '#000000', display: 'flex'}}
-									className="form-control"
+									className="form-control addedit-input"
 					                id="make"
 					                onChange={this.handleChange}
 					                required
 					            />
 					            <br/>
 
-					            <h3>Model:</h3>
+					            <h3 className="addedit-form-h3">Model</h3>
 
 					            <input value={this.state.model}
 						            type="text"
-						            style={{backgroundColor: '#000000', display: 'flex'}}
-						            className="form-control"
+						            className="form-control addedit-input"
 						            id="model"
 						            onChange={this.handleChange}
 						            required
 					            />
 								<br/>
 
-								<h3>Year:</h3>
+								<h3 className="addedit-form-h3">Year</h3>
 
 								<input value={this.state.year}
 									type="text"
-									style={{backgroundColor: '#000000', display: 'flex'}}
-									className="form-control"
+									className="form-control addedit-input"
 									id="year"
 									onChange={this.handleChange}
 									required
 								/>
 								<br/>
 
-								<h3>Color:</h3>
+								<h3 className="addedit-form-h3">Color</h3>
 									
 								<input value={this.state.color}
 									type="text"
-									style={{backgroundColor: '#000000', display: 'flex'}}
-									className="form-control"
+									className="form-control addedit-input"
 									id="color"
 									onChange={this.handleChange}
 									required
 								/>
 								<br/>
 
-								<h3>Mileage:</h3>
+								<h3 className="addedit-form-h3">Mileage</h3>
 
 								<input value={this.state.mileage}
 									type="text"
-									style={{backgroundColor: '#000000', display: 'flex'}}
-									className="form-control"
+									className="form-control addedit-input"
 									id="mileage"
 									onChange={this.handleChange}
 									required
 								/>
 								<br/>
 
-					            <button id="steve-btn" className="btn btn-primary" 
-					            	type="submit"> Edit
+					            <button id="editcar-btn" className="btn" 
+					            	type="submit"> Edit Car
 					            </button>
 
 					            <br/>

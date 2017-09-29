@@ -1,8 +1,6 @@
 /* NYT React Search - New York Times Article Search Application 
 Module bundler */
 
-// var path = require("path");
-
 module.exports = {
 
   // This is the entry point or start of our react applicaton
@@ -33,11 +31,4 @@ module.exports = {
   // This lets us debug our react code in chrome dev tools. Errors will have lines and file names
   // Without this the console says all errors are coming from just coming from bundle.js
   devtool: "eval-source-map",
-
-  // resolve: {
-  //   alias: {
-  //     'react': "./node_modules/react"
-  //   },
-  //   extensions: [".js"]
-  // }
 };

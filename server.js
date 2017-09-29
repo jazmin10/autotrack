@@ -48,7 +48,7 @@ app.use(expressJWT({
 })
 // Unprotected routes: don't need token to access
 .unless({ 
-	path: ['/', '/login']
+	path: ['/', '/login', '/new-user']
 }));
 
 app.use(function(err, req, res, next){
@@ -65,7 +65,8 @@ mongoose.connect("mongodb://localhost/autotrackdb", {
 	useMongoClient: true});
 
 // heroku mongolab connection
-// mongoose.connect("");
+// MONGODB_URI: mongodb://heroku_v0vqth9z:64qm5mvk8t6fdqtrgp795icvaa@ds155414.mlab.com:55414/heroku_v0vqth9z
+// mongoose.connect("mongodb://heroku_v0vqth9z:64qm5mvk8t6fdqtrgp795icvaa@ds155414.mlab.com:55414/heroku_v0vqth9z");
 
 var db = mongoose.connection;
 

@@ -3,13 +3,8 @@ projects, masterlist, add/edit form */
 
 // Include the React library
 import React from 'react';
-// import helpers from "./utils/helpers.js";
 import { Link } from 'react-router';
-
 import router, {browserHistory} from "react-router";
-
-
-// import Profile from '../components/Profile.js';
 import Projects from '../components/Projects.js';
 import Masterlist from '../components/Masterlist.js';
 import Add from '../components/Add.js';

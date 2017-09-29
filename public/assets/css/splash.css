@@ -1,0 +1,152 @@
+
+.splash-well {
+	background: url("../images/well-bg.png") no-repeat;
+	background-size: 100% 100%;
+	border: none;
+	margin: 2%;
+	overflow: auto;
+	margin-top: 100px;
+	height: 100vh;
+	padding: 5% 0;
+}
+
+.splash-div {
+	padding-top: 2%;
+	padding-left: 4%;
+	overflow: auto;
+	padding: 10% 0;
+}
+
+.splash-hr {
+	width: 60%;
+	color: #FF9933;
+}
+
+input[type="text"], input[type="password"], .splash-input, input:active  {
+	padding-left: 20px;
+	border-color: #FF9933;
+	border-width: 2px;
+}
+
+.splash-jumbotron {
+	background-color: #000000;
+	margin-top: 100px;
+	height: 100vh;
+
+}
+
+.splash-h2 {
+	color: #FF9933;
+	font-family: 'Audiowide', cursive;
+	letter-spacing:2px;
+	font-size:40px;
+}
+
+.splash-p {
+	color: #FFFFFF;
+	font-style:monospace;
+	letter-spacing: 2px;
+	padding: 10 80 10 80;
+}
+
+/* ----------- NAV -------------- */
+
+.scroll-fixed {
+    position: fixed;
+    top: 30px;
+    left: auto;
+    right: 30px;
+    margin: auto;
+    z-index: 999;
+    height: 40px;
+}
+
+.scroll-fixed li {
+    list-style-type: none;
+}
+
+/*.scroll-fixed li a::after {
+    background-color: #FF9933;
+    background-repeat: repeat-y;
+    bottom: 5px;
+    color: #ffffff;
+    content: "";
+    display: block;
+    height: 20px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: -30px;
+    width: 1px;
+}
+*/
+.scroll-fixed li a {
+    background-color: transparent;
+    border: 1px solid #FF9933;
+    border-radius: 50%;
+    cursor: pointer;
+    /*display: block;*/
+    font-size: 0;
+    height: 8px;
+    line-height: 0;
+    outline: medium none;
+    padding: 5px;
+    position: relative;
+    text-indent: -9999px;
+    width: 8px;
+    margin-bottom: 25px;
+}
+
+
+.scroll-fixed li:first-child a::after {
+    display: none;
+}
+
+.scroll-fixed li a:hover {
+    background-color: #ffffff!important;
+}
+
+
+/* ----------- MEDIA QUERIES ----------- */
+
+@media screen and (min-width:993px) and (max-width:1201px) {
+
+	.splash-div {
+		width: 80%;
+	}
+
+}
+
+@media screen and (min-width:675px) and (max-width:992px) {
+
+	.splash-div {
+		width: 80%;
+	}
+
+}
+
+@media screen and (min-width:455px) and (max-width:674px) {
+
+	.splash-div {
+		width: 80%;
+	}
+
+}
+
+@media screen and (min-width:400px) and (max-width:454px) {
+
+	.splash-div {
+		width: 80%;
+	}
+
+}
+
+@media screen and (max-width:399px) {
+
+	.splash-div {
+		width: 80%;
+	}
+
+
+}

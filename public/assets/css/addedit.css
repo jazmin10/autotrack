@@ -1,30 +1,123 @@
+/* =========== ADD/EDIT STYLING ==========
 
-/*------------Add/Edit-------------*/
-#add-panel {
+	Table of Contents
+	-----------------
+	General - divs, inherited style changes
+	Add/Edit
+		VIN search/add
+		Add/Edit Form
+		Media Queries
+
+*/
+
+/* ========== GENERAL ========== */
+
+/* ========== VIN SEARCH/ADD ========== */
+#vinsearch-panel {
 	background: url("../images/carcrop.png");
 	background-repeat: no-repeat;
 	background-position: right;
+	height:200px;
 }
 
-h3 {
-	font-family: 'Abel', sans-serif;
+.vinsearch-form {
+	width:40%;
+}
+
+.vin-h3 {
+	display:block;
+	float:left;
+	position:relative;
+	left:0%;
+
+	font-family:'Audiowide', cursive;
+	color:#66ccff;
+	font-size:30px;
+}
+
+#vinsearch-btn {
+	display:block;
+	float:left;
+	position:relative;
+	left:0%;
+	margin-top:5%;
+
+	background-color:transparent;
+	border-color: #66ccff;
+	border-style:outset;
+	border-width: 2px; 
 	color: #66ccff;
+	font-style:monospace;
+	letter-spacing: 2px;
+
 }
 
-#steve-btn {
-	font-family: 'Abel', sans-serif;
-	font-size: 14px;
-	color: #ffffff;
-	background: linear-gradient(to bottom, #66ccff 0%, #0066ff 100%);
-	
+#vinsearch-btn:hover, #vinsearch-btn:active, #vinsearch-btn:focus {
+	border-color: #fff;
+	border-style:inset;
+	color:#fff;
+	background-color: transparent;
 }
 
+.vinsearch-input {
+	position:relative;
+	width:100%;
+	display:block;
+	float:left;
+
+	background-color:transparent;
+	color:#66ccff;
+	font-family: monospace;
+}
+
+/* ========== FORM ========== */
+/* ---------- CONTAINER DIV ---------- */
+.add-panel {
+	width:96%;
+	margin:2% auto;
+}
+
+/* ---------- BACK & BUTTONS ---------- */
+.glyphicon-arrow-left{
+	color:#66ccff;
+	padding:2%;
+}
+
+.glyphicon-arrow-left:hover, .glyphicon-arrow-left:active, .glyphicon-arrow-left:focus {
+	color:#ff9933;
+}
+
+#addcar-btn, #editcar-btn {
+	display:inline-block;
+	float:left;
+	position:relative;
+	left:0%;
+	margin-top:5%;
+
+	background-color:transparent;
+	border-color: #66ccff;
+	border-style:outset;
+	border-width: 2px; 
+	color: #66ccff;
+	font-style:monospace;
+	letter-spacing: 2px;
+}
+
+#addcar-btn:hover, #addcar-btn:active, #addcar-btn:focus, #editcar-btn:hover, #editcar-btn:active, #editcar-btn:focus {
+	border-color: #fff;
+	border-style:inset;
+	color:#fff;
+	background-color: transparent;
+}
+
+/* ---------- FORM STYLING ---------- */
 .addEditForm {
 	margin: 15px;
 	border: 2px;
 	border-color: #FF9933;
 }
 
+/* ---------- INPUT/TEXT ---------- */
 input[type="text"] {
 	padding-left: 20px;
 	background: #000000;
@@ -32,6 +125,7 @@ input[type="text"] {
 	border-width: 2px;
 }
 
+<<<<<<< HEAD
 /*Matches blue color of buttons
 div {
     background: linear-gradient(to bottom, #66ccff 0%, #0066ff 100%);
@@ -50,3 +144,42 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
+=======
+.addedit-form-h3 {
+	color:#fff;
+	font-family: 'Audiowide', cursive;
+	font-size:30px;
+
+	display: inline-block;
+}
+
+.addedit-input {
+	background-color: transparent;
+	color:#66ccff;
+
+	display: inline-block;
+	float:left;
+}
+/* ========== MEDIA QUERIES ========== */
+
+@media screen and (max-width:1200px) {
+	#vinsearch-panel {
+		background:transparent;
+	}
+
+	.vinsearch-form {
+		width:80%;
+		margin:0 auto;
+	}
+
+	.vin-h3 {
+		width:96%;
+		margin:2% auto;
+	}
+
+	.vinsearch-input {
+		width:100%;
+		margin:0 auto;
+	}
+}
+>>>>>>> f0f5b7f649036791fe4e3871d8e0c358808a16fc
