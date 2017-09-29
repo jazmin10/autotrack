@@ -30,7 +30,6 @@ export default class PrintQR extends React.Component {
 		
 		return(
 			<div className="well information-well">
-				<div className="basic-specs-div">
 					<div className="qr-code">
 						<QRCode
 		                    bgColor="#FFFFFF"
@@ -43,7 +42,6 @@ export default class PrintQR extends React.Component {
                     <div className="well information-well">
                     	<button onClick={this.print}> PRINT </button> 
                     </div>
-				</div>
 			</div>
 		);
 	}
