@@ -76,6 +76,9 @@ div.progressbar {
 	border-style:inset;
 	color:#65ff00;
 	background-color: transparent;
+
+	color: #ffffff;
+	border-color: #ff9122;
 }
 
 /* ----------- TEXT ----------- */
@@ -86,7 +89,7 @@ div.progressbar {
 	right:4%;
 	width:50%;
 
-	color: #ff6a00;
+	color: #ffffff;
 	font-family: 'Audiowide', cursive;
 	text-align:right;
 	letter-spacing:2px;

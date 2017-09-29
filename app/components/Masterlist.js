@@ -215,7 +215,7 @@ export default class Masterlist extends React.Component {
 
                       <h4 className="masterlist-h4"><strong>{car.year} {car.make} {car.model}</strong></h4>
                       <br/>
-                      <Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn masterlist-btn"> View Profile</Link>
+                      <Link to={"/dashboard-manager/profile/" + car.vin + "?token=" + localStorage.getItem("autotrackToken")} className="btn masterlist-btn"> VIEW PROFILE</Link>
 
                   </div>
 
@@ -229,7 +229,7 @@ export default class Masterlist extends React.Component {
     }
 
     return(
-      <div>
+      <div className="no-cars-div">
         <h2>There are no cars in the masterlist.</h2>
       </div>);
   }
