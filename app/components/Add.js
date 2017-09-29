@@ -30,8 +30,21 @@ export default class Add extends React.Component {
 		this.createRecord = this.createRecord.bind(this);
 		this.updateRecord = this.updateRecord.bind(this);
 		this.handleUpdateRedirect = this.handleUpdateRedirect.bind(this);
+		this.clear = this.clear.bind(this);
 		// this.handleChange = this.handleChange.bind(this);
 		// this.handleSubmitInfo = this.handleSubmitInfo.bind(this);
+	}
+
+	clear(){
+		this.setState({
+			vin: "",
+			make: "",
+			model: "",
+			year: 0,
+			color: "",
+			mileage: 0,
+			vinExist: false
+		});
 	}
 
 	handleChange(event){
@@ -161,7 +174,7 @@ export default class Add extends React.Component {
 							/>
 
 							<button type="submit" 
-							id="steve-btn" className="btn btn-default navbar-btn">Check VIN</button>
+							id="steve-btn" className="btn">SEARCH VIN</button>
 					</form>
 												
 				</div>
@@ -172,6 +185,8 @@ export default class Add extends React.Component {
 		else if (this.state.vinExist === false) {
 			return(
 			<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
+
+					<span className="glyphicon glyphicon-arrow-left" onClick={this.clear}></span>
 
 					<div className="addEditForm" style={{backgroundColor: '#000000', display: 'flex'}}>
 
@@ -184,12 +199,12 @@ export default class Add extends React.Component {
 								<h3>VIN Number:</h3>
 
 						        <input value={this.state.vin} 
-									type="text"
-									style={{backgroundColor: '#000000', display: 'flex'}}
-									className="form-control"
-					                id="vin"
-					                onChange={this.handleChange}
-					                required
+											type="text"
+											style={{backgroundColor: '#000000', display: 'flex'}}
+											className="form-control"
+			                id="vin"
+			                onChange={this.handleChange}
+			                required
 						        />
 						        <br/>
 
@@ -199,9 +214,9 @@ export default class Add extends React.Component {
 									type="text"
 									style={{backgroundColor: '#000000', display: 'flex'}}
 									className="form-control"
-					                id="make"
-					                onChange={this.handleChange}
-					                required
+	                id="make"
+	                onChange={this.handleChange}
+	                required
 					            />
 					            <br/>
 
@@ -272,6 +287,8 @@ export default class Add extends React.Component {
 
 				<div id="add-panel" className="panel-body" style={{backgroundColor: '#000000', display: 'flex'}}>
 
+					<span className="glyphicon glyphicon-arrow-left" onClick={this.clear}></span>
+					
 					<div id="inForm" className="addEditForm" style={{backgroundColor: '#000000', display: 'flex'}}>
 
 						{/* Create the form and add all the input fields */}

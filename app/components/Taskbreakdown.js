@@ -235,16 +235,16 @@ export default class Taskbreakdown extends React.Component {
 										if (tasks.completed == 0) {
 											return(
 												<div key={i} className="well">
-													<h3 className="tasks-incomplete-h3"><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name} checked={this.state.checked}/> {tasks.name}</h3> 
-													<button className="btn task-delete-btn" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+													<h3 className="tasks-h3"><input onClick={this.handleCheck} id={i} type="checkbox" name="finished" autoComplete="off" value={tasks.name} checked={this.state.checked}/> {tasks.name}</h3> 
+													<button className="btn task-delete-btn" onClick={this.handleDeleteTask} value={tasks.name}>DELETE TASK</button>
 												</div>
 											);
 										}
 
 										return(
 											<div key={i} className="well">
-												<h3 className="tasks-complete-h3"><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> {tasks.name}</h3>
-												<button className="btn task-delete-btn" onClick={this.handleDeleteTask} value={tasks.name}>Delete Task</button>
+												<h3 className="tasks-h3"><span className="glyphicon glyphicon-ok" aria-hidden="true"></span> {tasks.name}</h3>
+												<button className="btn task-delete-btn" onClick={this.handleDeleteTask} value={tasks.name}>DELETE TASK</button>
 											</div>
 										);
 										
@@ -265,7 +265,7 @@ export default class Taskbreakdown extends React.Component {
 												onChange={this.handleFormChange}
 												required
 											/>
-											<button className="btn task-add-btn" type="submit" onClick={this.handleAddTask}>Add Task</button>
+											<button className="btn task-add-btn" type="submit" onClick={this.handleAddTask}>ADD TASK</button>
 											<br/>
 											
 										</div>
