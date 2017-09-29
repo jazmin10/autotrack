@@ -96,8 +96,6 @@ export default class Add extends React.Component {
 
 		event.preventDefault();
 		// update DB where this record is
-		console.log("updating record");
-		// console.log(this.state.make);
 		var updateCar = {
 			make: this.state.make,
 			model:this.state.model,
@@ -117,9 +115,6 @@ export default class Add extends React.Component {
 		event.preventDefault();
 		var username = localStorage.getItem("username");
 
-		// console.log(this.state.vin);
-		// console.log(this.state.make);
-
 		var newCar = {
 			vin: this.state.vin,
 			make: this.state.make,
@@ -131,8 +126,6 @@ export default class Add extends React.Component {
 		}
 		
 		helpers.createCar(username, newCar).then(() => {
-			console.log('done');
-
 			this.setState({
 				vin: "",
 				make: "", 

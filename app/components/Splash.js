@@ -32,7 +32,6 @@ export default class Splash extends React.Component {
 
 		var newState = {};
 		newState[event.target.id] = event.target.value;
-		// console.log(newState);
 		this.setState(newState);
 	}
 
@@ -52,20 +51,13 @@ export default class Splash extends React.Component {
 		helpers.getAuth(this.state.username, this.state.password)
 		.then(response => {
 
-			console.log(response);
-			
 			if (response.username !== undefined) {
 				localStorage.setItem("autotrackToken", response.token);
 				localStorage.setItem("username", response.username);
-
-
 				this.handleRedirect();
 				
 			} else {
-
-				console.log("Username and Password not found");
 				return "Invalid Username or Password";
-
 			}
 		})
 	}
