@@ -48,7 +48,7 @@ app.use(expressJWT({
 })
 // Unprotected routes: don't need token to access
 .unless({ 
-	path: ['/', '/login', '/new-user']
+	path: ['/', '/login', '/new-user', '/dashboard-manager/profile/WAUML44EX5N014789']
 }));
 
 app.use(function(err, req, res, next){
