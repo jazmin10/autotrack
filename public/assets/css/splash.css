@@ -42,6 +42,13 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
 	font-size:40px;
 }
 
+.splash-h3 {
+	color: #FF9933;
+	font-family: 'Audiowide', cursive;
+	letter-spacing:2px;
+	font-size:20px;
+}
+
 .splash-p {
 	color: #FFFFFF;
 	font-style:monospace;
@@ -65,22 +72,6 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
     list-style-type: none;
 }
 
-/*.scroll-fixed li a::after {
-    background-color: #FF9933;
-    background-repeat: repeat-y;
-    bottom: 5px;
-    color: #ffffff;
-    content: "";
-    display: block;
-    height: 20px;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    top: -30px;
-    width: 1px;
-}
-*/
 .scroll-fixed li a {
     background-color: transparent;
     border: 1px solid #FF9933;
@@ -121,12 +112,16 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
 @media screen and (min-width:675px) and (max-width:992px) {
 
 	.splash-div {
+		margin-top: -50px;
 		width: 80%;
 	}
 
 }
 
 @media screen and (min-width:455px) and (max-width:674px) {
+	.splash-jumbotron {
+		margin-top: 200px;
+	}
 
 	.splash-div {
 		width: 80%;
@@ -135,6 +130,9 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
 }
 
 @media screen and (min-width:400px) and (max-width:454px) {
+	.splash-jumbotron {
+		margin-top: 225px;
+	}
 
 	.splash-div {
 		width: 80%;
@@ -143,6 +141,9 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
 }
 
 @media screen and (max-width:399px) {
+	.splash-jumbotron {
+		margin-top: 225px;
+	}
 
 	.splash-div {
 		width: 80%;

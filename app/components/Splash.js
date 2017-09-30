@@ -133,13 +133,13 @@ export default class Splash extends React.Component {
 			        <div className="container splash-div">
 			            <div className="row">
 			                <div className="col-lg-12 text-center">
-			                    <h2 className="splash-h2">About</h2>
+			                    <h2 className="splash-h2">What is AutoTrack?</h2>
 			                    <hr className="splash-hr"/>
 			                </div>
 			            </div>
 			            <div className="row">
 			                <div className="col-lg-8 col-lg-offset-2">
-									<p className="splash-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum, ipsum id cursus euismod, metus est varius elit, fringilla vestibulum magna massa quis purus. In eu lacinia nisi. Aenean dui nunc, accumsan sed ante vel, volutpat aliquam odio. Phasellus tempus sed risus sed laoreet. Aliquam convallis volutpat leo ut porta. Ut tincidunt ipsum ac felis ultrices, eu accumsan tortor suscipit. Nullam quam ante, volutpat quis interdum ac, ullamcorper at ante. Pellentesque ac mattis orci. Etiam pharetra lacus sed augue facilisis, sit amet efficitur dolor semper. Sed malesuada odio et justo placerat feugiat.
+									<p className="splash-p">At AUTOTRACK we understand cost controls. That’s why we’ve built an app that takes the guesswork out of your vehicle reconditioning process. By streamlining asynchronous communication with outside vendors and internal partners alike, AUTOTRACK eliminates the wasteful meandering around the car lot.  AUTOTRACK offers login permissions so that vendors, using a QR code reader, may scan specific cars to see the necessary repairs, submit bids, and have bids approved that pertain only to their specialization. Internally, individual units can be tracked through the reconditioning process from the desk.
 									</p>
 			                </div>
 			            </div>
@@ -152,14 +152,35 @@ export default class Splash extends React.Component {
 			        <div className="container splash-div">
 			            <div className="row">
 			                <div className="col-lg-12 text-center">
-			                    <h2 className="splash-h2">Contact Me</h2>
+			                    <h2 className="splash-h2">About the Team</h2>
 			                    <hr className="splash-hr"/>
 			                </div>
 			            </div>
 			            <div className="row">
 			                <div className="col-lg-8 col-lg-offset-2">
-									<p className="splash-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum, ipsum id cursus euismod, metus est varius elit, fringilla vestibulum magna massa quis purus. In eu lacinia nisi. Aenean dui nunc, accumsan sed ante vel, volutpat aliquam odio. Phasellus tempus sed risus sed laoreet. Aliquam convallis volutpat leo ut porta. Ut tincidunt ipsum ac felis ultrices, eu accumsan tortor suscipit. Nullam quam ante, volutpat quis interdum ac, ullamcorper at ante. Pellentesque ac mattis orci. Etiam pharetra lacus sed augue facilisis, sit amet efficitur dolor semper. Sed malesuada odio et justo placerat feugiat.
+									<p className="splash-p">The AUTOTRACK team formed during the summer of 2017 at the coding bootcamp at the University of Texas, Austin.  Please check out individual work and other team projects in the links below.
 									</p>
+			                </div>
+			            </div>
+			            <div className="row">
+			                <div className="col-md-6">
+									<h3 className="splash-h3">Jazmin Estrada</h3>
+									<span><a href="https://github.com/jazmin10" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/jazm%C3%ADn-estrada-650396140/" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
+									<br/>
+									<h3 className="splash-h3">Melissa Hernandez</h3>
+									<span><a href="https://github.com/MissHernandez" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/misshernandez/" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
+									<br/>
+									<h3 className="splash-h3">Sada Kallur</h3>
+									<span><a href="https://github.com/sadashivakj" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/sadashiva-kallur-73611410/" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
+									<br/>
+			                </div>
+			                <div className="col-md-6">
+									<h3 className="splash-h3">Flynn Tan</h3>
+									<span><a href="https://github.com/sundropgold" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/flynn-tan-40503596/" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
+									<br/>
+									<h3 className="splash-h3">Steve Walsh</h3>
+									<span><a href="https://github.com/Finfischley" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/stephen-walsh-22916360" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
+									<br/>
 			                </div>
 			            </div>
 			        </div>
