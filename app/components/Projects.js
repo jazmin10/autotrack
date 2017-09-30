@@ -21,7 +21,7 @@ export default class Projects extends React.Component {
 		super(props);
 
 		this.state = {
-			carList: [],
+			carList: "",
       carMaintenance: [],
       overallProgress: []
 		}
@@ -144,8 +144,14 @@ export default class Projects extends React.Component {
       height:'150px'
     };
 
+    if (this.state.carList === "") {
+      return (
+        <div></div>
+      );
+    }
+
 	  // If carList is not empty, render list of cars.
-    if (this.state.carList.length !== 0) {
+    else if (this.state.carList.length !== 0) {
 
       return (
 

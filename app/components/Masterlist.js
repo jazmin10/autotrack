@@ -22,7 +22,7 @@ export default class Masterlist extends React.Component {
 		super(props);
 
 		this.state = {
-			masterlist: [],
+			masterlist: "",
       carMaintenance:[],
       overallProgress: []
 		}
@@ -146,7 +146,13 @@ export default class Masterlist extends React.Component {
       height:'150px'
     };
 
-    if (this.state.masterlist.length !== 0) {
+    if (this.state.masterlist === "") {
+      return(
+        <div></div>
+      );
+    }
+
+    else if (this.state.masterlist.length !== 0) {
 
       return (
 
