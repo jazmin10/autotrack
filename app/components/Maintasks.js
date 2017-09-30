@@ -162,38 +162,41 @@ export default class Maintasks extends React.Component {
 		}
 
 		return (
-				<div id="empty-task" className="well well-lg">
-
+			<div className="tasks-container">
+				<div id="empty-task" className="well well-lg maintasks-content">
+					<div className="main-tasks-div">
 						{/* Display a list of names of the main tasks */}
 						<div>
-							<h2>Main Tasks</h2>
-							<hr/>
+							<h1 className="maintasks-h1">Main Tasks</h1>
+							<br/>
 						</div>
 
 						{/* Add a new main task form */}
-						<div>
+						<div className="add-maintask-container">
 							{/* Need to add onSubmit=method to the form tag */}
 							<form onSubmit={this.handleSubmit}>
 								<div className="form-group">
-									<h4>Add Main Task:</h4>
+									<h4 className="maintasks-add-form-h4">Add Main Task:</h4>
 
-		            	<input
-		               	value={this.state.newCategory}
-		                type="text"
-		                className="form-control"
-		                id="newCategory"
-		                onChange={this.handleChange}
-		                required
-		              />
-		              <br/>
+					            	<input
+					               	value={this.state.newCategory}
+					                type="text"
+					                className="form-control maintasks-add-form-input"
+					                id="newCategory"
+					                onChange={this.handleChange}
+					                required
+					              	/>
+					            	<br/>
 
-		              <button className="btn btn-primary" type="submit">Submit</button>
+		              				<button className="btn maintask-add-btn" type="submit">ADD MAIN TASK</button>
 								</div>
 							</form>
 						</div>
+					</div>
 
 				</div>
-			);
+			</div>	
+		);
 	}
 }
 

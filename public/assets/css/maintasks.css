@@ -116,3 +116,71 @@
 	color: #ff9122;
 	font-size: 40px;
 }*/
+
+/* =========== MAIN TASKS =========== */
+
+/* ------------ EMPTY DIV ------------- */
+
+.maintasks-content {
+	background: url("../images/well-bg.png") no-repeat;
+	background-size: 100% 100%;
+	border-radius: 35px;
+
+	margin:2%;
+}
+
+.main-tasks-div {
+	width:90%;
+	height:auto;
+	margin:0 auto;
+	margin-top:6%;
+	margin-bottom:5%;
+}
+
+.maintasks-h1 {
+	color: #ff9122;
+	font-family: 'Audiowide', sans-serif;
+
+	display:inline-block;
+}
+
+.add-maintask-container {
+	margin-left: 100px;
+	height:100px;
+}
+
+.maintasks-add-form-h4 {
+	font-family: 'Geo', sans-serif;
+	font-size:24px;	
+	color:#66ccff;
+	display:inline-block;
+	float:left;
+}
+
+.maintasks-add-form-input {
+	margin-top:9px;
+	margin-left:3%;
+	height:25px;
+	width:55%;
+	display:inline-block;
+	float:left;
+
+	background-color:transparent;
+	color:#66ccff;
+	font-family: monospace;
+}
+
+.maintask-add-btn {
+	display:inline-block;
+	float:right;
+	position:relative;
+	right:0%;
+
+	background-color:transparent;
+	border-color: #65ff00;
+	border-style:outset;
+	border-width: 2px; 
+	color: #65ff00;
+	font-style:monospace;
+	letter-spacing: 2px;
+}
