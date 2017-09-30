@@ -56,6 +56,13 @@ export default class Add extends React.Component {
 
 		event.preventDefault();
 
+		if (/[^a-zA-Z0-9\-\/]/.test( this.state.vin ) || this.state.vin.length < 17) {
+        	this.setState({vin: "not valid"});
+        	return false;
+        }
+
+        this.setState({vin: "fetching data..."});
+
     helpers.getCarInfo(this.state.vin).then(response => {
 
         if(response != null) {
@@ -268,8 +275,6 @@ export default class Add extends React.Component {
 				</div>
 				);
 			}
-
-		
 
 			// Render Add/Edit Form
 			return (

@@ -88,7 +88,6 @@ var helpers = {
 			params: { vin: vin },
 			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
 		}).then(response => {
-			console.log(response);
 			return response.data;
 		});
 	},
