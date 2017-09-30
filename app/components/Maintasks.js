@@ -99,62 +99,68 @@ export default class Maintasks extends React.Component {
 
 			return (
 				<div className="tasks-container">
-					<div className="well tasks-content individual-tasks-div">
-						{/* Display a list of names of the main tasks */}
-						<div className="">
-							<h1 className="main-tasks">Main Tasks</h1>
-							
 
-							{/* Display the overall progress of the car using semi-circle progress bar */}
-							<div>
-								<SemiCircle
-									progress = {this.state.overallProgress}
-									text={((this.state.overallProgress * 100).toFixed(0)) + "%"}
-									options={options}
-									initialAnimate={true}
-									containerStyle={containerStyle}
-									containerClassName={'.progressbar'}
-								/>
-							</div>
-							<br/>
-							
-							{this.state.categoryNames.map((category, i) => {
-								return (
-									<div className="well" key={i}>
-										<h3 className="main-cat">{category}</h3>
+					<div>
+
+						<div className="well tasks-content">
+							{/* Display a list of names of the main tasks */}
+							<div className="maintasks-div">
+									<h1 className="maintasks-h1">Main Tasks</h1>
 									
-										<button 
-											value={category}
-											className="maintask-delete"
-											onClick={this.handleDelete}>
-											Delete {/* Group notes: do not use bootstrap glyphicons */}
-										</button>
-							
+
+									{/* Display the overall progress of the car using semi-circle progress bar */}
+									<div>
+										<SemiCircle
+											progress = {this.state.overallProgress}
+											text={((this.state.overallProgress * 100).toFixed(0)) + "%"}
+											options={options}
+											initialAnimate={true}
+											containerStyle={containerStyle}
+											containerClassName={'semicircleprogressbar'}
+										/>
 									</div>
-								);
-							})}	
-						</div>
-
-						{/* Add a new main task form */}
-						<div className="add-task-container">
-							{/* Need to add onSubmit=method to the form tag */}
-							<form onSubmit={this.handleSubmit}>
-								<div className="form-group tasks-form">
-								 <h4 className="tasks-add-form-h4">Add Main Task:</h4>
+									<br/>
 									
+									{this.state.categoryNames.map((category, i) => {
+										return (
+											<div className="well" key={i}>
+												<h3 className="maintasks-h3">{category}</h3>
+											
+												<button 
+													value={category}
+													className="maintask-delete"
+													onClick={this.handleDelete}>
+													DELETE
+												</button>
+									
+											</div>
+										);
+									})}	
 
-				            	<input
-				               	value={this.state.newCategory}
-				                type="text"
-				                className="form-control tasks-add-form"
-				                id="newCategory"
-				                onChange={this.handleChange}
-				                required
-				              	/>
-				      			<button className="btn main-task-add-btn" type="submit">Submit</button>
-								<br/>
+
+								{/* Add a new main task form */}
+								<div className="add-maintask-container">
+									{/* Need to add onSubmit=method to the form tag */}
+									<form onSubmit={this.handleSubmit}>
+										<div className="form-group maintasks-form">
+										 <h4 className="maintasks-add-form-h4">Add Main Task:</h4>
+											
+
+						            	<input
+						               	value={this.state.newCategory}
+						                type="text"
+						                className="form-control maintasks-add-form"
+						                id="newCategory"
+						                onChange={this.handleChange}
+						                required
+						              	/>
+						      			<button className="btn maintask-add-btn" type="submit">ADD MAIN TASK</button>
+										<br/>
+										</div>
+									</form>
 								</div>
-							</form>
+
+							</div>
 						</div>
 					</div>	
 				</div>
@@ -164,7 +170,7 @@ export default class Maintasks extends React.Component {
 		return (
 			<div className="tasks-container">
 				<div id="empty-task" className="well well-lg maintasks-content">
-					<div className="main-tasks-div">
+					<div className="maintasks-div">
 						{/* Display a list of names of the main tasks */}
 						<div>
 							<h1 className="maintasks-h1">Main Tasks</h1>

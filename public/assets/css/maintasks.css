@@ -1,35 +1,104 @@
 
-/*---------Table of Contents
-	-----------------
+/* =========== MAIN TASKS STYLING ==========
+
+--------- TABLE OF CONTENTS -----------------
 	General - divs, inherited style changes
-	Taskbreakdown
-		Container Div
-		Main Tasks
+	Maintasks
 		Progressbar
+		Container/Content Div
+		Text
 		Form
 		Buttons
-		Text
 		Media Queries
 */
 
-/*==========General============*/
+/* ========== GENERAL ============ */
 .well {
 	background-color: transparent;
 	border:none;
 	box-shadow: none;
 }
 
-/*==========Main Tasks============*/
+/* =========== MAIN TASKS =========== */
 
-/*#category-name {
-	font-size: 30px;
+/* ------------ PROGRESSBAR ------------- */
+.semicircleprogressbar {
+	width:100%;
+	margin:0 auto;
+}
+
+/* ------------ CONTAINER/CONTENT DIV ------------- */
+.maintasks-content {
+	background: url("../images/well-bg.png") no-repeat;
+	background-size: 100% 100%;
+	border-radius: 35px;
+
+	margin:2%;
+}
+
+.maintasks-div {
+	width:90%;
+	height:auto;
+	margin:0 auto;
+	margin-top:6%;
+	margin-bottom:5%;
+}
+
+/* ------------ TEXT ------------- */
+.maintasks-h1 {
+	color: #ff9122;
+	font-family: 'Audiowide', sans-serif;
+
+	display:inline-block;
+}
+
+.maintasks-h3 {
 	color: #ffffff;
 	font-family: 'Audiowide', sans-serif;
+	display:inline-block;
+	font
 }
-*/
-.main-task-add-btn {
-	margin-top: -1%;
-	margin-right: 5%;
+
+/* ------------ FORM ------------- */
+.add-maintask-container {
+	margin-left: 100px;
+	height:100px;
+}
+
+.maintasks-add-form {
+	margin-left: 3%;
+    height: 25px;
+    width: 55%;
+    display: inline-block;
+    float: left;
+    background-color: transparent;
+    color: #66ccff;
+    font-family: monospace;
+}
+
+.maintasks-add-form-h4 {
+	font-family: 'Geo', sans-serif;
+	font-size:24px;	
+	color:#66ccff;
+	display:inline-block;
+	float:left;
+}
+
+.maintasks-add-form-input {
+	margin-top:9px;
+	margin-left:3%;
+	height:25px;
+	width:55%;
+	display:inline-block;
+	float:left;
+
+	background-color:transparent;
+	color:#66ccff;
+	font-family: monospace;
+}
+
+/* ------------ BUTTONS ------------- */
+.maintask-add-btn {
 	display:inline-block;
 	float:right;
 	position:relative;
@@ -58,129 +127,25 @@
     letter-spacing: 2px;
 }
 
-.main-tasks {
-	padding: 10px;
-	color: #ff9122;
-	font-family: 'Audiowide', sans-serif;
-	margin-top: 30px;
-}
+/* ------------ MEDIA QUERIES ------------- */
+@media screen and (max-width:992px) {
+	.maintasks-content {
+		padding-bottom:10%;
+	}
 
-.add-maintask {
-	display: inline-block;
+	.add-maintask-container {
+		width:100%;
+		margin:0 auto;
+	}
 
-}
+	#newCategory {
+		width:100%;
+		margin-left:0%;
+	}
 
-.main-cat {
-	color: #ffffff;
-	font-family: 'Audiowide', sans-serif;
-	display:inline-block;
-	font
-}
-
-.tasks-add-form {
-	margin-left: 3%;
-    height: 25px;
-    width: 55%;
-    display: inline-block;
-    float: left;
-    background-color: transparent;
-    color: #66ccff;
-    font-family: monospace;
-}
-
-.add-task-container {
-	margin-left: 100px;
-	height:100px;
-}
-
-#newCategory {
-	font-size: 30px;
-}
-/*#empty-task {
-	background-color: black;
-}
-
-.well-lg {
-	background: black;
-}
-
-.well {
-	border: solid;
-	border-color: deepskyblue;
-	box-shadow: 0px 0px 25px aqua;
-	background: black;
-}
-
-#main-tasks {
-	font-family:  Audiowide, cursive;
-	color: #ff9122;
-	font-size: 40px;
-}*/
-
-/* =========== MAIN TASKS =========== */
-
-/* ------------ EMPTY DIV ------------- */
-
-.maintasks-content {
-	background: url("../images/well-bg.png") no-repeat;
-	background-size: 100% 100%;
-	border-radius: 35px;
-
-	margin:2%;
-}
-
-.main-tasks-div {
-	width:90%;
-	height:auto;
-	margin:0 auto;
-	margin-top:6%;
-	margin-bottom:5%;
-}
-
-.maintasks-h1 {
-	color: #ff9122;
-	font-family: 'Audiowide', sans-serif;
-
-	display:inline-block;
-}
-
-.add-maintask-container {
-	margin-left: 100px;
-	height:100px;
-}
-
-.maintasks-add-form-h4 {
-	font-family: 'Geo', sans-serif;
-	font-size:24px;	
-	color:#66ccff;
-	display:inline-block;
-	float:left;
-}
-
-.maintasks-add-form-input {
-	margin-top:9px;
-	margin-left:3%;
-	height:25px;
-	width:55%;
-	display:inline-block;
-	float:left;
-
-	background-color:transparent;
-	color:#66ccff;
-	font-family: monospace;
-}
-
-.maintask-add-btn {
-	display:inline-block;
-	float:right;
-	position:relative;
-	right:0%;
-
-	background-color:transparent;
-	border-color: #65ff00;
-	border-style:outset;
-	border-width: 2px; 
-	color: #65ff00;
-	font-style:monospace;
-	letter-spacing: 2px;
+	.maintask-add-btn {
+		display:block;
+		margin-top:5%;
+		float:left;
+	}
 }
