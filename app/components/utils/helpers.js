@@ -32,6 +32,7 @@ var helpers = {
 	// Using in Projects.js. Get all the cars assigned to a particular user and return.
 	// Needs to include token in request headers
 	getProjectCars: (username) => {
+
 		return axios({
 				method: 'GET',
 				url: "/user-projects/" + username,
