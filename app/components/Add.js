@@ -61,8 +61,6 @@ export default class Add extends React.Component {
         	return false;
         }
 
-        this.setState({vin: "fetching data..."});
-
     helpers.getCarInfo(this.state.vin).then(response => {
 
         if(response != null) {

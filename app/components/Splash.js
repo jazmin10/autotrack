@@ -163,7 +163,8 @@ export default class Splash extends React.Component {
 			                </div>
 			            </div>
 			            <div className="row">
-			                <div className="col-md-6">
+			            	<div className="col-md-2"></div>
+			                <div className="col-md-4">
 									<h3 className="splash-h3">Jazmin Estrada</h3>
 									<span><a href="https://github.com/jazmin10" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/jazm%C3%ADn-estrada-650396140/" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
 									<br/>
@@ -174,7 +175,7 @@ export default class Splash extends React.Component {
 									<span><a href="https://github.com/sadashivakj" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/sadashiva-kallur-73611410/" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
 									<br/>
 			                </div>
-			                <div className="col-md-6">
+			                <div className="col-md-4">
 									<h3 className="splash-h3">Flynn Tan</h3>
 									<span><a href="https://github.com/sundropgold" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/flynn-tan-40503596/" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
 									<br/>
@@ -182,6 +183,7 @@ export default class Splash extends React.Component {
 									<span><a href="https://github.com/Finfischley" target="_blank"><img src="../../public/assets/images/github.png" style={{width: '25'}} alt="Github" /></a> <a href="https://www.linkedin.com/in/stephen-walsh-22916360" target="_blank"><img src="../../public/assets/images/linkedin.png" style={{width: '25'}} alt="LinkedIn" /></a></span>
 									<br/>
 			                </div>
+			                <div className="col-md-2"></div>
 			            </div>
 			        </div>
 			    </section>
