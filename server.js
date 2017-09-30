@@ -61,12 +61,12 @@ app.use(function(err, req, res, next){
 // =============================================================
 
 // mongodb local connection
-mongoose.connect("mongodb://localhost/autotrackdb", {
-	useMongoClient: true});
+// mongoose.connect("mongodb://localhost/autotrackdb", {
+// 	useMongoClient: true});
 
 // heroku mongolab connection
 // MONGODB_URI: mongodb://heroku_v0vqth9z:64qm5mvk8t6fdqtrgp795icvaa@ds155414.mlab.com:55414/heroku_v0vqth9z
-// mongoose.connect("mongodb://heroku_v0vqth9z:64qm5mvk8t6fdqtrgp795icvaa@ds155414.mlab.com:55414/heroku_v0vqth9z");
+mongoose.connect("mongodb://heroku_v0vqth9z:64qm5mvk8t6fdqtrgp795icvaa@ds155414.mlab.com:55414/heroku_v0vqth9z");
 
 var db = mongoose.connection;
 
