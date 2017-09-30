@@ -113,14 +113,14 @@
 	letter-spacing: 2px;
 }
 
-.maintask-add-btn:hover, .maintask-add-btn:active, maintask-add-btn:focus {
+.maintask-add-btn:hover, .maintask-add-btn:active, .maintask-add-btn:focus {
 	border-color: #fff;
 	border-style:inset;
 	color:#fff;
 	background-color: transparent;
 }
 
-maintask-delete:hover, maintask-delete:active, maintask-delete:focus {
+.maintask-delete:hover, .maintask-delete:active, .maintask-delete:focus {
 	border-color: #fff;
 	border-style:inset;
 	color:#fff;
