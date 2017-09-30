@@ -130,7 +130,7 @@ export default class Maintasks extends React.Component {
 													value={category}
 													className="maintask-delete"
 													onClick={this.handleDelete}>
-													DELETE
+													DELETE MAIN TASK
 												</button>
 									
 											</div>
@@ -143,19 +143,19 @@ export default class Maintasks extends React.Component {
 									{/* Need to add onSubmit=method to the form tag */}
 									<form onSubmit={this.handleSubmit}>
 										<div className="form-group maintasks-form">
-										 <h4 className="maintasks-add-form-h4">Add Main Task:</h4>
-											
+											 <h4 className="maintasks-add-form-h4">Add Main Task:</h4>
+												
 
-						            	<input
-						               	value={this.state.newCategory}
-						                type="text"
-						                className="form-control maintasks-add-form"
-						                id="newCategory"
-						                onChange={this.handleChange}
-						                required
-						              	/>
-						      			<button className="btn maintask-add-btn" type="submit">ADD MAIN TASK</button>
-										<br/>
+							            	<input
+							               	value={this.state.newCategory}
+							                type="text"
+							                className="form-control maintasks-add-form"
+							                id="newCategory"
+							                onChange={this.handleChange}
+							                required
+							              	/>
+							      			<button className="btn maintask-add-btn" type="submit">ADD MAIN TASK</button>
+											<br/>
 										</div>
 									</form>
 								</div>

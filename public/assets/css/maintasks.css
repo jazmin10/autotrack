@@ -113,6 +113,20 @@
 	letter-spacing: 2px;
 }
 
+.maintask-add-btn:hover, .maintask-add-btn:active, maintask-add-btn:focus {
+	border-color: #fff;
+	border-style:inset;
+	color:#fff;
+	background-color: transparent;
+}
+
+maintask-delete:hover, maintask-delete:active, maintask-delete:focus {
+	border-color: #fff;
+	border-style:inset;
+	color:#fff;
+	background-color: transparent;
+}
+
 .maintask-delete {
 	display: inline-block;
     float: right;
@@ -123,19 +137,19 @@
     border-width: 2px;
     color: #ff0001;
     font-style: monospace;
-    font-size: 20px;
     letter-spacing: 2px;
 }
 
 /* ------------ MEDIA QUERIES ------------- */
-@media screen and (max-width:992px) {
+@media screen and (max-width:1200px) {
 	.maintasks-content {
-		padding-bottom:10%;
+		padding-bottom:20%;
 	}
 
 	.add-maintask-container {
 		width:100%;
 		margin:0 auto;
+		margin-bottom:15%;
 	}
 
 	#newCategory {
