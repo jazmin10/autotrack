@@ -9,11 +9,14 @@
 
 // include the React library
 import React from 'react';
+// include helpers
 import helpers from "./utils/helpers.js";
+// include react progressbar
 import { Line } from "./react-progress.js";
+// include isEqual from lodash
 import isEqual from 'lodash/isequal';
 
-// TASKS 
+// TASKBREAKDOWN COMPONENT 
 // =====================================================
 
 // create and export the Taskbreakdown component
@@ -31,17 +34,19 @@ export default class Taskbreakdown extends React.Component {
 			checked:false
 		}
 
+		// bind functions
 		this.handleFormChange = this.handleFormChange.bind(this);
 		this.handleAddTask = this.handleAddTask.bind(this);
 		this.handleCheck = this.handleCheck.bind(this);
 		this.handleDeleteTask = this.handleDeleteTask.bind(this);
 	}
 
-	// We might not need this, keeping just in case
 	componentDidMount(){
-
+		// method invoked immediately after component is mounted
+		
 		if (this.props.passedMaintenance.categoryProgress == null || this.props.passedMaintenance.categoryProgress == undefined
 			){
+			// if the passed categoryProgress is null or undefined, set it as 0
 			this.setState({
 				taskInfo: this.props.passedMaintenance.tasks,
 				categoryName: this.props.passedMaintenance.category,
@@ -89,6 +94,8 @@ export default class Taskbreakdown extends React.Component {
 	}
 
 	handleAddTask(event){
+		// method that will handle the new task object 
+
 		event.preventDefault();
 
 		// create the new task object
@@ -111,6 +118,7 @@ export default class Taskbreakdown extends React.Component {
 
 	handleDeleteTask(event){
 		// method that removes tasks
+
 		event.preventDefault();
 
 		// capture the task to be removed
@@ -126,6 +134,7 @@ export default class Taskbreakdown extends React.Component {
 			}
 		}
 
+		// update the state with the new array without the deleted task
 		this.setState({
 			taskInfo:deleteTaskInfo
 		});
@@ -206,7 +215,7 @@ export default class Taskbreakdown extends React.Component {
 			var percentNum = progressNum + "%";			
 		}
 
-
+		// if the taskInfo array has something in it
 		if (this.state.taskInfo.length !== 0){
 			return(
 				<div className="tasks-container">
@@ -284,6 +293,7 @@ export default class Taskbreakdown extends React.Component {
 
 		else {
 
+			// if the category doesn't yet exist, render this
 			if (this.state.categoryName !== "" || this.state.categoryName !== null) {
 				return(
 					<div className="tasks-container">

@@ -11,7 +11,11 @@ import { SemiCircle } from "./react-progress.js";
 
 // MAINTASKS COMPONENT
 // =====================================================
+
+// create and export Maintasks component
 export default class Maintasks extends React.Component {
+
+	// initial state setup
 	constructor(props){
 		super(props);
 
@@ -23,6 +27,7 @@ export default class Maintasks extends React.Component {
 			newCategory: ""
 		}
 
+		// bind functions
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
@@ -79,19 +84,19 @@ export default class Maintasks extends React.Component {
 		if (this.state.overallProgress == 1) {
 			var options = {
 				strokeWidth:2,
-				color: '#42f445'
+				color: '#42f445' // green
 			};
 		}
 		else if (this.state.overallProgress < 1 && this.state.overallProgress >= .5) {
 			var options = {
 				strokeWidth:2,
-				color: '#fb1'
+				color: '#fb1' // yellow
 			};
 		}
 		else {
 			var options = {
 				strokeWidth:2,
-				color: '#f44242'
+				color: '#f44242' // red
 			};
 		}
 

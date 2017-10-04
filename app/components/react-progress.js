@@ -1,13 +1,27 @@
+/* ========== REACT PROGRESSBAR ==========
+    - source: https://github.com/kimmobrunfeldt/react-progressbar.js/tree/master
+    - refactored by Brandon Simon for ES6
+    - responsive progressbars for React
+    - for autotrack, we use the semicircle and line progressbars.
+*/
+
+// DEPENDENCIES 
+// =====================================================
+// import react library
 import React, { Component } from 'react'
+// import isEqual from lodash
 import isEqual from 'lodash/isequal';
+// import progressbar
 import * as ProgressBar from 'progressbar.js'
 
-
+// SHAPE COMPONENT
+// =====================================================
 class Shape extends Component {
     constructor() {
         super()
         this.state = {shape: null}
     }
+    
     render() {
         var style = this.props.containerStyle;
         var className = this.props.containerClassName;

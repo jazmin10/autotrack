@@ -17,8 +17,9 @@ var helpers = {
 
 	/* ---------- GET ROUTES ----------- */
 
+	// Using in Splash.js. Get the username and password and verify 
+	// the user's login credentials are already in the database.
 	getAuth: function(username, password) {
-		// console.log(username, password);
 		return axios.get("/login", {
 			params: {
 				username: username,

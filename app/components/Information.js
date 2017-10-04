@@ -1,6 +1,6 @@
 /* ========== CAR INFORMATION COMPONENT ==========
  	- contains car information (vin, make, model, year, color,
-mileage) for a car
+	mileage) for a car
 	- child of profile
 */
 
@@ -20,7 +20,11 @@ import router, {browserHistory} from "react-router";
 
 // CAR INFORMATION COMPONENT
 // =====================================================
+
+// create and export Information component
 export default class Information extends React.Component {
+
+	// initial state setup
 	constructor(props) {
 		super(props);
 
@@ -33,12 +37,18 @@ export default class Information extends React.Component {
 			mileage: 0
 		}
 
+		// bind functions
 		this.redirectPrint = this.redirectPrint.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps){
+		// method that will receive props from Profile component
+
+		// call helper function that will get the car info of the vin being passed
+		// from Profile
 		helpers.getCarInfo(nextProps.vin).then((data) => {
 
+			// set the state based on the data received
 			this.setState({
 				vin: data.vin,
 				make: data.make,
@@ -51,6 +61,8 @@ export default class Information extends React.Component {
 	}
 
 	redirectPrint(){
+		// method to redirect to the print QR page
+
   		browserHistory.push("/qr-code/" + this.state.vin + "?token=" + localStorage.getItem("autotrackToken"));
   	}
 

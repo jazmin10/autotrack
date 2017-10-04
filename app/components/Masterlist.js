@@ -17,6 +17,8 @@ import router, {browserHistory} from "react-router";
 
 // MASTERLIST COMPONENT
 // =====================================================
+
+// create and export Masterlist component
 export default class Masterlist extends React.Component {
 
 	// Initial state setup
@@ -29,6 +31,7 @@ export default class Masterlist extends React.Component {
       overallProgress: []
 		}
 
+    // bind functions
     this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
     this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
 	}

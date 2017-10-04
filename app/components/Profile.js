@@ -36,6 +36,7 @@ export default class Profile extends React.Component {
 			categoryProgress: []
 		}
 
+		// bind functions
 		this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
 		this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
 		this.addNewTask = this.addNewTask.bind(this);

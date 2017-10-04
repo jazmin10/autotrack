@@ -6,14 +6,19 @@
 
 // Include the React library
 import React from 'react';
+// include helpers
 import helpers from "./utils/helpers.js";
-import { Link } from 'react-router';
+// include isEqual from lodash
 import isEqual from 'lodash/isequal';
+// include semicircle progressbar
 import { SemiCircle } from "./react-progress.js";
-
+// include react router
+import { Link } from 'react-router';
 import router, {browserHistory} from "react-router";
 
 // PROJECTS -----------------------------
+
+// create and export Projects component
 export default class Projects extends React.Component {
 
 	// Initial state setup
@@ -26,13 +31,16 @@ export default class Projects extends React.Component {
       overallProgress: []
 		}
 
+    // bind functions
     this.calculateCategoryProgress = this.calculateCategoryProgress.bind(this);
     this.calculateOverallProgress = this.calculateOverallProgress.bind(this);
 	}
 
-  // If there isn't a token in the local storage then redirect user to home page for login
   componentWillMount() {
+    // this method initializes once the component is mounted
+
     if (localStorage.getItem("autotrackToken") === null) {
+      // If there isn't a token in the local storage then redirect user to home page for login
       browserHistory.push("/");
     }
   }
@@ -46,8 +54,10 @@ export default class Projects extends React.Component {
       var newMaintenanceArr = [];
 
       var maintenanceArr = response.usercars.map((maintenanceRes, i) => {
+        // map out the maintenance array of each of the user's cars
 
         maintenanceRes.maintenance.map((tasks) => {
+          // map out each maintenance category's task category progress and set it to 0
           tasks.categoryProgress = 0;
         });
 
@@ -75,6 +85,8 @@ export default class Projects extends React.Component {
       var carMaintenanceArray = [];
 
       this.state.carMaintenance[i].map((maintask, k) => {
+        // for each maintenance category, map out the tasks
+
         var taskProgress = 0;
         var numberOfTasks = maintask.tasks.length;
 
@@ -98,6 +110,7 @@ export default class Projects extends React.Component {
       superBigMaintenanceArray.push(carMaintenanceArray);
     }
 
+    // update the state with the up-to-date maintenance array
     this.setState({carMaintenance:superBigMaintenanceArray}, function(){
       this.calculateOverallProgress();
     });
@@ -108,6 +121,8 @@ export default class Projects extends React.Component {
     var overallProgressArr = [];
 
     this.state.carMaintenance.map(carInfo => {
+      // for each car maintenance category, keep track of the progress
+      
       var sumProgress = 0;
       var calculatedProgress = 0;
 

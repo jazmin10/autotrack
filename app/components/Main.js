@@ -18,7 +18,6 @@ export default class Main extends React.Component {
     super(props);
   }
 
-  // Render the component: displays navbar and jumbotron
   render() {
 
     return (
