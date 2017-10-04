@@ -1,8 +1,12 @@
+// DEPENDENCIES
+// =====================================================
 import React from 'react';
 import helpers from "./utils/helpers.js";
 import { QRCode } from 'react-qr-svg';
 import router, {browserHistory} from "react-router";
 
+// PRINT QR COMPONENT
+// =====================================================
 export default class PrintQR extends React.Component {
 
 	constructor(props) {

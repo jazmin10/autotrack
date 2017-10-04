@@ -3,7 +3,8 @@
   and their progressbars
  */
 
-// DEPENDENCIES -----------------------------
+// DEPENDENCIES 
+// =====================================================
 
 // Include the React library
 import React from 'react';
@@ -14,7 +15,8 @@ import { SemiCircle } from "./react-progress.js";
 
 import router, {browserHistory} from "react-router";
 
-// MASTERLIST -----------------------------
+// MASTERLIST COMPONENT
+// =====================================================
 export default class Masterlist extends React.Component {
 
 	// Initial state setup

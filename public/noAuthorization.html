@@ -6,11 +6,13 @@
 	<meta charset="UTF-8">
 	<title>AutoTrack</title>
 
+	<!-- GOOGLE FONT -->
 	<link href="https://fonts.googleapis.com/css?family=Abel|Geo|Audiowide" rel="stylesheet">
 
-	<!-- Latest compiled and minified CSS -->
+	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+	<!-- CUSTOM NO AUTHORIZATION CSS -->
 	<link type ="text/css" rel="stylesheet" href="./public/assets/css/noAuthorization.css">
 </head>
 
@@ -26,10 +28,12 @@
 
 	<script type="text/javascript">
 		if (localStorage.getItem("autotrackToken") !== null) {
+			// if there is a token in local storage, redirect user to the home page
 			$(".container").html("<h1 id='redirecting'>REDIRECTING...</h1>");
 			window.location.href = "/";
 		}
 		else {
+			// otherwise display the 'please log in' message with a link to the login page
 			$("#displayMessage").html("PLEASE <a href='/'>LOG IN</a>...");
 		}
 

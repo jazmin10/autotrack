@@ -1,3 +1,14 @@
+/* =========== NO AUTHORIZATION CSS ==========
+
+	Table of Contents
+	-----------------
+	General - divs, inherited style changes
+	No Authorization
+		Logo
+		Text
+*/
+
+/* ========== GENERAL ========== */
 * {
 	box-sizing: border-box;
 }
@@ -12,6 +23,9 @@ div.container {
 	height: 100vh;
 }
 
+/* ========== NO AUTHORIZATION ========== */
+
+/* ---------- LOGO ---------- */
 #logo {
 	font-family: 'Geo', sans-serif;
 	text-align: center;
@@ -22,6 +36,7 @@ div.container {
 	width: 70%;
 }
 
+/* ---------- TEXT ---------- */
 #displayMessage {
 	color: #ffffff;
 	font-family: 'Audiowide', sans-serif;

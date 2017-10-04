@@ -1,4 +1,7 @@
-  // include React
+
+// DEPENDENCIES
+// =====================================================
+// include React
 import React from "react";
 
 // helper component for making API calls
@@ -7,7 +10,8 @@ import helpers from "./utils/helpers.js";
 import router, {browserHistory} from "react-router";
 
 
-// creating the splash component
+// SPLASH COMPONENT
+// =====================================================
 export default class Splash extends React.Component {
 
 	constructor(props){

@@ -1,3 +1,7 @@
+/* ================== REACT ROUTES ================== */
+
+// DEPENDENCIES
+// =============================================================
 // Include the React library
 import React from 'react';
 
@@ -21,6 +25,7 @@ import Masterlist from '../components/Masterlist.js';
 import Add from '../components/Add.js';
 import PrintQR from '../components/PrintQR.js';
 
+/* ================== REACT ROUTES ================== */
 // Export the Routes
 export default (
 

@@ -4,7 +4,8 @@ mileage) for a car
 	- child of profile
 */
 
-// DEPENDENCIES -----------------------------
+// DEPENDENCIES 
+// =====================================================
 // include the react library
 import React from 'react';
 
@@ -14,9 +15,11 @@ import helpers from "./utils/helpers.js";
 // include QR code
 import { QRCode } from 'react-qr-svg';
 
+// include react router
 import router, {browserHistory} from "react-router";
 
-// INFORMATION -----------------------------
+// CAR INFORMATION COMPONENT
+// =====================================================
 export default class Information extends React.Component {
 	constructor(props) {
 		super(props);

@@ -1,6 +1,10 @@
-/* Dashboard Component -  contains user's dashboard with nav links to the user's
-projects, masterlist, add/edit form */
+/* ========== DASHBOARD COMPONENT ==========
+ 	- contains user's dashboard with nav links to the user's
+projects, masterlist, add/edit form
+*/
 
+// DEPENDENCIES 
+// =====================================================
 // Include the React library
 import React from 'react';
 import { Link } from 'react-router';
@@ -9,6 +13,8 @@ import Projects from '../components/Projects.js';
 import Masterlist from '../components/Masterlist.js';
 import Add from '../components/Add.js';
 
+// DASHBOARD COMPONENT
+// =====================================================
 export default class Dashboard extends React.Component {
 
 	// Initial state setup

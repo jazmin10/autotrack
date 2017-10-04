@@ -2,13 +2,19 @@
 	================== Cars Model ==================
 */
 
+// DEPENDENCIES
+// =============================================================
+
 // require mongoose
 var mongoose = require("mongoose");
 
 // create Schema class
 var Schema = mongoose.Schema;
 
-// create Cars schema
+// CAR SCHEMA
+// =============================================================
+
+// create Car schema
 var CarSchema = new Schema({
 	vin:{
 		type:String,

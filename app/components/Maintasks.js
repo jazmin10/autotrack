@@ -1,11 +1,16 @@
-/* Maintasks Component -  contains the semi-circle progress bar and main maintenance
-categories for a car */
+/* ========== MAINTASKS COMPONENT ==========
+  - contains the semi-circle progress bar and main maintenance
+categories for a car
+*/
 
+// DEPENDENCIES 
+// =====================================================
 import React from 'react';
 import helpers from "./utils/helpers.js";
 import { SemiCircle } from "./react-progress.js";
 
-
+// MAINTASKS COMPONENT
+// =====================================================
 export default class Maintasks extends React.Component {
 	constructor(props){
 		super(props);

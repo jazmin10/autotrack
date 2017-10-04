@@ -1,10 +1,26 @@
+/* =========== SPLASH PAGE STYLING ==========
 
+	Table of Contents
+	-----------------
+	Splash Page
+		Container div
+		Form
+		Jumbotron
+		Text
+		Navigation
+		Media Queries
+
+*/
+
+/* ========== SPLASH PAGE =========== */
+
+/* ----------- CONTAINER DIV ----------- */
 .splash-well {
 	background: url("../images/well-bg.png") no-repeat;
 	background-size: 100% 100%;
 	border: none;
 	margin: 2%;
-	overflow: auto;
+	overflow: none;
 	margin-top: 100px;
 	height: 100vh;
 	padding: 5% 0;
@@ -13,7 +29,7 @@
 .splash-div {
 	padding-top: 2%;
 	padding-left: 4%;
-	overflow: auto;
+	overflow: none;
 	padding: 10% 0;
 }
 
@@ -22,6 +38,7 @@
 	color: #FF9933;
 }
 
+/* ----------- FORM ----------- */
 input[type="text"], input[type="password"], .splash-input, input:active  {
 	background: #000000;
 	padding-left: 20px;
@@ -30,6 +47,17 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
 	color: #FFFFFF;
 }
 
+input#username, input#password {
+	margin-bottom:3%;
+	display:inline-block;
+	float:left;
+
+	background-color:transparent;
+	color:#66ccff;
+	font-family: monospace;
+}
+
+/* ----------- JUMBOTRON ----------- */
 .splash-jumbotron {
 	background-color: #000000;
 	margin-top: 100px;
@@ -37,6 +65,7 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
 
 }
 
+/* ----------- TEXT ----------- */
 .splash-h2 {
 	color: #FF9933;
 	font-family: 'Audiowide', cursive;
@@ -58,7 +87,7 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
 	padding: 10 80 10 80;
 }
 
-/* ----------- NAV -------------- */
+/* ----------- NAVIGATION -------------- */
 
 .scroll-fixed {
     position: fixed;
@@ -90,7 +119,6 @@ input[type="text"], input[type="password"], .splash-input, input:active  {
     width: 8px;
     margin-bottom: 25px;
 }
-
 
 .scroll-fixed li:first-child a::after {
     display: none;
