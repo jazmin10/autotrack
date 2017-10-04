@@ -6,6 +6,15 @@ AutoTrack is an inventory manager that was built to help streamline the process 
 
 
 ## Overview (Step by Step how the app works)
+### Login
+Authentication for AutoTrack uses JSON Web Token. On login, the User is taken to the Dashboard page with a default view of My Projects. There are three tabs: My Projects, Masterlist, and Add/Edit Car.
+
+* Demo Login
+   * Username - demo
+   * Password - demo
+   
+### My Projects
+
 
 ## Technologies Used
 
