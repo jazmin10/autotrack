@@ -156,7 +156,7 @@ select:-webkit-autofill:focus {
 	display: inline-block;
 	float:left;
 }
-/* ========== MEDIA QUERIES ========== */
+/* ---------- MEDIA QUERIES ---------- */
 
 @media screen and (max-width:1200px) {
 	#vinsearch-panel {

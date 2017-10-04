@@ -2,11 +2,17 @@
 	================== User Model ==================
 */
 
+// DEPENDENCIES
+// =============================================================
+
 // require mongoose
 var mongoose = require("mongoose");
 
 // create Schema class
 var Schema = mongoose.Schema;
+
+// USER SCHEMA
+// =============================================================
 
 // create User schema
 var UserSchema = new Schema({

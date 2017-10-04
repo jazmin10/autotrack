@@ -4,7 +4,8 @@
 	- child of profile
 */
 
-// DEPENDENCIES -----------------------------
+// DEPENDENCIES 
+// =====================================================
 
 // include the React library
 import React from 'react';
@@ -12,7 +13,8 @@ import helpers from "./utils/helpers.js";
 import { Line } from "./react-progress.js";
 import isEqual from 'lodash/isequal';
 
-// TASKS -----------------------------
+// TASKS 
+// =====================================================
 
 // create and export the Taskbreakdown component
 export default class Taskbreakdown extends React.Component {

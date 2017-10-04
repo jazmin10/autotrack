@@ -1,14 +1,23 @@
-/* Add Component -  contains the add/edit form for the cars */
+/* ========== ADD/EDIT CAR COMPONENT ==========
+ 	- contains the add/edit form for the cars
+*/
 
+// DEPENDENCIES 
+// =====================================================
+// include the react library
 import React from 'react';
+
+// include helpers
 import helpers from "./utils/helpers.js";
+
+// include Information.js
 import Information from './Information.js'
 
-//Not sure if it is needed. Add it for now..
-import { Link } from 'react-router';
-
+// include react router
 import router, {browserHistory} from "react-router";
 
+// ADD/EDIT COMPONENT 
+// =====================================================
 export default class Add extends React.Component {
 
 	//initial state setup in constructor

@@ -80,6 +80,7 @@ var helpers = {
 		});
 	},
 
+	// Using in Add.js. Scrape car information website by vin number.
 	scrape: (vin) => {
 
 		return axios({
@@ -109,6 +110,8 @@ var helpers = {
 
 	},
 
+	// Using in Add.js. If the VIN# exists in the database already, edit the 
+	// car with the new information being passed through.
 	updateCarInfo: (vin, car) => {
 
 		return axios({
@@ -124,6 +127,8 @@ var helpers = {
 
 	/* ----- CREATE ROUTES -------*/
 	
+	// Using in Add.js. If the VIN# doesn't exist in the database yet, add the
+	// car into the database and add to the associated user's carlist.
 	createCar: (username, car) => {
 		return axios({
 			method: 'POST',
@@ -135,6 +140,7 @@ var helpers = {
 
 	/* ---------- DELETE ROUTES ----------- */
 
+	// Using in Profile.js. Delete the car by VIN# from the database.
 	deleteCar: (vin) => {
 		return axios({
 			method:'DELETE',

@@ -38,13 +38,15 @@ app.use(expressJWT({
 	secret: secret,
 	// This is to provide the token in the url as well, not only in body of requests
 	getToken: function fromHeaderOrQuerystring (req) {
-    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-        return req.headers.authorization.split(' ')[1];
-    } else if (req.query && req.query.token) {
-     	return req.query.token;
-    }
-    	return null;
-  	}
+		if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+		    return req.headers.authorization.split(' ')[1];
+		} 
+		else if (req.query && req.query.token) {
+		 	return req.query.token;
+		}
+		
+		return null;
+		}
 })
 // Unprotected routes: don't need token to access
 .unless({ 
@@ -53,6 +55,7 @@ app.use(expressJWT({
 
 app.use(function(err, req, res, next){
 	if (err.name === "UnauthorizedError") {
+		// if the err provided by JWT is 'UnauthorizedError', serve the noAuthorization html
 		res.sendFile(path.join(__dirname, "./public/noAuthorization.html"));
 	}
 });

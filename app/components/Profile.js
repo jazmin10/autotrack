@@ -4,7 +4,8 @@
  	and task breakdown
  */
 
-// DEPENDENCIES -----------------------------
+// DEPENDENCIES 
+// =====================================================
 
 // include the React library
 import React from 'react';
@@ -18,7 +19,8 @@ import Information from "./Information.js";
 import MainTasks from "./Maintasks.js";
 import Taskbreakdown from "./Taskbreakdown.js";
 
-// PROFILE -----------------------------
+// PROFILE COMPONENT
+// =====================================================
 
 // create and export the profile component
 export default class Profile extends React.Component {

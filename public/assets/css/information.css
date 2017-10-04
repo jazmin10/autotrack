@@ -1,3 +1,18 @@
+/* =========== CAR INFORMATION STYLING ==========
+
+	Table of Contents
+	-----------------
+	Car Information
+		Container divs
+		Text
+		QR Code
+		Media Queries
+
+*/
+
+/* ========== CAR INFORMATION ========== */
+
+/* ---------- CONTAINER DIVS ---------- */
 .information-well {
 	background: url("../images/well-bg.png") no-repeat;
 	background-size: 100% 100%;
@@ -18,6 +33,7 @@
 	display: inline-block;
 }
 
+/* ---------- TEXT ---------- */
 #basic-specs-title {
 	color: #ff9122;
 	font-family: 'Audiowide', sans-serif;
@@ -35,6 +51,7 @@
 	font-family: 'Audiowide', sans-serif;
 }
 
+/* ---------- QR CODE ---------- */
 .qr-code {
 	padding: 1%;
 	background: #ffffff;
@@ -43,6 +60,7 @@
 	margin-bottom: 2%;
 }
 
+/* ---------- MEDIA QUERIES ---------- */
 @media screen and (max-width: 721px) {
 	.basic-specs-div {
 		padding: 10%;	

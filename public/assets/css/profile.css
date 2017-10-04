@@ -1,3 +1,16 @@
+/* =========== CAR PROFILE STYLING ==========
+
+	Table of Contents
+	-----------------
+	Car Profile
+		Container div
+		Text
+		Button
+*/
+
+/* ========== CAR PROFILE =========== */
+
+/* ---------- CONTAINER DIV ---------- */
 .danger-zone-well {
 	height: 300px;
 	border: none;
@@ -8,6 +21,7 @@
 	margin:2%;
 }
 
+/* ---------- TEXT ---------- */
 .danger-zone-well h1 {
 	color: #ff0001;
 	font-family: 'Audiowide', cursive;
@@ -25,6 +39,7 @@
 	font-size: 120%;
 }
 
+/* ---------- BUTTONS ---------- */
 .danger-zone-btn {
 	background: #000000;
 	border-width: initial;

@@ -1,3 +1,17 @@
+/* =========== PRINT QR CODE STYLING ==========
+
+	Table of Contents
+	-----------------
+	Print QR Code
+		Container div
+		Text
+		Button
+		Media Queries
+*/
+
+/* =========== PRINT QR CODE =========== */
+
+/* ---------- CONTAINER DIV ----------- */
 .print-qr-well {
 	margin-top: 5%;
 	background: url("../images/well-bg.png") no-repeat;
@@ -5,6 +19,7 @@
 	overflow: auto;
 }
 
+/* ---------- TEXT ----------- */
 .print-qr-well h2 {
 	text-align: center;
 	color: deepskyblue;
@@ -12,19 +27,7 @@
 	margin-bottom: 2%; 
 }
 
-@media screen and (min-width: 720px) and (max-width: 991px) {
-	.print-qr-well h2 {
-		font-size: 180%;
-	}
-}
-
-@media screen and (max-width: 719px) {
-	.print-qr-well h2 {
-		font-size: 150%;
-		margin-top: 6%;
-	}
-}
-
+/* ---------- QR CODE --------- */
 .print-qr {
 	padding: 1%;
 	float: right;
@@ -33,6 +36,7 @@
 	margin-bottom: 2%;
 }
 
+/* ---------- BUTTONS ---------- */
 #back-print-btn {
 	height: 500%;
 	margin-left: 2%;
@@ -47,16 +51,30 @@
 	margin: 1%;
 }
 
-@media screen and (max-width: 588px) {
-	#print-qr-btn {
-		margin-bottom: 5%;
-	}
-}
-
 #print-qr-btn:hover {
 	background: #000000;
 	font-family: 'Audiowide', sans-serif;
 	border-style: inset;
 	color: #ffffff;
 	border-color: #ff9122;
+}
+
+/* ---------- MEDIA QUERIES ----------- */
+@media screen and (min-width: 720px) and (max-width: 991px) {
+	.print-qr-well h2 {
+		font-size: 180%;
+	}
+}
+
+@media screen and (max-width: 719px) {
+	.print-qr-well h2 {
+		font-size: 150%;
+		margin-top: 6%;
+	}
+}
+
+@media screen and (max-width: 588px) {
+	#print-qr-btn {
+		margin-bottom: 5%;
+	}
 }
