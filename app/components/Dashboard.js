@@ -15,6 +15,8 @@ import Add from '../components/Add.js';
 
 // DASHBOARD COMPONENT
 // =====================================================
+
+// create and export the Dashboard component
 export default class Dashboard extends React.Component {
 
 	// Initial state setup
@@ -25,26 +27,32 @@ export default class Dashboard extends React.Component {
 			isActive: false
 		};
 
+		// bind functions
 		this.tabClick = this.tabClick.bind(this);
 		this.logOut = this.logOut.bind(this);
 		this.handleRedirect = this.handleRedirect.bind(this);
-		// this.handleRedirect = this.handleRedirect.bind(this);
 	}
 
 	tabClick (e) {
+		// method to navigate between tabs and set active tab state
+
 		e.preventDefault();
 		$(".nav li").removeClass("active");
 		e.currentTarget.className = "active";
 	}
 
-	// If there isn't a token in the local storage then redirect user to home page for login
 	componentWillMount() {
+		// initializes as soon as the component mounts
+
 		if (localStorage.getItem("autotrackToken") === null) {
+			// If there isn't a token in the local storage then redirect user to home page for login
 			this.handleRedirect();
 		}
 	}
 
 	logOut(event){
+		// method that will handle logging out
+
 		event.preventDefault();
 		localStorage.clear();
 
@@ -52,6 +60,8 @@ export default class Dashboard extends React.Component {
 	}
 
 	handleRedirect() {
+		// method that will redirect to the home page
+		
 		browserHistory.push("/");
 	}
 

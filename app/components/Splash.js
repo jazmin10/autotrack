@@ -1,19 +1,24 @@
+/* ========== SPLASH COMPONENT ==========
+    - contains the login feature, autotrack about, and autotrack team
+*/
 
 // DEPENDENCIES
 // =====================================================
 // include React
 import React from "react";
-
 // helper component for making API calls
 import helpers from "./utils/helpers.js";
-
+// include react router
 import router, {browserHistory} from "react-router";
 
 
 // SPLASH COMPONENT
 // =====================================================
+
+// create and export the splash component
 export default class Splash extends React.Component {
 
+	// initial state setup
 	constructor(props){
 		
 		super(props);
@@ -23,7 +28,7 @@ export default class Splash extends React.Component {
 			password: ""
 		};
 		
-
+		// bind functions
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleRedirect = this.handleRedirect.bind(this);
@@ -31,6 +36,7 @@ export default class Splash extends React.Component {
 	}
 
 	handleChange(event) {
+		// method to handle changes in user input
 
 		var newState = {};
 		newState[event.target.id] = event.target.value;
@@ -38,22 +44,26 @@ export default class Splash extends React.Component {
 	}
 
 	componentDidMount() {
-  
-		// If user's token saved in local storage, redirect to dashboard
+  		// method invoked immediately after component is mounted
+
+		// if user's token saved in local storage, redirect to dashboard
 		if (localStorage.getItem("autotrackToken") !== null) {
-  				this.handleRedirect();
-			}
+  			this.handleRedirect();
+		}
   	}
   	
 
 	handleSubmit(event) {
-
+		// method that handles the user login
 		event.preventDefault();
 
+		// call the helpers function to validate the input username and password
 		helpers.getAuth(this.state.username, this.state.password)
 		.then(response => {
 
 			if (response.username !== undefined) {
+				// if the username exists, grant the user a token and set 
+				// that username in local storage
 				localStorage.setItem("autotrackToken", response.token);
 				localStorage.setItem("username", response.username);
 				this.handleRedirect();
@@ -66,7 +76,7 @@ export default class Splash extends React.Component {
 	
 
 	handleRedirect() {
-
+		// method to redirect to the dashboard if the user's token is in local storage
 		browserHistory.push("/dashboard-manager?token=" + localStorage.getItem("autotrackToken"));
 	}
 
@@ -75,21 +85,22 @@ export default class Splash extends React.Component {
 		return (
 			<div className="splash-container">
 
-			<div className="scroll-fixed-wrapper">    
-  <ul className="scroll-fixed">
-      <li>
-          <a href="#app">Main</a>
-      </li>
-      <li>
-          <a href="#about">About</a>
-      </li>
-      <li>
-          <a href="#contact">Contact</a>
-      </li>
-  </ul>
-</div>
+				{/* THREE-DOT LINKS */}
+				<div className="scroll-fixed-wrapper">    
+				 	<ul className="scroll-fixed">
+						<li>
+							<a href="#app">Main</a>
+						</li>
+						<li>
+							<a href="#about">About</a>
+						</li>
+						<li>
+							<a href="#contact">Contact</a>
+						</li>
+				  	</ul>
+				</div>
 
-
+				{/* SPLASH JUMBOTRON */}
 				<div className="jumbotron splash-jumbotron">
 					<div className="col-md-3"></div>
 					<div className="col-md-6">
@@ -98,30 +109,30 @@ export default class Splash extends React.Component {
 
 						<form onSubmit={this.handleSubmit}> 
 							
-								<input
-								className="splash-input"
-								type="text"
-								value={this.state.username}
-								placeholder="Username"
-								id="username"
-								className="form-control"
-								onChange={this.handleChange}
-								required
-								/>
+							<input
+							className="splash-input"
+							type="text"
+							value={this.state.username}
+							placeholder="Username"
+							id="username"
+							className="form-control"
+							onChange={this.handleChange}
+							required
+							/>
 
-								<br/>
-							
-							
-								<input
-								className="splash-input"
-								type="password"
-								value={this.state.password}
-								placeholder="Password"
-								id="password"
-								className="form-control"
-								onChange= {this.handleChange}
-								required
-								/>
+							<br/>
+						
+						
+							<input
+							className="splash-input"
+							type="password"
+							value={this.state.password}
+							placeholder="Password"
+							id="password"
+							className="form-control"
+							onChange= {this.handleChange}
+							required
+							/>
 
 								<br/>
 							
