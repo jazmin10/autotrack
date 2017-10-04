@@ -23,7 +23,15 @@ The My Projects tab shows cars entered by that particular User. Masterlist shows
 
 ### Add/Edit Car
 
-The Add/Edit Car tab is where the User can add or edit a car using the VIN number. The VIN is checked against the database. If it is in our database, a form is rendered with the fields populated with the basic specs of that car. Changes can be made and on submit, that car is updated in our database. 
+The Add/Edit Car tab is where the User can add or edit a car using the VIN number. 
+
+#### Edit Car
+
+The VIN is checked against the database. If it is in our database, a form is rendered with the fields populated with the basic specs of that car. Changes can be made and on submit, that car is updated in our database. 
+
+![Edit Car](/public/assets/images/readme-edit-car.gif)
+
+#### Add Car
 
 If a car is not in our database, then using that VIN number, we scrape www.vehiclehistory.com for the basic specs of that car. A form is rendered with the fields populated from the web scrape. The User can edit the fields, add the color of the car, and the mileage. On submit, that car is added into our database.
 
@@ -38,6 +46,14 @@ The Profile page is specific to each car in the database.
 The first part is the Basic Specs and QR Code. The Basic Specs show the year, make, model, VIN number, color, and mileage of the car. The idea behind the QR Code is that the dealership will be able to print it out and stick it to the car. The inventory manager or vendor can scan that QR Code from the lot and view the profile page of that car to see what tasks need to be completed before the car is ready to sale.
 
 ![Basic Specs and QR Code](/public/assets/images/readme-qr-specs.gif)
+
+#### Tasks
+
+This section of the profile has Main Tasks, or general categories for the services that need to be performed to get the car ready for sale. With each Main Task that is entered a new component is dynamically created for that Main Task where a specific checklist of things to do can be entered.
+
+For the example below, Cosmetics and Photos are entered as Main Tasks. Paint is added under Cosmetics. Interior and exterior pictures are added under Photos.
+
+![Adding Tasks](/public/assets/images/readme-add-tasks.gif)
 
 ## Technologies Used
 
