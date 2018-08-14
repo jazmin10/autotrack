@@ -81,16 +81,46 @@ var helpers = {
 		});
 	},
 
+	
 	// Using in Add.js. Scrape car information website by vin number.
-	scrape: (vin) => {
+	// scrape: (vin) => {
 
+	// 	return axios({
+	// 		method: "GET",
+	// 		url: "/scrape", 
+	// 		params: { vin: vin },
+	// 		headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+	// 	}).then(response => {
+	// 		return response.data;
+	// 	});
+	// },
+
+	// Using in Add.js. Makes API request and grabs car's information by vin number
+	vinApi: (vin) => {
 		return axios({
 			method: "GET",
-			url: "/scrape", 
-			params: { vin: vin },
-			headers: {Authorization: "Bearer " + localStorage.getItem("autotrackToken")}
+			url: `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVIN/${vin}?format=json`
 		}).then(response => {
-			return response.data;
+
+			// Object will hold make, model, and year of car
+			var carInfo = {};
+
+			response.data.Results.forEach((currInfo) => {
+				if (currInfo.Variable === "Make") {
+					let makeName = currInfo.Value.toLowerCase();
+
+					// Uppercases first letter of make value
+					carInfo.make = makeName.charAt(0).toUpperCase() + makeName.slice(1);
+				}
+				else if (currInfo.Variable === "Model") {
+					carInfo.model = currInfo.Value;
+				}
+				else if (currInfo.Variable === "Model Year") {
+					carInfo.year = currInfo.Value;
+				}
+			});
+
+			return carInfo;
 		});
 	},
 

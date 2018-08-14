@@ -70,6 +70,7 @@ app.use(function(err, req, res, next){
 // heroku mongolab connection
 // MONGODB_URI: mongodb://heroku_v0vqth9z:64qm5mvk8t6fdqtrgp795icvaa@ds155414.mlab.com:55414/heroku_v0vqth9z
 mongoose.connect("mongodb://heroku_v0vqth9z:64qm5mvk8t6fdqtrgp795icvaa@ds155414.mlab.com:55414/heroku_v0vqth9z");
+// mongoose.connect("mongodb://localhost/autotrackdb");
 
 var db = mongoose.connection;
 

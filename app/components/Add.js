@@ -40,6 +40,8 @@ export default class Add extends React.Component {
 		this.updateRecord = this.updateRecord.bind(this);
 		this.handleUpdateRedirect = this.handleUpdateRedirect.bind(this);
 		this.clear = this.clear.bind(this);
+
+		this.vinApi = this.vinApi.bind(this);
 	}
 
 	clear(){
@@ -97,25 +99,41 @@ export default class Add extends React.Component {
 
         	else {
         		// else if the car isn't in the database yet, scrape for car info
-         		this.scrape();
+         		// this.scrape();
+         		this.vinApi();
         	}
 
     	});
     }
 
-    scrape() {
-    	// method that will scrape the car info website and set the state of 
+    // scrape() {
+    // 	// method that will scrape the car info website and set the state of 
+    // 	// make, model, and year
+
+    // 	// call the helper to scrape the car info site by vin
+	  	// helpers.scrape(this.state.vin).then(response => {
+
+		  //   this.setState({
+		  //       make: response.make,
+		  //       model: response.model,
+		  //       year: response.year
+		  //   });
+	   //  });
+    // }
+
+    vinApi() {
+    	// method that will make API request to grab car information and sets the state of
     	// make, model, and year
 
-    	// call the helper to scrape the car info site by vin
-	  	helpers.scrape(this.state.vin).then(response => {
-
-		    this.setState({
-		        make: response.make,
-		        model: response.model,
-		        year: response.year
-		    });
-	    });
+    	// call the helper to make api request using vin
+    	helpers.vinApi(this.state.vin).then(response => {
+    		
+    		this.setState({
+    			make: response.make,
+    			model: response.model,
+    			year: response.year
+    		});
+    	});
     }
 
 	updateRecord(event) {
@@ -167,6 +185,9 @@ export default class Add extends React.Component {
 				color: "N/A", 
 				mileage: 0
 			});
+
+			// Redirect the page to the new car's profile
+			this.handleUpdateRedirect(newCar.vin);
 		});
 		
 	}
