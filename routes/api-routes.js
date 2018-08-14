@@ -213,36 +213,36 @@ module.exports = function(app, jwt, secret) {
 
 	});
 
-
+	// ******* PREVIOUS SCRAPING ROUTE *******
 	// GET - scrape vehiclehistory.com for Car Info
-	app.get("/scrape", function(req, res) {
+	// app.get("/scrape", function(req, res) {
 
-		var queryURL = "https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=" + req.query.vin;
+	// 	var queryURL = "https://www.vehiclehistory.com/paging-vin-report-data/specifications.php?vin=" + req.query.vin;
 
-		request(queryURL, function(error, response, html) {
-			if (error) throw error;
-			var $ = cheerio.load(html);
+	// 	request(queryURL, function(error, response, html) {
+	// 		if (error) throw error;
+	// 		var $ = cheerio.load(html);
 
-			var results = {};
+	// 		var results = {};
 
-			$("ul li").each(function(i, element) {
-				var content = $(element).find(".table_col_40").text();
-				var parent = $(element).find(".table_col_60").text();
+	// 		$("ul li").each(function(i, element) {
+	// 			var content = $(element).find(".table_col_40").text();
+	// 			var parent = $(element).find(".table_col_60").text();
 
-				if (parent === "MAKE") {
-					results.make = content;
-				}
-				else if (parent === "MODEL") {
-					results.model = content;
-				}
-				else if (parent === "YEAR") {
-					results.year = content;
-				}
+	// 			if (parent === "MAKE") {
+	// 				results.make = content;
+	// 			}
+	// 			else if (parent === "MODEL") {
+	// 				results.model = content;
+	// 			}
+	// 			else if (parent === "YEAR") {
+	// 				results.year = content;
+	// 			}
 				
-			});
-			res.json(results);
-		});
-	});
+	// 		});
+	// 		res.json(results);
+	// 	});
+	// });
 
 	// =============== USER ===============
 

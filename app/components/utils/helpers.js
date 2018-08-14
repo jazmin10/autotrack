@@ -81,7 +81,7 @@ var helpers = {
 		});
 	},
 
-	
+	// ******* PREVIOUS SCRAPE HELPER METHOD *******
 	// Using in Add.js. Scrape car information website by vin number.
 	// scrape: (vin) => {
 

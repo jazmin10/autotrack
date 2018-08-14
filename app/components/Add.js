@@ -106,6 +106,7 @@ export default class Add extends React.Component {
     	});
     }
 
+    // ******* PREVIOUS SCRAPE METHOD *******
     // scrape() {
     // 	// method that will scrape the car info website and set the state of 
     // 	// make, model, and year
