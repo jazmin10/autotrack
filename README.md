@@ -61,7 +61,6 @@ For the example below, Cosmetics and Photos are entered as Main Tasks. Paint is 
 * ExpressJS
 * ReactJS
 * NodeJS
-* jQuery
 * Lodash
 * NPM Libaries
   * [react-qr-svg](https://www.npmjs.com/package/react-qr-svg)
